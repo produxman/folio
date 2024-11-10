@@ -41,3 +41,10 @@ async function getBotResponse(message) {
         displayMessage("Error: Unable to fetch response.", "bot-message");
     }
 }
+
+// Listen for the "Enter" key press to trigger sendMessage
+document.getElementById("user-input").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+});
