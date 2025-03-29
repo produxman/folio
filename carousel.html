@@ -20,7 +20,13 @@
     }
     .carousel-track {
       display: flex;
-      transition: transform 0.3s ease-in-out;
+      scroll-behavior: smooth;
+      overflow-x: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .carousel-track::-webkit-scrollbar {
+      display: none;
     }
     .carousel-track video {
       width: 90vw;
@@ -43,10 +49,10 @@
       background: rgba(255, 255, 255, 0.4);
     }
     .prev {
-      left: 0;
+      left: 10px;
     }
     .next {
-      right: 0;
+      right: 10px;
     }
   </style>
 </head>
@@ -66,26 +72,20 @@
     const videos = track.querySelectorAll('video');
     let currentIndex = 0;
 
-    function updateCarousel() {
-      const width = videos[0].clientWidth;
-      track.style.transform = `translateX(-${currentIndex * width}px)`;
+    function scrollToVideo(index) {
+      if (index >= 0 && index < videos.length) {
+        videos[index].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+        currentIndex = index;
+      }
     }
 
     document.querySelector('.next').addEventListener('click', () => {
-      if (currentIndex < videos.length - 1) {
-        currentIndex++;
-        updateCarousel();
-      }
+      scrollToVideo(currentIndex + 1);
     });
 
     document.querySelector('.prev').addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
-      }
+      scrollToVideo(currentIndex - 1);
     });
-
-    window.addEventListener('resize', updateCarousel);
   </script>
 </body>
 </html>
