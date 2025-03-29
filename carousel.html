@@ -24,11 +24,13 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
+      touch-action: none;
     }
     .carousel-track {
       display: flex;
       height: 100%;
       transition: transform 0.5s ease-in-out;
+      will-change: transform;
     }
     .carousel-track iframe {
       width: 100vw;
@@ -73,7 +75,7 @@
 <body>
   <div class="carousel-container">
     <button class="nav-btn prev" aria-label="Previous video">&#10094;</button>
-    <div class="carousel-track-wrapper">
+    <div class="carousel-track-wrapper" id="swipeZone">
       <div class="carousel-track" id="carouselTrack">
         <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
@@ -86,62 +88,38 @@
   <script>
     const track = document.getElementById('carouselTrack');
     const items = track.querySelectorAll('iframe');
+    const swipeZone = document.getElementById('swipeZone');
     let currentIndex = 0;
 
     function scrollToVideo(index) {
       const total = items.length;
       const nextIndex = (index + total) % total;
-
-      items.forEach(iframe => {
-        const src = iframe.src;
-        iframe.src = src;
-      });
-
+      items.forEach(iframe => iframe.src = iframe.src);
       const offset = nextIndex * window.innerWidth;
       track.style.transform = `translateX(-${offset}px)`;
       currentIndex = nextIndex;
     }
 
-    document.querySelector('.next').addEventListener('click', () => {
-      scrollToVideo(currentIndex + 1);
-    });
+    document.querySelector('.next').addEventListener('click', () => scrollToVideo(currentIndex + 1));
+    document.querySelector('.prev').addEventListener('click', () => scrollToVideo(currentIndex - 1));
+    window.addEventListener('resize', () => scrollToVideo(currentIndex));
 
-    document.querySelector('.prev').addEventListener('click', () => {
-      scrollToVideo(currentIndex - 1);
-    });
-
-    window.addEventListener('resize', () => {
-      scrollToVideo(currentIndex);
-    });
-
+    // Swipe gesture handling
     let startX = 0;
-    let isTouching = false;
+    let endX = 0;
 
-    const wrapper = document.querySelector('.carousel-track-wrapper');
-
-    wrapper.addEventListener('touchstart', e => {
+    swipeZone.addEventListener('touchstart', e => {
       startX = e.touches[0].clientX;
-      isTouching = true;
-    });
+    }, { passive: true });
 
-    wrapper.addEventListener('touchmove', e => {
-      if (!isTouching) return;
-      const moveX = e.touches[0].clientX;
-      const delta = moveX - startX;
-
-      if (Math.abs(delta) > 50) {
-        isTouching = false;
-        if (delta < 0) {
-          scrollToVideo(currentIndex + 1);
-        } else {
-          scrollToVideo(currentIndex - 1);
-        }
+    swipeZone.addEventListener('touchend', e => {
+      endX = e.changedTouches[0].clientX;
+      const deltaX = endX - startX;
+      if (Math.abs(deltaX) > 50) {
+        if (deltaX < 0) scrollToVideo(currentIndex + 1);
+        else scrollToVideo(currentIndex - 1);
       }
-    });
-
-    wrapper.addEventListener('touchend', () => {
-      isTouching = false;
-    });
+    }, { passive: true });
   </script>
 </body>
 </html>
