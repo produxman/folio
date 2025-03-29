@@ -31,10 +31,10 @@
     .carousel-track::-webkit-scrollbar {
       display: none;
     }
-    .carousel-track video {
+    .carousel-track iframe {
       width: 100vw;
       height: 100vh;
-      object-fit: contain;
+      border: none;
       flex-shrink: 0;
       background-color: #191919;
     }
@@ -66,21 +66,21 @@
   <div class="carousel-container">
     <button class="nav-btn prev" aria-label="Previous video">&#10094;</button>
     <div class="carousel-track" id="carouselTrack">
-      <video src="https://www.youtube.com/watch?v=3HtQMHpFI10" controls playsinline></video>
-      <video src="https://www.youtube.com/watch?v=3HtQMHpFI10" controls playsinline></video>
-      <video src="https://www.youtube.com/watch?v=3HtQMHpFI10" controls playsinline></video>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/l482T0yNkeo" allowfullscreen></iframe>
     </div>
     <button class="nav-btn next" aria-label="Next video">&#10095;</button>
   </div>
 
   <script>
     const track = document.getElementById('carouselTrack');
-    const videos = track.querySelectorAll('video');
+    const items = track.querySelectorAll('iframe');
     let currentIndex = 0;
 
     function scrollToVideo(index) {
-      if (index >= 0 && index < videos.length) {
-        videos[index].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+      if (index >= 0 && index < items.length) {
+        items[index].scrollIntoView({ behavior: 'smooth', inline: 'start' });
         currentIndex = index;
       }
     }
