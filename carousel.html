@@ -24,6 +24,7 @@
       overflow-x: hidden;
       width: 100%;
       height: 100%;
+      transition: transform 0.5s ease-in-out;
     }
     .carousel-track iframe {
       width: 100vw;
@@ -85,7 +86,8 @@
         iframe.src = src; // reload iframe to stop playback
       });
 
-      items[nextIndex].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+      const offset = nextIndex * window.innerWidth;
+      track.style.transform = `translateX(-${offset}px)`;
       currentIndex = nextIndex;
     }
 
