@@ -22,7 +22,7 @@
     .carousel-track {
       display: flex;
       overflow-x: hidden;
-      width: 100%;
+      width: 300vw; /* 100vw * number of videos */
       height: 100%;
       transition: transform 0.5s ease-in-out;
     }
@@ -83,7 +83,7 @@
       // Pause all videos
       items.forEach(iframe => {
         const src = iframe.src;
-        iframe.src = src; // reload iframe to stop playback
+        iframe.src = src;
       });
 
       const offset = nextIndex * window.innerWidth;
