@@ -19,10 +19,13 @@
       justify-content: center;
       align-items: center;
     }
+    .carousel-track-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
     .carousel-track {
       display: flex;
-      overflow-x: hidden;
-      width: 300vw; /* 100vw * number of videos */
       height: 100%;
       transition: transform 0.5s ease-in-out;
     }
@@ -63,10 +66,12 @@
 <body>
   <div class="carousel-container">
     <button class="nav-btn prev" aria-label="Previous video">&#10094;</button>
-    <div class="carousel-track" id="carouselTrack">
-      <iframe src="https://www.youtube.com/embed/ltk9FxJ0uF4" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/u295dZS7VoI" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/3HtQMHpFI10" allowfullscreen></iframe>
+    <div class="carousel-track-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/l482T0yNkeo" allowfullscreen></iframe>
+      </div>
     </div>
     <button class="nav-btn next" aria-label="Next video">&#10095;</button>
   </div>
@@ -78,7 +83,7 @@
 
     function scrollToVideo(index) {
       const total = items.length;
-      const nextIndex = (index + total) % total; // closed loop
+      const nextIndex = (index + total) % total;
 
       // Pause all videos
       items.forEach(iframe => {
@@ -99,7 +104,9 @@
       scrollToVideo(currentIndex - 1);
     });
 
-    window.addEventListener('resize', () => scrollToVideo(currentIndex));
+    window.addEventListener('resize', () => {
+      scrollToVideo(currentIndex);
+    });
 
     // Touch swipe support
     let startX = 0;
