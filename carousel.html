@@ -1,154 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Video Carousel</title>
-
-  <!-- Owl Carousel CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-
-  <!-- Plyr CSS -->
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
-
   <style>
     body {
-      margin: 80px 0 0 0;
+      margin: 0;
       background-color: #191919;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-
-    .video-section .item {
-      opacity: 0.4;
-      transition: .4s ease all;
-      margin: 0 20px;
-      transform: scale(.8);
+    .carousel-container {
+      position: relative;
+      width: 90vw;
+      overflow: hidden;
     }
-
-    @media(max-width: 1000px) {
-      .video-section .item {
-        margin: 0;
-        transform: scale(.9);
-      }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
     }
-
-    .video-section .active .item {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .video-section .owl-item {
-      -webkit-backface-visibility: hidden;
-      -webkit-transform: translateZ(0) scale(1.0, 1.0);
-    }
-
-    .video-section video {
-      max-width: 100%;
+    .carousel-track video {
+      width: 90vw;
       height: auto;
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.2em 0.5em;
+      z-index: 1;
+    }
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+    .prev {
+      left: 0;
+    }
+    .next {
+      right: 0;
     }
   </style>
 </head>
 <body>
-
-  <div class="owl-carousel video-section">
-    <div class="item">
-      <div>
-        <video class="js-player" crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
-          <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
-        </video>
-      </div>
+  <div class="carousel-container">
+    <button class="nav-btn prev">&#10094;</button>
+    <div class="carousel-track" id="carouselTrack">
+      <video src="video1.mp4" controls></video>
+      <video src="video2.mp4" controls></video>
+      <video src="video3.mp4" controls></video>
     </div>
-    <div class="item">
-      <div>
-        <video class="js-player" crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
-          <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
-        </video>
-      </div>
-    </div>
-    <div class="item">
-      <div>
-        <video class="js-player" crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
-          <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
-        </video>
-      </div>
-    </div>
+    <button class="nav-btn next">&#10095;</button>
   </div>
 
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <!-- Owl Carousel JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-  <!-- Plyr JS -->
-  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-
   <script>
-    $(document).ready(function () {
-      $('.owl-carousel').owlCarousel({
-        stagePadding: 200,
-        loop: true,
-        margin: 10,
-        items: 1,
-        nav: true,
-        responsive: {
-          0: {
-            items: 1,
-            stagePadding: 60
-          },
-          600: {
-            items: 1,
-            stagePadding: 100
-          },
-          1000: {
-            items: 1,
-            stagePadding: 200
-          },
-          1200: {
-            items: 1,
-            stagePadding: 250
-          },
-          1400: {
-            items: 1,
-            stagePadding: 300
-          },
-          1600: {
-            items: 1,
-            stagePadding: 350
-          },
-          1800: {
-            items: 1,
-            stagePadding: 400
-          }
-        }
-      });
+    const track = document.getElementById('carouselTrack');
+    const videos = track.querySelectorAll('video');
+    let currentIndex = 0;
 
-      const playerSettings = {
-        controls: ['play-large'],
-        fullscreen: { enabled: false },
-        resetOnEnd: true,
-        hideControls: true,
-        clickToPlay: true,
-        keyboard: false
-      };
+    function updateCarousel() {
+      const width = videos[0].clientWidth;
+      track.style.transform = `translateX(-${currentIndex * width}px)`;
+    }
 
-      const players = Plyr.setup('.js-player', playerSettings);
-
-      players.forEach(function (instance, index) {
-        instance.on('play', function () {
-          players.forEach(function (instance1, index1) {
-            if (instance !== instance1) {
-              instance1.pause();
-            }
-          });
-        });
-      });
-
-      $('.video-section').on('translated.owl.carousel', function (event) {
-        players.forEach(function (instance, index1) {
-          instance.pause();
-        });
-      });
+    document.querySelector('.next').addEventListener('click', () => {
+      if (currentIndex < videos.length - 1) {
+        currentIndex++;
+        updateCarousel();
+      }
     });
+
+    document.querySelector('.prev').addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+
+    window.addEventListener('resize', updateCarousel);
   </script>
 </body>
 </html>
