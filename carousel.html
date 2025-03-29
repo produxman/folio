@@ -21,15 +21,9 @@
     }
     .carousel-track {
       display: flex;
-      overflow-x: scroll;
-      scroll-behavior: smooth;
+      overflow-x: hidden;
       width: 100%;
       height: 100%;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    .carousel-track::-webkit-scrollbar {
-      display: none;
     }
     .carousel-track iframe {
       width: 100vw;
@@ -79,10 +73,17 @@
     let currentIndex = 0;
 
     function scrollToVideo(index) {
-      if (index >= 0 && index < items.length) {
-        items[index].scrollIntoView({ behavior: 'smooth', inline: 'start' });
-        currentIndex = index;
-      }
+      const total = items.length;
+      const nextIndex = (index + total) % total; // closed loop
+
+      // Pause all videos
+      items.forEach(iframe => {
+        const src = iframe.src;
+        iframe.src = src; // reload iframe to stop playback
+      });
+
+      items[nextIndex].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+      currentIndex = nextIndex;
     }
 
     document.querySelector('.next').addEventListener('click', () => {
@@ -94,6 +95,25 @@
     });
 
     window.addEventListener('resize', () => scrollToVideo(currentIndex));
+
+    // Touch swipe support
+    let startX = 0;
+    track.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+    });
+
+    track.addEventListener('touchend', e => {
+      const endX = e.changedTouches[0].clientX;
+      const delta = endX - startX;
+
+      if (Math.abs(delta) > 50) {
+        if (delta < 0) {
+          scrollToVideo(currentIndex + 1);
+        } else {
+          scrollToVideo(currentIndex - 1);
+        }
+      }
+    });
   </script>
 </body>
 </html>
