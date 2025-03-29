@@ -9,6 +9,7 @@
       margin: 0;
       background-color: #191919;
       font-family: sans-serif;
+      touch-action: pan-y;
     }
     .carousel-container {
       position: relative;
@@ -43,8 +44,8 @@
       background: rgba(0, 0, 0, 0.5);
       border: none;
       color: white;
-      font-size: 3rem;
-      padding: 0.3em 0.6em;
+      font-size: 2rem;
+      padding: 0.2em 0.4em;
       cursor: pointer;
       z-index: 2;
       opacity: 0.9;
@@ -56,10 +57,16 @@
       background: rgba(0, 0, 0, 0.8);
     }
     .prev {
-      left: 15px;
+      left: 10px;
     }
     .next {
-      right: 15px;
+      right: 10px;
+    }
+    @media (min-width: 768px) {
+      .nav-btn {
+        font-size: 3rem;
+        padding: 0.3em 0.6em;
+      }
     }
   </style>
 </head>
@@ -68,9 +75,9 @@
     <button class="nav-btn prev" aria-label="Previous video">&#10094;</button>
     <div class="carousel-track-wrapper">
       <div class="carousel-track" id="carouselTrack">
-        <iframe src="https://www.youtube.com/embed/ltk9FxJ0uF4" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/u295dZS7VoI" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/3HtQMHpFI10" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/l482T0yNkeo" allowfullscreen></iframe>
       </div>
     </div>
     <button class="nav-btn next" aria-label="Next video">&#10095;</button>
@@ -85,7 +92,6 @@
       const total = items.length;
       const nextIndex = (index + total) % total;
 
-      // Pause all videos
       items.forEach(iframe => {
         const src = iframe.src;
         iframe.src = src;
@@ -108,23 +114,33 @@
       scrollToVideo(currentIndex);
     });
 
-    // Touch swipe support
     let startX = 0;
-    track.addEventListener('touchstart', e => {
+    let isTouching = false;
+
+    const wrapper = document.querySelector('.carousel-track-wrapper');
+
+    wrapper.addEventListener('touchstart', e => {
       startX = e.touches[0].clientX;
+      isTouching = true;
     });
 
-    track.addEventListener('touchend', e => {
-      const endX = e.changedTouches[0].clientX;
-      const delta = endX - startX;
+    wrapper.addEventListener('touchmove', e => {
+      if (!isTouching) return;
+      const moveX = e.touches[0].clientX;
+      const delta = moveX - startX;
 
       if (Math.abs(delta) > 50) {
+        isTouching = false;
         if (delta < 0) {
           scrollToVideo(currentIndex + 1);
         } else {
           scrollToVideo(currentIndex - 1);
         }
       }
+    });
+
+    wrapper.addEventListener('touchend', () => {
+      isTouching = false;
     });
   </script>
 </body>
