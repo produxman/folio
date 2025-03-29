@@ -1,119 +1,154 @@
-<div class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="omdKoO" data-pen-title="Video carousel" data-user="hanieldaniel"  data-prefill='{"title":"Video carousel","description":"Big featured slide, peek edges from the prev/next slide, all touch everything","tags":["css","jquery","slider","carousel","owl carousel"],"scripts":["https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js","https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.8/plyr.js","https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"],"stylesheets":["https://fonts.googleapis.com/css?family=Merriweather","https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.8/plyr.css","https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"]}'>
-  <pre data-lang="html">&lt;div class="owl-carousel video-section">
-    &lt;div class="item">
-      &lt;div>
-    &lt;video class="js-player" crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
-			&lt;source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
-        &lt;/video>
-&lt;/div>
-  &lt;/div>
-      &lt;div class="item">
-      &lt;div>
-      &lt;video class="js-player" crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
-			&lt;source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
-        &lt;/video>
-      &lt;/div>
-  &lt;/div>
-      &lt;div class="item">
-      &lt;div>
-      &lt;video class="js-player" crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
-			&lt;source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
-        &lt;/video>
-      &lt;/div>
-  &lt;/div>
-&lt;/div></pre>
-  <pre data-lang="css">.video-section .item{
-  opacity:0.4;
-  transition:.4s ease all;
-  margin:0 20px;
-  transform:scale(.8);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Carousel</title>
 
-@media(max-width:1000px){
-  .video-section .item{margin:0; transform:scale(.9)}
-}
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
-.video-section .active .item{
-  opacity:1;
-  transform:scale(1);
-} 
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
 
-body{
-  margin:80px 0 0 0;
-  background-color: #191919
-}
+  <style>
+    body {
+      margin: 80px 0 0 0;
+      background-color: #191919;
+    }
 
-.video-section .owl-item {
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translateZ(0) scale(1.0, 1.0);
-}
+    .video-section .item {
+      opacity: 0.4;
+      transition: .4s ease all;
+      margin: 0 20px;
+      transform: scale(.8);
+    }
 
-.video-section video{
-  max-width:100%;
-  height:auto;
-}</pre>
-  <pre data-lang="js">$('.owl-carousel').owlCarousel({
-    stagePadding: 200,
-    loop:true,
-    margin:10,
-    items:1,
-    nav:true,
-  responsive:{
-        0:{
-            items:1,
+    @media(max-width: 1000px) {
+      .video-section .item {
+        margin: 0;
+        transform: scale(.9);
+      }
+    }
+
+    .video-section .active .item {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .video-section .owl-item {
+      -webkit-backface-visibility: hidden;
+      -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    }
+
+    .video-section video {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="owl-carousel video-section">
+    <div class="item">
+      <div>
+        <video class="js-player" crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
+          <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
+        </video>
+      </div>
+    </div>
+    <div class="item">
+      <div>
+        <video class="js-player" crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
+          <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
+        </video>
+      </div>
+    </div>
+    <div class="item">
+      <div>
+        <video class="js-player" crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
+          <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Owl Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <!-- Plyr JS -->
+  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('.owl-carousel').owlCarousel({
+        stagePadding: 200,
+        loop: true,
+        margin: 10,
+        items: 1,
+        nav: true,
+        responsive: {
+          0: {
+            items: 1,
             stagePadding: 60
-        },
-        600:{
-            items:1,
+          },
+          600: {
+            items: 1,
             stagePadding: 100
-        },
-        1000:{
-            items:1,
+          },
+          1000: {
+            items: 1,
             stagePadding: 200
-        },
-        1200:{
-            items:1,
+          },
+          1200: {
+            items: 1,
             stagePadding: 250
-        },
-        1400:{
-            items:1,
+          },
+          1400: {
+            items: 1,
             stagePadding: 300
-        },
-        1600:{
-            items:1,
+          },
+          1600: {
+            items: 1,
             stagePadding: 350
-        },
-        1800:{
-            items:1,
+          },
+          1800: {
+            items: 1,
             stagePadding: 400
+          }
         }
-    }
-})
+      });
 
-var playerSettings = {
-      controls : ['play-large'],
-      fullscreen : { enabled: false},
-      resetOnEnd : true,
-      hideControls  :true,
-  clickToPlay:true,
-      keyboard : false,
-    }
+      const playerSettings = {
+        controls: ['play-large'],
+        fullscreen: { enabled: false },
+        resetOnEnd: true,
+        hideControls: true,
+        clickToPlay: true,
+        keyboard: false
+      };
 
-const players = Plyr.setup('.js-player', playerSettings);
+      const players = Plyr.setup('.js-player', playerSettings);
 
- players.forEach(function(instance,index) {
-            instance.on('play',function(){
-                players.forEach(function(instance1,index1){
-                  if(instance != instance1){
-                        instance1.pause();
-                    }
-                });
-            });
+      players.forEach(function (instance, index) {
+        instance.on('play', function () {
+          players.forEach(function (instance1, index1) {
+            if (instance !== instance1) {
+              instance1.pause();
+            }
+          });
         });
+      });
 
-$('.video-section').on('translated.owl.carousel', function (event) {
-  players.forEach(function(instance,index1){
-                  instance.pause();
-                });
-});</pre></div>
-<script async src="https://public.codepenassets.com/embed/index.js"></script>
+      $('.video-section').on('translated.owl.carousel', function (event) {
+        players.forEach(function (instance, index1) {
+          instance.pause();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
