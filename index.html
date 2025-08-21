@@ -5,9 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sherif Shalabi | Portfolio</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* Minimal Font Awesome icon fix for socials */
+    .socials .fa-solid, .socials .fa-brands {
+      font-size: 1.25em;
+      color: inherit;
+      vertical-align: middle;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .socials .social-icon {
+      transition: background 0.2s;
+    }
+    .socials .social-icon:hover {
+      background: #4fd1c5;
+      color: #222b3a;
+    }
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Theme toggle -->
@@ -16,18 +35,22 @@
   <!-- ====== SECTION 1 — HERO / BIO / SOCIALS ====== -->
   <header class="hero">
     <div class="hero-left">
-      <img src="assets/img/logo.png" alt="Sherif logo" class="logo" />
-      <h1 style="margin-bottom:10px;">Hi, I’m <span class="accent">Sherif</span>.</h1>
-      <p class="bio" style="margin-bottom:24px;">
-        For <strong>15+ years</strong>, I’ve shaped and scaled products that fuel growth for enterprises and SMEs — powered by insight, discipline, and a suspicious amount of coffee.
-      </p>
-      <!-- Socials with icons -->
-      <nav class="socials" style="margin-bottom:32px;">
-        <a href="mailto:sherif@produxman.me" class="chip social-icon" aria-label="Email"><img src="assets/img/email.svg" alt="Email"/></a>
-        <a href="https://linkedin.com/in/produxman" target="_blank" rel="noopener" class="chip social-icon" aria-label="LinkedIn"><img src="assets/img/linkedin.svg" alt="LinkedIn"/></a>
-        <a href="https://produxman.me" target="_blank" rel="noopener" class="chip social-icon" aria-label="Website"><img src="assets/img/site.svg" alt="Website"/></a>
-        <a href="https://cal.com/produxman" target="_blank" rel="noopener" class="chip social-icon" aria-label="Book a Call"><img src="assets/img/calendar.svg" alt="Calendar"/></a>
-      </nav>
+    <div class="logo-and-title">
+      <img src="assets/img/produxman-logo-dark.png" alt="Produxman logo" class="logo logo-dark" />
+      <img src="assets/img/produxman-logo-light.png" alt="Produxman logo" class="logo logo-light" />
+      <h1 style="margin-bottom:10px;">Hi, I’m Sherif.</h1>
+    </div>
+    <p class="bio" style="margin-bottom:24px;">
+      For <strong>15+ years</strong>, I’ve been building and scaling platforms that cut across industries and business models. My focus is on driving growth, simplifying complexity, and bridging strategy with execution — powered by insight, discipline, and, admittedly, way too much coffee.
+    </p>
+    <!-- Socials with icons -->
+    <nav class="socials" style="margin-bottom:32px;">
+      <a href="mailto:sherif@produxman.me" class="chip social-icon" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://linkedin.com/in/produxman" target="_blank" rel="noopener" class="chip social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://produxman.me" target="_blank" rel="noopener" class="chip social-icon" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
+      <a href="https://cal.com/produxman" target="_blank" rel="noopener" class="chip social-icon" aria-label="Book a Call"><i class="fa-solid fa-calendar"></i></a>
+    </nav>
+  </div>
     </div>
     <figure class="hero-right">
       <picture class="hero-photo">
