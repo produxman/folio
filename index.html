@@ -7,75 +7,46 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">
-      <div class="dot"></div>
+  <!-- Hero -->
+  <header class="hero">
+    <img src="assets/img/logo.png" alt="Sherif logo" class="logo">
+    <div class="hero-text">
       <h1>Sherif Shalabi</h1>
+      <p>Product Leader — SaaS & FinTech<br/>Billing · Payments · Monetization Strategy</p>
     </div>
-    <span class="chip">Product Leader · SaaS & FinTech</span>
+    <img src="assets/img/hero.jpg" alt="Hero" class="hero-image">
   </header>
 
-  <!-- Intro / Hero -->
-  <section class="hero fade-in">
-    <div class="intro">
-      <h2>Hello 👋</h2>
-      <p>I’m Sherif — Senior Technical PM focused on billing, payments, and monetization strategy. 
-      I build scalable subscription systems, design growth levers, and turn pricing headaches into growth stories.</p>
-      <div class="cta">
-        <a class="btn" href="mailto:sherif@produxman.me">Email</a>
-        <a class="btn" href="https://linkedin.com/in/produxman" target="_blank">LinkedIn</a>
-        <a class="btn" href="Sherif-CV.pdf" target="_blank">Download CV</a>
-      </div>
-    </div>
-    <div class="avatar-card">
-      <div class="avatar">
-        <img src="assets/img/avatar.jpg" alt="Sherif avatar">
-      </div>
-      <div class="pi">
-        <div class="title">Predictive Index: Adapter</div>
-        <div class="radar">
-          <img src="assets/img/radar.png" alt="Radar chart for Adapter profile">
-        </div>
-        <small>Balanced · Flexible · Bridge-builder</small>
-      </div>
-    </div>
-    <a href="#portfolio" class="jump">↓ Projects</a>
+  <!-- Intro -->
+  <section class="intro">
+    <p>Hi, I’m Sherif 👋 — Senior Technical PM. I specialize in building scalable subscription systems, designing growth levers, and turning pricing headaches into revenue wins. Below is my journey, with selected projects at each company.</p>
   </section>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="wrap">
-    <div class="section-title">
-      <h2>Selected Work</h2>
-      <nav class="filters">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="Dell">Dell</button>
-        <button class="filter" data-filter="Pelcro">Pelcro</button>
-        <button class="filter" data-filter="Zyda">Zyda</button>
-        <button class="filter" data-filter="CIB">CIB</button>
-        <button class="filter" data-filter="VeraSafe">VeraSafe</button>
-      </nav>
-    </div>
+  <!-- Timeline + Projects -->
+  <main class="timeline-projects">
+    <!-- Timeline -->
+    <aside class="timeline">
+      <ul>
+        <li class="active" data-company="Meister">Meister (2024–Present)</li>
+        <li data-company="Pelcro">Pelcro (2021–2024)</li>
+        <li data-company="Dell">Dell (2022–2024)</li>
+        <li data-company="Zyda">Zyda (2021–2022)</li>
+        <li data-company="CIB">CIB (2016–2018)</li>
+        <li data-company="VeraSafe">VeraSafe (2019–2021)</li>
+      </ul>
+    </aside>
 
-    <div class="grid">
-      <!-- Example card -->
-      <a href="projects/dell-powerprotect.html" class="card" data-company="Dell">
-        <div class="thumb"><img src="assets/img/work1.webp" alt="Dell PowerProtect"></div>
-        <div class="card-body">
-          <h3 class="card-title">PowerProtect Sizer</h3>
-          <span class="tag">Dell</span>
-          <p class="meta">Infra sizing tool → +10% upsell opportunities</p>
-        </div>
-      </a>
-      <!-- Repeat for Pelcro, Zyda, CIB, VeraSafe -->
-    </div>
-  </section>
+    <!-- Project cards -->
+    <section class="projects">
+      <div id="project-list">
+        <!-- JS will inject company projects here -->
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div>© <span id="y"></span> Sherif Shalabi</div>
-    <div class="links">
-      <a class="btn" href="mailto:sherif@produxman.me">✉ Email</a>
-      <a class="btn" href="https://linkedin.com/in/produxman" target="_blank">🔗 LinkedIn</a>
-    </div>
+    <p>© <span id="y"></span> Sherif Shalabi</p>
+    <button id="toggle-theme">Toggle Theme</button>
   </footer>
 
   <script src="assets/js/script.js"></script>
