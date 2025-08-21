@@ -2,63 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sherif Shalabi | Portfolio</title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>Sherif Shalabi</h1>
-    <p>Product Leader — SaaS & FinTech</p>
+  <header class="site-header">
+    <div class="brand">
+      <div class="dot"></div>
+      <h1>Sherif Shalabi</h1>
+    </div>
+    <span class="chip">Product Leader · SaaS & FinTech</span>
   </header>
 
-  <!-- Filter chips -->
-  <nav class="filters">
-    <button class="filter active" data-filter="all">All</button>
-    <button class="filter" data-filter="Dell">Dell</button>
-    <button class="filter" data-filter="Pelcro">Pelcro</button>
-    <button class="filter" data-filter="Zyda">Zyda</button>
-    <button class="filter" data-filter="CIB">CIB</button>
-    <button class="filter" data-filter="VeraSafe">VeraSafe</button>
-  </nav>
-
-  <!-- Project grid -->
-  <main class="grid">
-    <a href="projects/dell-powerprotect.html" class="card" data-company="Dell">
-      <img src="assets/work/powerprotect-sizer.webp" alt="Dell PowerProtect" />
-      <div class="card-body">
-        <h3>PowerProtect Sizer</h3>
-        <span class="tag">Dell</span>
-        <p>Enterprise infra tool → +10% upsell opportunities</p>
+  <!-- Intro / Hero -->
+  <section class="hero fade-in">
+    <div class="intro">
+      <h2>Hello 👋</h2>
+      <p>I’m Sherif — Senior Technical PM focused on billing, payments, and monetization strategy. 
+      I build scalable subscription systems, design growth levers, and turn pricing headaches into growth stories.</p>
+      <div class="cta">
+        <a class="btn" href="mailto:sherif@produxman.me">Email</a>
+        <a class="btn" href="https://linkedin.com/in/produxman" target="_blank">LinkedIn</a>
+        <a class="btn" href="Sherif-CV.pdf" target="_blank">Download CV</a>
       </div>
-    </a>
-
-    <a href="projects/pelcro-campaign.html" class="card" data-company="Pelcro">
-      <img src="assets/work/campaign-builder.webp" alt="Pelcro Campaign Builder" />
-      <div class="card-body">
-        <h3>Campaign Builder</h3>
-        <span class="tag">Pelcro</span>
-        <p>Segmentation & automation → +20% conversions</p>
+    </div>
+    <div class="avatar-card">
+      <div class="avatar">
+        <img src="assets/img/avatar.jpg" alt="Sherif avatar">
       </div>
-    </a>
-    <!-- repeat for Zyda, CIB, VeraSafe -->
-  </main>
+      <div class="pi">
+        <div class="title">Predictive Index: Adapter</div>
+        <div class="radar">
+          <img src="assets/img/radar.png" alt="Radar chart for Adapter profile">
+        </div>
+        <small>Balanced · Flexible · Bridge-builder</small>
+      </div>
+    </div>
+    <a href="#portfolio" class="jump">↓ Projects</a>
+  </section>
 
-  <script>
-    // Filtering logic
-    const buttons = document.querySelectorAll('.filter');
-    const cards = document.querySelectorAll('.card');
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="wrap">
+    <div class="section-title">
+      <h2>Selected Work</h2>
+      <nav class="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="Dell">Dell</button>
+        <button class="filter" data-filter="Pelcro">Pelcro</button>
+        <button class="filter" data-filter="Zyda">Zyda</button>
+        <button class="filter" data-filter="CIB">CIB</button>
+        <button class="filter" data-filter="VeraSafe">VeraSafe</button>
+      </nav>
+    </div>
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const company = btn.dataset.filter;
-        cards.forEach(card => {
-          card.style.display = (company === 'all' || card.dataset.company === company) ? 'block' : 'none';
-        });
-      });
-    });
-  </script>
+    <div class="grid">
+      <!-- Example card -->
+      <a href="projects/dell-powerprotect.html" class="card" data-company="Dell">
+        <div class="thumb"><img src="assets/img/work1.webp" alt="Dell PowerProtect"></div>
+        <div class="card-body">
+          <h3 class="card-title">PowerProtect Sizer</h3>
+          <span class="tag">Dell</span>
+          <p class="meta">Infra sizing tool → +10% upsell opportunities</p>
+        </div>
+      </a>
+      <!-- Repeat for Pelcro, Zyda, CIB, VeraSafe -->
+    </div>
+  </section>
+
+  <footer>
+    <div>© <span id="y"></span> Sherif Shalabi</div>
+    <div class="links">
+      <a class="btn" href="mailto:sherif@produxman.me">✉ Email</a>
+      <a class="btn" href="https://linkedin.com/in/produxman" target="_blank">🔗 LinkedIn</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
