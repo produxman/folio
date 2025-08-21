@@ -1,63 +1,79 @@
-// Footer year
-document.getElementById("y").textContent = new Date().getFullYear();
-
-// Theme toggle
-const btn = document.getElementById("toggle-theme");
-btn.addEventListener("click", () => {
-  document.body.dataset.theme = document.body.dataset.theme === "light" ? "dark" : "light";
+// ===== Data =====
+if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+if (themeToggle) {
+themeToggle.addEventListener('click', () => {
+const current = document.documentElement.getAttribute('data-theme');
+const next = current === 'light' ? '' : 'light';
+if (next) document.documentElement.setAttribute('data-theme', next); else document.documentElement.removeAttribute('data-theme');
+localStorage.setItem('theme', next);
 });
-
-// Data: Projects per company
-const projects = {
-  "Meister": [
-    { img: "assets/img/work1.webp", title: "Billing Re-architecture", desc: "Service-oriented billing; +12% ARR uplift" },
-    { img: "assets/img/work2.webp", title: "AI Monetization", desc: "Pricing models for 0→1 AI rollout" }
-  ],
-  "Pelcro": [
-    { img: "assets/img/work3.webp", title: "Campaign Builder", desc: "+20% conversions via segmentation" },
-    { img: "assets/img/work4.webp", title: "WorldPay Integration", desc: "Expanded payments coverage" }
-  ],
-  "Dell": [
-    { img: "assets/img/work5.webp", title: "PowerProtect Sizer", desc: "Infra sizing tool; +10% upsell" }
-  ],
-  "Zyda": [
-    { img: "assets/img/work6.webp", title: "Deliverect Integration", desc: "+25% CSAT via POS sync" }
-  ],
-  "CIB": [
-    { img: "assets/img/work7.webp", title: "Enterprise Backup", desc: "-50% RTO, -30% data loss risk" }
-  ],
-  "VeraSafe": [
-    { img: "assets/img/work8.webp", title: "Preava Prevent", desc: "MVP email security plugin" }
-  ]
-};
-
-// Render function
-function renderProjects(company) {
-  const container = document.getElementById("project-list");
-  container.innerHTML = "";
-  projects[company].forEach(p => {
-    const card = document.createElement("a");
-    card.className = "card";
-    card.href = "#"; // later we link to details
-    card.innerHTML = `
-      <img src="${p.img}" alt="${p.title}">
-      <div class="card-body">
-        <h3>${p.title}</h3>
-        <p>${p.desc}</p>
-      </div>
-    `;
-    container.appendChild(card);
-  });
 }
 
-// Initial render (Meister)
-renderProjects("Meister");
 
-// Timeline click
-document.querySelectorAll(".timeline li").forEach(li => {
-  li.addEventListener("click", () => {
-    document.querySelectorAll(".timeline li").forEach(el => el.classList.remove("active"));
-    li.classList.add("active");
-    renderProjects(li.dataset.company);
-  });
+// ===== Render timeline =====
+function renderTimeline(activeKey = DATA[0].key) {
+timelineList.innerHTML = '';
+DATA.forEach((c) => {
+const li = document.createElement('li');
+li.dataset.key = c.key;
+li.className = c.key === activeKey ? 'active' : '';
+
+
+li.innerHTML = `
+<div class="company">
+<strong>${c.name}</strong>
+<span class="dates">${c.dates}</span>
+</div>
+<div class="details">
+<div class="title">${c.title}</div>
+<div class="summary">${c.summary}</div>
+</div>
+`;
+
+
+li.addEventListener('click', () => setActiveCompany(c.key));
+timelineList.appendChild(li);
 });
+}
+
+
+// ===== Render projects =====
+function renderProjects(companyKey) {
+const company = DATA.find((c) => c.key === companyKey);
+projectsTitle.textContent = `${company.name} — Projects`;
+projectGrid.innerHTML = '';
+
+
+if (!company.projects || company.projects.length === 0) {
+projectGrid.innerHTML = `<p class="muted">No public projects to show for this company yet.</p>`;
+return;
+}
+
+
+company.projects.forEach((p) => {
+const a = document.createElement('a');
+a.className = 'card';
+a.href = p.href || '#';
+a.innerHTML = `
+<div class="cover"><img src="${p.cover}" alt="${p.title}"></div>
+<div class="body">
+<h4>${p.title}</h4>
+<p>${p.desc}</p>
+</div>
+`;
+projectGrid.appendChild(a);
+});
+}
+
+
+function setActiveCompany(key) {
+// timeline active
+document.querySelectorAll('#timelineList li').forEach((li) => li.classList.toggle('active', li.dataset.key === key));
+// expand selected, collapse others (handled via CSS max-height)
+renderProjects(key);
+}
+
+
+// ===== Init =====
+renderTimeline(DATA[0].key);
+renderProjects(DATA[0].key);
