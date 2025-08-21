@@ -12,16 +12,7 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('theme', next);
 });
 
-// ===== Avatar radar tips =====
-const radar = document.getElementById('avatarRadar');
-const tip = document.getElementById('radarTip');
-if (radar && tip) {
-  radar.querySelectorAll('.orbit').forEach(btn => {
-    btn.addEventListener('mouseenter', () => { tip.textContent = btn.dataset.tip; tip.style.opacity = 1; });
-    btn.addEventListener('mouseleave', () => { tip.style.opacity = 0; });
-    btn.addEventListener('click', () => { tip.textContent = btn.dataset.tip; tip.style.opacity = 1; setTimeout(()=>tip.style.opacity=0, 1800); });
-  });
-}
+
 
 // ===== Projects data (cards link to GitHub markdown pages) =====
 const PROJECTS = {
@@ -98,6 +89,19 @@ if (tl) {
         d.querySelector('.wa-caret').textContent = '▸';
       }
     });
+    // Make dot-btn click open the details (like clicking the card)
+    const dotBtn = d.querySelector('.dot-btn');
+    if (dotBtn) {
+      dotBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!d.open) {
+          d.open = true;
+        } else {
+          // Optionally, scroll to the card if already open
+          d.scrollIntoView({behavior:'smooth', block:'center'});
+        }
+      });
+    }
   });
 }
 
