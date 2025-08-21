@@ -1,62 +1,72 @@
-// YEAR
+// ===== Year + Theme =====
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// THEME TOGGLE (remembers choice)
 const themeToggle = document.getElementById('themeToggle');
-const saved = localStorage.getItem('theme');
-if (saved) document.documentElement.setAttribute('data-theme', saved);
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
 themeToggle.addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'light' ? '' : 'light';
+  const cur = document.documentElement.getAttribute('data-theme');
+  const next = cur === 'light' ? '' : 'light';
   if (next) document.documentElement.setAttribute('data-theme', next);
   else document.documentElement.removeAttribute('data-theme');
   localStorage.setItem('theme', next);
 });
 
-// PROJECT DATA (per company)
+// ===== Avatar radar tips =====
+const radar = document.getElementById('avatarRadar');
+const tip = document.getElementById('radarTip');
+if (radar && tip) {
+  radar.querySelectorAll('.orbit').forEach(btn => {
+    btn.addEventListener('mouseenter', () => { tip.textContent = btn.dataset.tip; tip.style.opacity = 1; });
+    btn.addEventListener('mouseleave', () => { tip.style.opacity = 0; });
+    btn.addEventListener('click', () => { tip.textContent = btn.dataset.tip; tip.style.opacity = 1; setTimeout(()=>tip.style.opacity=0, 1800); });
+  });
+}
+
+// ===== Projects data (cards link to GitHub markdown pages) =====
 const PROJECTS = {
   Meister: [
-    { title: 'Billing Re-architecture', desc: 'Service-oriented billing; projected +12% ARR uplift', cover: 'assets/img/work/meister-billing.webp', href: '#' },
-    { title: 'AI Monetization', desc: '0→1 pricing & packaging for Meister AI', cover: 'assets/img/work/meister-ai.webp', href: '#' },
-    { title: 'Accounts UX Modernization', desc: 'Self-serve surfaces for enterprise scale', cover: 'assets/img/work/meister-accounts.webp', href: '#' },
+    { title:'Billing Re-architecture', desc:'Service-oriented billing; projected +12% ARR uplift', cover:'assets/img/work/meister-billing.webp', href:'projects/meister-billing.md' },
+    { title:'AI Monetization', desc:'0→1 pricing & packaging for Meister AI', cover:'assets/img/work/meister-ai.webp', href:'projects/meister-ai.md' },
+    { title:'Accounts UX Modernization', desc:'Self-serve surfaces for enterprise scale', cover:'assets/img/work/meister-accounts.webp', href:'projects/meister-accounts.md' },
   ],
   Pelcro: [
-    { title: 'Campaign Builder', desc: '+20% conversions via segmentation & automation', cover: 'assets/img/work/pelcro-campaign.webp', href: '#' },
-    { title: 'WorldPay Integration', desc: 'Expanded payments coverage', cover: 'assets/img/work/pelcro-worldpay.webp', href: '#' },
-    { title: 'Fraud Prevention', desc: '-40% fraudulent transactions at checkout', cover: 'assets/img/work/pelcro-fraud.webp', href: '#' },
+    { title:'Campaign Builder', desc:'+20% conversions via segmentation & automation', cover:'assets/img/work/pelcro-campaign.webp', href:'projects/pelcro-campaign.md' },
+    { title:'WorldPay Integration', desc:'Expanded payments coverage', cover:'assets/img/work/pelcro-worldpay.webp', href:'projects/pelcro-worldpay.md' },
+    { title:'Fraud Prevention', desc:'-40% fraudulent transactions at checkout', cover:'assets/img/work/pelcro-fraud.webp', href:'projects/pelcro-fraud.md' },
   ],
   Dell: [
-    { title: 'PowerProtect Sizer', desc: 'Workload-driven sizing tool; +10% upsell', cover: 'assets/img/work/dell-pps.webp', href: '#' },
+    { title:'PowerProtect Sizer', desc:'Workload-driven sizing tool; +10% upsell', cover:'assets/img/work/dell-pps.webp', href:'projects/dell-powerprotect-sizer.md' },
   ],
   Zyda: [
-    { title: 'Deliverect Integration', desc: '+25% CSAT via POS & delivery sync', cover: 'assets/img/work/zyda-deliverect.webp', href: '#' },
-    { title: 'Survv Integration', desc: '-10% CAC through regional POS onboarding', cover: 'assets/img/work/zyda-survv.webp', href: '#' },
+    { title:'Deliverect Integration', desc:'+25% CSAT via POS & delivery sync', cover:'assets/img/work/zyda-deliverect.webp', href:'projects/zyda-deliverect.md' },
+    { title:'Survv Integration', desc:'-10% CAC through regional POS onboarding', cover:'assets/img/work/zyda-survv.webp', href:'projects/zyda-survv.md' },
   ],
   VeraSafe: [
-    { title: 'Preava Prevent', desc: 'MVP for misdirection prevention', cover: 'assets/img/work/verasafe-preava.webp', href: '#' },
+    { title:'Preava Prevent', desc:'MVP for misdirection prevention', cover:'assets/img/work/verasafe-preava.webp', href:'projects/verasafe-preava.md' },
   ],
   CIB: [
-    { title: 'Enterprise Backup System', desc: '-50% RTO, -30% data loss risk', cover: 'assets/img/work/cib-backup.webp', href: '#' },
+    { title:'Enterprise Backup System', desc:'-50% RTO, -30% data loss risk', cover:'assets/img/work/cib-backup.webp', href:'projects/cib-enterprise-backup.md' },
   ],
   IBM: []
 };
 
-// RENDER projects for active company
 const grid = document.getElementById('projectGrid');
-const projectsTitle = document.getElementById('projectsTitle');
+const title = document.getElementById('projectsTitle');
 
-function renderProjects(company) {
-  projectsTitle.textContent = `${company} — Projects`;
+// Render helpers
+function renderCards(company) {
+  title.textContent = `${company} — Projects`;
   grid.innerHTML = '';
   const items = PROJECTS[company] || [];
   if (!items.length) {
-    grid.innerHTML = '<p class="muted">No public projects to show for this company yet.</p>';
+    grid.innerHTML = `<p class="muted">No public projects to show for this company yet.</p>`;
     return;
   }
-  items.forEach(p => {
+  items.forEach((p, i) => {
     const a = document.createElement('a');
     a.className = 'card';
-    a.href = p.href || '#';
+    a.href = p.href; // GitHub will render markdown pages nicely
     a.innerHTML = `
       <div class="cover"><img src="${p.cover}" alt="${p.title}"></div>
       <div class="body">
@@ -65,26 +75,40 @@ function renderProjects(company) {
       </div>
     `;
     grid.appendChild(a);
+    // staggered reveal
+    requestAnimationFrame(()=> setTimeout(()=> a.classList.add('show'), 60*i));
   });
 }
 
-// TIMELINE interactivity (expand clicked; collapse others; load cards)
-const timelineItems = document.querySelectorAll('.timeline-item');
-timelineItems.forEach(item => {
-  item.addEventListener('click', () => {
-    timelineItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-    renderProjects(item.dataset.company);
+// Timeline behavior (single-open accordion + project switching)
+const tl = document.getElementById('wa-timeline');
+if (tl) {
+  tl.querySelectorAll('.wa-details').forEach(d => {
+    // Ensure caret updates and single-open behavior
+    d.addEventListener('toggle', () => {
+      if (d.open) {
+        // close others
+        tl.querySelectorAll('.wa-details').forEach(o => { if (o!==d) o.open = false; });
+        // update carets
+        tl.querySelectorAll('.wa-details summary .wa-caret').forEach(c => c.textContent = '▸');
+        d.querySelector('.wa-caret').textContent = '▾';
+        // load projects
+        renderCards(d.dataset.company);
+      } else {
+        d.querySelector('.wa-caret').textContent = '▸';
+      }
+    });
   });
-});
+}
 
-// Initial render = first (active) company
-const firstActive = document.querySelector('.timeline-item.active')?.dataset.company || 'Meister';
-renderProjects(firstActive);
+// Initial load: first open details
+const first = tl?.querySelector('.wa-details[open]')?.dataset.company || 'Meister';
+renderCards(first);
 
-// SCROLL-IN animation for timeline items (your snippet)
-const io = new IntersectionObserver(
-  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }),
-  { threshold: 0.3 }
+// ==== IntersectionObserver for “scroll-in” of each timeline node (your snippet spirit) ====
+const nodes = document.querySelectorAll('.wa-details');
+const observer = new IntersectionObserver(
+  (entries)=> entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); }),
+  {threshold:.3}
 );
-document.querySelectorAll('.timeline-item').forEach(el => io.observe(el));
+nodes.forEach(n=>observer.observe(n));
