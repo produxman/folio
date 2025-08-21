@@ -13,36 +13,23 @@
   <!-- Theme toggle -->
   <button id="themeToggle" class="theme-toggle" aria-label="Toggle light/dark">☾</button>
 
-  <!-- ====== SECTION 1 — HERO / BIO / AVATAR RADAR ====== -->
+  <!-- ====== SECTION 1 — HERO / BIO / SOCIALS ====== -->
   <header class="hero">
     <div class="hero-left">
       <img src="assets/img/logo.png" alt="Sherif logo" class="logo" />
-      <h1>Hi, I’m <span class="accent">Sherif</span>.</h1>
-      <p class="bio">
-        Senior Technical PM focused on <strong>billing, payments, and monetization</strong>.
-        I build subscription systems and growth levers that turn pricing headaches into clean revenue.
+      <h1 style="margin-bottom:10px;">Hi, I’m <span class="accent">Sherif</span>.</h1>
+      <p class="bio" style="margin-bottom:24px;">
+        For <strong>15+ years</strong>, I’ve shaped and scaled products that fuel growth for enterprises and SMEs — powered by insight, discipline, and a suspicious amount of coffee.
       </p>
-
-      <!-- Socials -->
-      <nav class="socials">
-        <a href="mailto:sherif@produxman.me" class="chip">✉ Email</a>
-        <a href="https://linkedin.com/in/produxman" target="_blank" rel="noopener" class="chip">🔗 LinkedIn</a>
-        <a href="https://produxman.me" target="_blank" rel="noopener" class="chip">🧭 Site</a>
+      <!-- Socials with icons -->
+      <nav class="socials" style="margin-bottom:32px;">
+        <a href="mailto:sherif@produxman.me" class="chip social-icon" aria-label="Email"><img src="assets/img/email.svg" alt="Email"/></a>
+        <a href="https://linkedin.com/in/produxman" target="_blank" rel="noopener" class="chip social-icon" aria-label="LinkedIn"><img src="assets/img/linkedin.svg" alt="LinkedIn"/></a>
+        <a href="https://produxman.me" target="_blank" rel="noopener" class="chip social-icon" aria-label="Website"><img src="assets/img/site.svg" alt="Website"/></a>
+        <a href="https://cal.com/produxman" target="_blank" rel="noopener" class="chip social-icon" aria-label="Book a Call"><img src="assets/img/calendar.svg" alt="Calendar"/></a>
       </nav>
     </div>
-
     <figure class="hero-right">
-      <!-- Avatar with interactive rings (skills/tools/etc) -->
-      <div class="avatar-radar" id="avatarRadar">
-        <img src="assets/img/avatar.jpg" alt="Sherif avatar" class="avatar" />
-        <!-- Orbiting chips -->
-        <button class="orbit o1" data-tip="Skills: Pricing • Packaging • Growth">S</button>
-        <button class="orbit o2" data-tip="Tools: Chargebee • Stripe • Mixpanel • Looker">T</button>
-        <button class="orbit o3" data-tip="Languages: SQL • JS • Arabic • English">L</button>
-        <button class="orbit o4" data-tip="Personality: PI — Adapter">PI</button>
-        <div class="tooltip" id="radarTip"></div>
-      </div>
-      <!-- Hero image alongside (optional). Use one or the other. -->
       <picture class="hero-photo">
         <source srcset="assets/img/hero.webp" type="image/webp" />
         <img src="assets/img/hero.jpg" alt="Sherif working at a whiteboard" />
@@ -52,73 +39,80 @@
 
   <!-- ====== SECTION 2 — TIMELINE + PROJECT CARDS ====== -->
   <main class="stacked">
-    <!-- Left: WebAwesome-style timeline (based on your snippet; simplified, no style pickers) -->
     <section class="timeline-col">
       <div class="wa-timeline" id="wa-timeline">
         <!-- Each company is one details block. Starts with most recent open. -->
         <details class="wa-details" id="details-1-thin" open data-company="Meister">
           <summary>
-            <span class="wa-head">2024–Present — Meister</span>
+            <button class="dot-btn" aria-label="2024–Present — Meister"><span class="dot"></span></button>
+            <span class="wa-date">2024–Present</span>
+            <span class="wa-head">Meister</span>
             <span class="wa-caret">▾</span>
           </summary>
           <div class="wa-content">
             Sr. Technical PM · Billing & Identity — service-oriented billing, pricing flexibility, and AI monetization.
           </div>
         </details>
-
         <details class="wa-details" id="details-2-thin" data-company="Pelcro">
           <summary>
-            <span class="wa-head">2021–2024 — Pelcro</span>
+            <button class="dot-btn" aria-label="2021–2024 — Pelcro"><span class="dot"></span></button>
+            <span class="wa-date">2021–2024</span>
+            <span class="wa-head">Pelcro</span>
             <span class="wa-caret">▸</span>
           </summary>
           <div class="wa-content">
             Head of Product / Sr. PM — global payments expansion, churn reduction, API ecosystem growth.
           </div>
         </details>
-
         <details class="wa-details" id="details-3-thin" data-company="Dell">
           <summary>
-            <span class="wa-head">2022–2024 — Dell Technologies</span>
+            <button class="dot-btn" aria-label="2022–2024 — Dell Technologies"><span class="dot"></span></button>
+            <span class="wa-date">2022–2024</span>
+            <span class="wa-head">Dell Technologies</span>
             <span class="wa-caret">▸</span>
           </summary>
           <div class="wa-content">
             Sr. Technical PM (Live Optics) — infra sizing tools that enabled upsell motions.
           </div>
         </details>
-
         <details class="wa-details" data-company="Zyda">
           <summary>
-            <span class="wa-head">2021–2022 — Zyda</span>
+            <button class="dot-btn" aria-label="2021–2022 — Zyda"><span class="dot"></span></button>
+            <span class="wa-date">2021–2022</span>
+            <span class="wa-head">Zyda</span>
             <span class="wa-caret">▸</span>
           </summary>
           <div class="wa-content">
             Product Manager — POS & delivery integrations; CSAT up, CAC down.
           </div>
         </details>
-
         <details class="wa-details" data-company="VeraSafe">
           <summary>
-            <span class="wa-head">2019–2021 — VeraSafe</span>
+            <button class="dot-btn" aria-label="2019–2021 — VeraSafe"><span class="dot"></span></button>
+            <span class="wa-date">2019–2021</span>
+            <span class="wa-head">VeraSafe</span>
             <span class="wa-caret">▸</span>
           </summary>
           <div class="wa-content">
             Technical PM — privacy/security programs; launched Preava Prevent MVP.
           </div>
         </details>
-
         <details class="wa-details" data-company="CIB">
           <summary>
-            <span class="wa-head">2016–2018 — CIB</span>
+            <button class="dot-btn" aria-label="2016–2018 — CIB"><span class="dot"></span></button>
+            <span class="wa-date">2016–2018</span>
+            <span class="wa-head">CIB</span>
             <span class="wa-caret">▸</span>
           </summary>
           <div class="wa-content">
             Technical PM — backup & recovery modernization; major reductions in RTO and risk.
           </div>
         </details>
-
         <details class="wa-details" data-company="IBM">
           <summary>
-            <span class="wa-head">2012–2016 — IBM</span>
+            <button class="dot-btn" aria-label="2012–2016 — IBM"><span class="dot"></span></button>
+            <span class="wa-date">2012–2016</span>
+            <span class="wa-head">IBM</span>
             <span class="wa-caret">▸</span>
           </summary>
           <div class="wa-content">
@@ -128,8 +122,6 @@
       </div>
       <div class="timeline-line"></div>
     </section>
-
-    <!-- Right: Projects grid that reacts to selected company -->
     <section class="projects-col" aria-live="polite">
       <h2 id="projectsTitle">Meister — Projects</h2>
       <div id="projectGrid" class="grid"></div>
