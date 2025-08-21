@@ -1,14 +1,4 @@
 /* ===== CSS Variables (light/dark) ===== */
-@media (prefers-color-scheme: light) {
-:root { --bg:#ffffff; --panel:#f7f8fa; --text:#0b0d10; --muted:#4a5563; --accent:#063d42; --border:#e6e8ec; }
-}
-
-
-/* light mode when toggled manually */
-[data-theme="light"] { --bg:#ffffff; --panel:#f7f8fa; --text:#0b0d10; --muted:#4a5563; --accent:#063d42; --border:#e6e8ec; }
-
-
-html,body{height:100%}
 body{
 margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text); background:
 radial-gradient(900px 400px at 20% -10%, color-mix(in oklab, var(--accent) 25%, transparent), transparent),
