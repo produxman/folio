@@ -1,6 +1,4 @@
 /* ===== CSS Variables (light/dark) ===== */
-
-
 @media (prefers-color-scheme: light) {
 :root { --bg:#ffffff; --panel:#f7f8fa; --text:#0b0d10; --muted:#4a5563; --accent:#063d42; --border:#e6e8ec; }
 }
