@@ -1,1 +1,130 @@
-Hello World
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Produxman | Showcase</title>
+  <meta name="description" content="Sherif Shalabi — Selected work in SaaS & FinTech. Billing, payments, monetization." />
+  <meta property="og:title" content="Produxman | Showcase" />
+  <meta property="og:description" content="Sherif Shalabi — Selected work in SaaS & FinTech. Billing, payments, monetization." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0b0d10" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0d10;
+      --panel: #161a1f;
+      --muted: #8b95a7;
+      --text: #e8eef8;
+      --accent: #00baad; /* your teal */
+      --accent-2: #3e0097; /* purple from earlier convo */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius-xl: 18px;
+      --radius-lg: 14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:linear-gradient(180deg, #0a0c0f 0%, #0b0d10 30%, #0b0d10 100%);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1080px; margin:0 auto; padding:28px 18px 80px}
+
+    /* Header */
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px}
+    .title{font-size: clamp(24px, 3vw, 38px); font-weight:800; letter-spacing:.2px}
+    .chip{border:1px solid #21252b; color:var(--muted); padding:8px 12px; border-radius:999px; font-size:13px}
+
+    /* Logo strip */
+    .logos{display:grid; grid-template-columns:repeat(8, minmax(70px, 1fr)); gap:10px; padding:14px; background:rgba(255,255,255,.02); border:1px solid #1c2027; border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow)}
+    .logo{height:36px; display:grid; place-items:center; opacity:.78; filter:grayscale(1); transition:opacity .2s ease}
+    .logo:hover{opacity:1}
+    .logo img{max-height:32px; width:auto}
+
+    /* Hero */
+    .hero{margin-top:18px; position:relative; border-radius:var(--radius-xl); overflow:hidden; border:1px solid #1c2027; box-shadow:var(--shadow)}
+    .hero img{display:block; width:100%; height:auto}
+    .hero .badge{position:absolute; left:16px; bottom:16px; background:rgba(0,0,0,.55); backdrop-filter:saturate(140%) blur(6px); padding:8px 12px; border-radius:999px; font-weight:600; font-size:13px; border:1px solid rgba(255,255,255,.08)}
+
+    /* Toolbar */
+    .toolbar{display:flex; align-items:center; justify-content:space-between; margin:14px 4px 12px}
+    .toolbar h2{margin:0; font-size:18px; letter-spacing:.4px}
+    .toolbar .icons{display:flex; gap:10px}
+    .icon-btn{display:grid; place-items:center; width:34px; height:34px; border-radius:10px; border:1px solid #1c2027; background:#12161b; color:#a8b1c1; cursor:default}
+
+    /* Card grid */
+    .grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px}
+    @media (max-width:900px){ .grid{grid-template-columns:repeat(2, 1fr);} }
+    @media (max-width:580px){ .grid{grid-template-columns:1fr;} }
+
+    .card{background:linear-gradient(180deg, #141920, #12161b); border:1px solid #1c2027; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; min-height:220px}
+    .card-img{height:140px; background:#0f1318; display:flex; align-items:center; justify-content:center}
+    .card-img img{max-height:100%; max-width:100%; object-fit:cover}
+    .card-body{padding:12px 14px 14px; display:flex; flex-direction:column; gap:10px}
+    .card-title{font-weight:700; font-size:16px; margin:0}
+    .meta{display:flex; align-items:center; gap:8px; color:var(--muted); font-size:13px}
+    .tag{font-size:12px; padding:6px 8px; border-radius:8px; border:1px solid #24303a; background:#0d1419; color:#b9dbe1}
+    .meta .org{opacity:.9}
+    .card:hover{transform:translateY(-2px)}
+
+    /* Footer */
+    footer{margin-top:38px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:var(--muted)}
+    .links{display:flex; gap:12px}
+    .button{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px; border:1px solid #1c2027; background:#12161b}
+    .button:hover{border-color:#2a3340}
+
+    /* Utility classes */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1 class="title">Produxman | Showcase</h1>
+      <span class="chip">Billing • Payments • Monetization</span>
+    </header>
+
+    <!-- Logo strip (swap src paths with your logos in /assets/logos) -->
+    <section class="logos" aria-label="Companies">
+      <div class="logo"><img src="assets/logos/ibm.svg" alt="IBM"></div>
+      <div class="logo"><img src="assets/logos/dell.svg" alt="Dell"></div>
+      <div class="logo"><img src="assets/logos/cib.svg" alt="CIB"></div>
+      <div class="logo"><img src="assets/logos/preava.svg" alt="Preava"></div>
+      <div class="logo"><img src="assets/logos/meister.svg" alt="Meister"></div>
+      <div class="logo"><img src="assets/logos/pelcro.svg" alt="Pelcro"></div>
+      <div class="logo"><img src="assets/logos/zyda.svg" alt="Zyda"></div>
+      <div class="logo"><img src="assets/logos/verasafe.svg" alt="VeraSafe"></div>
+    </section>
+
+    <!-- Hero image -->
+    <section class="hero" aria-label="Hero image">
+      <img src="assets/hero.jpg" alt="Sherif working on a whiteboard" />
+      <span class="badge">Shipped by Me</span>
+    </section>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <h2>Selected Work</h2>
+      <div class="icons" aria-hidden="true">
+        <div class="icon-btn">☰</div>
+        <div class="icon-btn">⇅</div>
+        <div class="icon-btn">🔍</div>
+      </div>
+    </div>
+
+    <!-- Grid of project cards; swap hrefs + images to your real case studies -->
+    <section class="grid" aria-label="Project cards">
+      <!-- Dell -->
+      <a class="card" href="#" target="_blank" rel="noopener">
+        <div class="card-img">
+          <img src="assets/work/powerprotect-sizer.jpg" alt="PowerProtect Sizer" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">PowerProtect Sizer</h3>
+          <div class="meta">
+            <span class="tag">Dell</span>
+            <span class="org">Enterprise infra sizing tool; +
