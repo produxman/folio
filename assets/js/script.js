@@ -1,6 +1,4 @@
 // ===== Data =====
-if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
-if (themeToggle) {
 themeToggle.addEventListener('click', () => {
 const current = document.documentElement.getAttribute('data-theme');
 const next = current === 'light' ? '' : 'light';
