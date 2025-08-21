@@ -1,104 +1,85 @@
-:root {
-  --bg: #0b0d10;
-  --text: #ffffff;
-  --muted: #9aa6b2;
-  --accent: #00baad;
-  --card-bg: #161a1f;
+/* ===== CSS Variables (light/dark) ===== */
+
+
+@media (prefers-color-scheme: light) {
+:root { --bg:#ffffff; --panel:#f7f8fa; --text:#0b0d10; --muted:#4a5563; --accent:#063d42; --border:#e6e8ec; }
 }
 
-[data-theme="light"] {
-  --bg: #ffffff;
-  --text: #0b0d10;
-  --muted: #444;
-  --accent: #063d42;
-  --card-bg: #f7f7f7;
-}
 
-body {
-  margin: 0;
-  font-family: Inter, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  transition: background .3s, color .3s;
-}
+/* light mode when toggled manually */
+[data-theme="light"] { --bg:#ffffff; --panel:#f7f8fa; --text:#0b0d10; --muted:#4a5563; --accent:#063d42; --border:#e6e8ec; }
 
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  gap: 1rem;
-}
-.logo { width: 60px; height: auto; }
-.hero-image { max-height: 200px; border-radius: 12px; }
-.hero-text h1 { margin:0; }
-.hero-text p { margin:0; color: var(--muted); }
 
-.intro {
-  max-width: 800px;
-  margin: 1rem auto;
-  padding: 1rem 2rem;
-  line-height: 1.6;
-  color: var(--muted);
+html,body{height:100%}
+body{
+margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text); background:
+radial-gradient(900px 400px at 20% -10%, color-mix(in oklab, var(--accent) 25%, transparent), transparent),
+var(--bg);
+transition: background .3s ease, color .3s ease;
 }
+img{max-width:100%; display:block}
 
-.timeline-projects {
-  display: flex;
-  gap: 2rem;
-  padding: 1rem 2rem;
-}
-@media (max-width: 768px) {
-  .timeline-projects { flex-direction: column; }
-}
 
-.timeline {
-  flex: 1;
+/* ===== HERO ===== */
+.hero{
+display:grid; grid-template-columns: 1fr 1fr; align-items:center; gap:24px; max-width:1100px; margin:32px auto; padding:20px;
 }
-.timeline ul {
-  list-style: none;
-  padding: 0;
-  border-left: 2px solid var(--accent);
-}
-.timeline li {
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: background .2s;
-}
-.timeline li.active {
-  background: var(--accent);
-  color: var(--bg);
-  font-weight: bold;
-}
+@media (max-width:900px){ .hero{grid-template-columns:1fr; padding:16px; margin:12px auto} }
 
-.projects {
-  flex: 3;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  gap: 1rem;
-}
-.card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform .2s ease;
-}
-.card:hover { transform: translateY(-4px); }
-.card img { width: 100%; height: 150px; object-fit: cover; }
-.card-body { padding: 0.8rem; }
-.card-body h3 { margin: 0 0 0.3rem; font-size: 1.1rem; }
-.card-body p { margin: 0; color: var(--muted); font-size: 0.9rem; }
 
-footer {
-  text-align: center;
-  padding: 1rem;
-  color: var(--muted);
-}
-#toggle-theme {
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  border: none;
-  background: var(--accent);
-  color: var(--bg);
-  cursor: pointer;
-}
+.brand{display:flex; align-items:center; gap:12px}
+.logo{width:56px; height:auto}
+.brand-text h1{margin:0; font-size:clamp(22px,3.2vw,30px)}
+.brand-text p{margin:2px 0 0; color:var(--muted)}
+
+
+.intro{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px}
+.intro h2{margin:0 0 8px; font-size:clamp(26px,4vw,36px)}
+.intro p{margin:0; color:var(--muted); line-height:1.65}
+.cta{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
+.btn{border:1px solid var(--border); background:transparent; color:var(--text); padding:10px 14px; border-radius:12px; text-decoration:none; transition:transform .15s ease, border-color .2s ease}
+.btn:hover{transform:translateY(-2px); border-color:color-mix(in oklab, var(--accent) 60%, var(--border))}
+
+
+.hero-figure{border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); box-shadow:0 12px 32px rgba(0,0,0,.25)}
+
+
+/* Theme toggle */
+.theme-toggle{position:fixed; right:16px; bottom:16px; border:1px solid var(--border); background:var(--panel); color:var(--text); border-radius:999px; padding:10px 12px; cursor:pointer}
+
+
+/* ===== LAYOUT ===== */
+.layout{max-width:1100px; margin:8px auto 40px; padding:0 16px; display:grid; grid-template-columns: 340px 1fr; gap:22px}
+@media (max-width:900px){ .layout{grid-template-columns:1fr} }
+
+
+/* ===== TIMELINE ===== */
+.timeline{position:relative}
+.timeline ul{list-style:none; margin:0; padding:0 0 0 22px; border-left:2px solid var(--accent)}
+.timeline li{position:relative; padding:14px 10px 14px 16px; margin-left:-10px; cursor:pointer; border-radius:12px; transition:background .2s ease, color .2s ease}
+.timeline li::before{content:""; position:absolute; left:-10px; top:20px; width:10px; height:10px; background:var(--bg); border:2px solid var(--accent); border-radius:50%}
+.timeline li.active{background:color-mix(in oklab, var(--accent) 18%, transparent)}
+.timeline .company{display:flex; align-items:center; justify-content:space-between; gap:8px}
+.timeline .dates{color:var(--muted); font-size:12px}
+.timeline .summary{color:var(--muted); font-size:14px; margin-top:6px}
+
+
+/* collapse/expand */
+.timeline li .details{max-height:0; overflow:hidden; transition:max-height .25s ease}
+.timeline li.active .details{max-height:160px}
+
+
+/* ===== PROJECTS ===== */
+.projects-header{display:flex; align-items:center; justify-content:space-between}
+.grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-top:10px}
+.card{background:var(--panel); border:1px solid var(--border); border-radius:12px; overflow:hidden; text-decoration:none; color:inherit; transition:transform .2s ease, box-shadow .2s ease}
+.card:hover{transform:translateY(-3px); box-shadow:0 14px 28px rgba(0,0,0,.25)}
+.card .cover{height:150px; background:#0d1218}
+.card .cover img{width:100%; height:100%; object-fit:cover}
+.card .body{padding:12px}
+.card h4{margin:0 0 6px; font-size:16px}
+.card p{margin:0; font-size:13px; color:var(--muted)}
+
+
+/* ===== FOOTER ===== */
+.site-footer{max-width:1100px; margin:30px auto; padding:8px 16px; color:var(--muted)}
