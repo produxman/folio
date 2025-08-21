@@ -1,73 +1,102 @@
-/* ===== CSS Variables (light/dark) ===== */
+/* Theme variables */
+:root{
+  --bg:#0f172a;            /* dark base */
+  --text:#f1f5f9;
+  --muted:#94a3b8;
+  --panel:#0b1224;
+  --border:#1f2a44;
+  --accent:#00baad;        /* dark accent */
+}
+
+[data-theme="light"]{
+  --bg:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --panel:#f7fafc;
+  --border:#e5e7eb;
+  --accent:#063d42;        /* light accent */
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
 body{
-margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text); background:
-radial-gradient(900px 400px at 20% -10%, color-mix(in oklab, var(--accent) 25%, transparent), transparent),
-var(--bg);
-transition: background .3s ease, color .3s ease;
+  margin:0;
+  font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
-img{max-width:100%; display:block}
-
-
-/* ===== HERO ===== */
-.hero{
-display:grid; grid-template-columns: 1fr 1fr; align-items:center; gap:24px; max-width:1100px; margin:32px auto; padding:20px;
-}
-@media (max-width:900px){ .hero{grid-template-columns:1fr; padding:16px; margin:12px auto} }
-
-
-.brand{display:flex; align-items:center; gap:12px}
-.logo{width:56px; height:auto}
-.brand-text h1{margin:0; font-size:clamp(22px,3.2vw,30px)}
-.brand-text p{margin:2px 0 0; color:var(--muted)}
-
-
-.intro{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px}
-.intro h2{margin:0 0 8px; font-size:clamp(26px,4vw,36px)}
-.intro p{margin:0; color:var(--muted); line-height:1.65}
-.cta{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
-.btn{border:1px solid var(--border); background:transparent; color:var(--text); padding:10px 14px; border-radius:12px; text-decoration:none; transition:transform .15s ease, border-color .2s ease}
-.btn:hover{transform:translateY(-2px); border-color:color-mix(in oklab, var(--accent) 60%, var(--border))}
-
-
-.hero-figure{border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); box-shadow:0 12px 32px rgba(0,0,0,.25)}
-
 
 /* Theme toggle */
-.theme-toggle{position:fixed; right:16px; bottom:16px; border:1px solid var(--border); background:var(--panel); color:var(--text); border-radius:999px; padding:10px 12px; cursor:pointer}
+.theme-toggle{
+  position:fixed; right:14px; bottom:14px;
+  border:1px solid var(--border); background:var(--panel);
+  color:var(--text); border-radius:999px; padding:10px 12px;
+  cursor:pointer; z-index:50;
+}
 
+/* HERO */
+.hero{
+  display:grid; grid-template-columns: 1.1fr .9fr;
+  gap:24px; align-items:center; max-width:1100px; margin:32px auto; padding:0 16px;
+}
+@media (max-width:900px){ .hero{grid-template-columns:1fr} }
+.logo{width:56px; height:auto; display:block; margin-bottom:10px}
+.hero-left h1{font-size:clamp(28px,5vw,44px); margin:0}
+.accent{color:var(--accent)}
+.tagline{color:var(--muted); line-height:1.7; margin:10px 0 14px}
+.cta{display:flex; gap:10px; flex-wrap:wrap}
+.btn{background:var(--accent); color:#081217; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:600}
+.btn.outline{background:transparent; border:1px solid var(--accent); color:var(--accent)}
+.hero-right img{width:100%; border-radius:16px; border:1px solid var(--border)}
 
-/* ===== LAYOUT ===== */
-.layout{max-width:1100px; margin:8px auto 40px; padding:0 16px; display:grid; grid-template-columns: 340px 1fr; gap:22px}
-@media (max-width:900px){ .layout{grid-template-columns:1fr} }
+/* MAIN LAYOUT */
+.main{max-width:1100px; margin:10px auto 40px; padding:0 16px; display:grid; grid-template-columns: 360px 1fr; gap:24px}
+@media (max-width:900px){ .main{grid-template-columns:1fr} }
 
+/* TIMELINE (left) – adapted from your snippet */
+.timeline{position:relative; padding-left:22px}
+.timeline-line{
+  position:absolute; top:0; left:10px; width:4px; height:100%;
+  background:linear-gradient(180deg, var(--accent), color-mix(in oklab, var(--accent) 30%, transparent));
+  border-radius:2px;
+}
+.timeline-item{
+  display:flex; align-items:flex-start; margin-bottom:26px; position:relative;
+  opacity:0; transform:translateY(40px); transition:all .6s ease-out;
+}
+.timeline-item.show{opacity:1; transform:translateY(0)}
+.timeline-icon{
+  width:42px; height:42px; background:var(--panel); border:3px solid var(--accent);
+  border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:18px;
+  color:var(--accent); position:absolute; left:-12px; z-index:1;
+}
+.timeline-content{
+  background:color-mix(in oklab, var(--panel) 85%, transparent);
+  padding:14px 16px; border-radius:14px; border:1px solid var(--border);
+  margin-left:48px; width:calc(100% - 48px);
+}
+.timeline-content h3{margin:0 0 4px}
+.timeline-content .date{font-size:.9rem; color:var(--muted); display:block; margin-bottom:6px}
+.timeline-item.active .timeline-content{box-shadow:0 10px 24px rgba(0,0,0,.25)}
 
-/* ===== TIMELINE ===== */
-.timeline{position:relative}
-.timeline ul{list-style:none; margin:0; padding:0 0 0 22px; border-left:2px solid var(--accent)}
-.timeline li{position:relative; padding:14px 10px 14px 16px; margin-left:-10px; cursor:pointer; border-radius:12px; transition:background .2s ease, color .2s ease}
-.timeline li::before{content:""; position:absolute; left:-10px; top:20px; width:10px; height:10px; background:var(--bg); border:2px solid var(--accent); border-radius:50%}
-.timeline li.active{background:color-mix(in oklab, var(--accent) 18%, transparent)}
-.timeline .company{display:flex; align-items:center; justify-content:space-between; gap:8px}
-.timeline .dates{color:var(--muted); font-size:12px}
-.timeline .summary{color:var(--muted); font-size:14px; margin-top:6px}
-
-
-/* collapse/expand */
-.timeline li .details{max-height:0; overflow:hidden; transition:max-height .25s ease}
-.timeline li.active .details{max-height:160px}
-
-
-/* ===== PROJECTS ===== */
-.projects-header{display:flex; align-items:center; justify-content:space-between}
-.grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-top:10px}
-.card{background:var(--panel); border:1px solid var(--border); border-radius:12px; overflow:hidden; text-decoration:none; color:inherit; transition:transform .2s ease, box-shadow .2s ease}
-.card:hover{transform:translateY(-3px); box-shadow:0 14px 28px rgba(0,0,0,.25)}
-.card .cover{height:150px; background:#0d1218}
+/* PROJECTS (right) */
+.projects h2{margin:0 0 10px}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px}
+.card{background:var(--panel); border:1px solid var(--border); border-radius:14px; overflow:hidden; text-decoration:none; color:inherit; transition:transform .2s ease, box-shadow .2s ease}
+.card:hover{transform:translateY(-3px); box-shadow:0 12px 24px rgba(0,0,0,.25)}
+.card .cover{height:150px; background:#0b1220}
 .card .cover img{width:100%; height:100%; object-fit:cover}
-.card .body{padding:12px}
-.card h4{margin:0 0 6px; font-size:16px}
-.card p{margin:0; font-size:13px; color:var(--muted)}
+.card .body{padding:10px 12px}
+.card h4{margin:0 0 6px; font-size:1rem}
+.card p{margin:0; color:var(--muted); font-size:.9rem}
 
+/* MOBILE adjustments for timeline from your snippet */
+@media (max-width:768px){
+  .timeline{padding-left:60px}
+  .timeline-line{left:30px}
+  .timeline-icon{left:8px}
+  .timeline-content{width:calc(100% - 20px)}
+}
 
-/* ===== FOOTER ===== */
-.site-footer{max-width:1100px; margin:30px auto; padding:8px 16px; color:var(--muted)}
+/* Footer */
+.footer{max-width:1100px; margin:24px auto; padding:0 16px; color:var(--muted)}
