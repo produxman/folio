@@ -1,76 +1,122 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sherif Shalabi | Portfolio</title>
-<meta name="description" content="Sherif Shalabi — Product Leader in SaaS & FinTech. Billing, payments, monetization." />
-<link rel="preload" href="assets/css/style.css" as="style">
-<link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sherif Shalabi | Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- ===== HERO ===== -->
-<header class="hero">
-<div class="brand">
-<img class="logo" src="assets/img/logo.png" alt="Sherif logo" />
-<div class="brand-text">
-<h1>Sherif Shalabi</h1>
-<p>Product Leader — SaaS & FinTech</p>
-</div>
-</div>
+  <!-- Theme toggle -->
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle light/dark">☾</button>
 
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-left">
+      <img src="assets/img/logo.png" alt="Sherif logo" class="logo" />
+      <h1>Hi, I’m <span class="accent">Sherif</span>.</h1>
+      <p class="tagline">
+        Senior Technical PM focused on <strong>billing, payments, and monetization</strong>.
+        I design subscription systems and growth levers that turn pricing headaches into clean revenue.
+      </p>
+      <div class="cta">
+        <a class="btn" href="mailto:sherif@produxman.me">Email</a>
+        <a class="btn outline" target="_blank" rel="noopener" href="https://linkedin.com/in/produxman">LinkedIn</a>
+      </div>
+    </div>
+    <figure class="hero-right">
+      <picture>
+        <source srcset="assets/img/hero.webp" type="image/webp">
+        <img src="assets/img/hero.jpg" alt="Sherif at the whiteboard">
+      </picture>
+    </figure>
+  </header>
 
-<div class="intro">
-<h2>Hi, I’m Sherif.</h2>
-<p>
-Senior Technical PM focused on <strong>billing, payments, and monetization strategy</strong>.
-I build scalable subscription systems and design growth levers that turn pricing headaches into clean revenue.
-</p>
-<div class="cta">
-<a class="btn" href="mailto:sherif@produxman.me">Email</a>
-<a class="btn" href="https://www.linkedin.com/in/produxman/" target="_blank" rel="noopener">LinkedIn</a>
-</div>
-</div>
+  <!-- MAIN: timeline (left) + projects (right) -->
+  <main class="main">
+    <!-- TIMELINE -->
+    <section class="timeline" aria-label="Experience timeline">
+      <div class="timeline-line"></div>
 
+      <!-- Each item = a company node. Only one is expanded (active) at a time. -->
+      <div class="timeline-item active" data-company="Meister">
+        <div class="timeline-icon">🧩</div>
+        <div class="timeline-content">
+          <h3>Meister</h3>
+          <span class="date">Sep 2024 – Present</span>
+          <p>Sr. Technical PM, Billing & Identity — service-oriented billing, pricing flexibility, AI monetization.</p>
+        </div>
+      </div>
 
-<figure class="hero-figure">
-<!-- Use webp with jpg fallback -->
-<picture>
-<source srcset="assets/img/hero.webp" type="image/webp" />
-<img src="assets/img/hero.jpg" alt="Sherif at the whiteboard" />
-</picture>
-</figure>
-</header>
+      <div class="timeline-item" data-company="Pelcro">
+        <div class="timeline-icon">💳</div>
+        <div class="timeline-content">
+          <h3>Pelcro</h3>
+          <span class="date">Feb 2021 – Sep 2024</span>
+          <p>Global payments, churn reduction, API ecosystem; Head of Product / Sr. PM.</p>
+        </div>
+      </div>
 
+      <div class="timeline-item" data-company="Dell">
+        <div class="timeline-icon">💾</div>
+        <div class="timeline-content">
+          <h3>Dell Technologies</h3>
+          <span class="date">Jul 2022 – Apr 2024</span>
+          <p>Sr. Technical PM (Live Optics) — infra sizing tools to enable upsell.</p>
+        </div>
+      </div>
 
-<!-- Theme toggle -->
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark">☾</button>
+      <div class="timeline-item" data-company="Zyda">
+        <div class="timeline-icon">🍔</div>
+        <div class="timeline-content">
+          <h3>Zyda</h3>
+          <span class="date">Oct 2021 – Jun 2022</span>
+          <p>POS & delivery integrations; CSAT uplift and CAC reduction.</p>
+        </div>
+      </div>
 
+      <div class="timeline-item" data-company="VeraSafe">
+        <div class="timeline-icon">🔐</div>
+        <div class="timeline-content">
+          <h3>VeraSafe</h3>
+          <span class="date">Oct 2019 – Feb 2021</span>
+          <p>Privacy & security programs; MVP email security plugin.</p>
+        </div>
+      </div>
 
-<!-- ===== TIMELINE + PROJECTS ===== -->
-<main class="layout">
-<!-- Vertical Timeline (left) -->
-<aside class="timeline" aria-label="Career timeline">
-<!-- Items are hydrated by JS from data below. Keep minimal markup for no-JS fallback -->
-<ul id="timelineList"></ul>
-</aside>
+      <div class="timeline-item" data-company="CIB">
+        <div class="timeline-icon">🏦</div>
+        <div class="timeline-content">
+          <h3>CIB</h3>
+          <span class="date">Apr 2016 – Aug 2018</span>
+          <p>Backup & recovery modernization; cost reduction.</p>
+        </div>
+      </div>
 
+      <div class="timeline-item" data-company="IBM">
+        <div class="timeline-icon">💡</div>
+        <div class="timeline-content">
+          <h3>IBM</h3>
+          <span class="date">Jun 2012 – Apr 2016</span>
+          <p>Remote support launch; tooling & enablement.</p>
+        </div>
+      </div>
+    </section>
 
-<!-- Projects Grid (right) -->
-<section class="projects" aria-live="polite">
-<div class="projects-header">
-<h3 id="projectsTitle">Projects</h3>
-</div>
-<div id="projectGrid" class="grid"></div>
-</section>
-</main>
+    <!-- PROJECTS -->
+    <section class="projects" aria-live="polite">
+      <h2 id="projectsTitle">Meister — Projects</h2>
+      <div id="projectGrid" class="grid"><!-- JS populates --></div>
+    </section>
+  </main>
 
+  <footer class="footer">
+    <small>© <span id="year"></span> Sherif Shalabi</small>
+  </footer>
 
-<footer class="site-footer">
-<small>© <span id="year"></span> Sherif Shalabi</small>
-</footer>
-
-
-<script src="assets/js/script.js" defer></script>
+  <script src="assets/js/script.js" defer></script>
 </body>
 </html>
