@@ -1,54 +1,76 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sherif Shalabi | Portfolio</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sherif Shalabi | Portfolio</title>
+<meta name="description" content="Sherif Shalabi — Product Leader in SaaS & FinTech. Billing, payments, monetization." />
+<link rel="preload" href="assets/css/style.css" as="style">
+<link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <!-- Hero -->
-  <header class="hero">
-    <img src="assets/img/logo.png" alt="Sherif logo" class="logo">
-    <div class="hero-text">
-      <h1>Sherif Shalabi</h1>
-      <p>Product Leader — SaaS & FinTech<br/>Billing · Payments · Monetization Strategy</p>
-    </div>
-    <img src="assets/img/hero.jpg" alt="Hero" class="hero-image">
-  </header>
+<!-- ===== HERO ===== -->
+<header class="hero">
+<div class="brand">
+<img class="logo" src="assets/img/logo.png" alt="Sherif logo" />
+<div class="brand-text">
+<h1>Sherif Shalabi</h1>
+<p>Product Leader — SaaS & FinTech</p>
+</div>
+</div>
 
-  <!-- Intro -->
-  <section class="intro">
-    <p>Hi, I’m Sherif 👋 — Senior Technical PM. I specialize in building scalable subscription systems, designing growth levers, and turning pricing headaches into revenue wins. Below is my journey, with selected projects at each company.</p>
-  </section>
 
-  <!-- Timeline + Projects -->
-  <main class="timeline-projects">
-    <!-- Timeline -->
-    <aside class="timeline">
-      <ul>
-        <li class="active" data-company="Meister">Meister (2024–Present)</li>
-        <li data-company="Pelcro">Pelcro (2021–2024)</li>
-        <li data-company="Dell">Dell (2022–2024)</li>
-        <li data-company="Zyda">Zyda (2021–2022)</li>
-        <li data-company="CIB">CIB (2016–2018)</li>
-        <li data-company="VeraSafe">VeraSafe (2019–2021)</li>
-      </ul>
-    </aside>
+<div class="intro">
+<h2>Hi, I’m Sherif.</h2>
+<p>
+Senior Technical PM focused on <strong>billing, payments, and monetization strategy</strong>.
+I build scalable subscription systems and design growth levers that turn pricing headaches into clean revenue.
+</p>
+<div class="cta">
+<a class="btn" href="mailto:sherif@produxman.me">Email</a>
+<a class="btn" href="https://www.linkedin.com/in/produxman/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+</div>
 
-    <!-- Project cards -->
-    <section class="projects">
-      <div id="project-list">
-        <!-- JS will inject company projects here -->
-      </div>
-    </section>
-  </main>
 
-  <footer>
-    <p>© <span id="y"></span> Sherif Shalabi</p>
-    <button id="toggle-theme">Toggle Theme</button>
-  </footer>
+<figure class="hero-figure">
+<!-- Use webp with jpg fallback -->
+<picture>
+<source srcset="assets/img/hero.webp" type="image/webp" />
+<img src="assets/img/hero.jpg" alt="Sherif at the whiteboard" />
+</picture>
+</figure>
+</header>
 
-  <script src="assets/js/script.js"></script>
+
+<!-- Theme toggle -->
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark">☾</button>
+
+
+<!-- ===== TIMELINE + PROJECTS ===== -->
+<main class="layout">
+<!-- Vertical Timeline (left) -->
+<aside class="timeline" aria-label="Career timeline">
+<!-- Items are hydrated by JS from data below. Keep minimal markup for no-JS fallback -->
+<ul id="timelineList"></ul>
+</aside>
+
+
+<!-- Projects Grid (right) -->
+<section class="projects" aria-live="polite">
+<div class="projects-header">
+<h3 id="projectsTitle">Projects</h3>
+</div>
+<div id="projectGrid" class="grid"></div>
+</section>
+</main>
+
+
+<footer class="site-footer">
+<small>© <span id="year"></span> Sherif Shalabi</small>
+</footer>
+
+
+<script src="assets/js/script.js" defer></script>
 </body>
 </html>
