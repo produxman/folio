@@ -1,0 +1,47 @@
+/* Mobile remains unchanged */
+
+/* Desktop: Align case sections with hero header */
+@media (min-width: 900px) {
+  /* Main container matches hero */
+  .project-fullwidth-main {
+    display: block !important;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 32px);
+  }
+
+  /* Content column takes full width */
+  .project-fullwidth-col {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Remove default card styling on desktop */
+  .case-section {
+    border: none;
+    background: transparent;
+    margin: 0 0 16px 0;
+    padding: 0;
+  }
+
+  /* Align summary and content exactly with hero boundaries */
+  .case-section summary,
+  .case-section .section-content {
+    width: 100%;
+    margin: 0;
+    padding: 14px 0;
+  }
+
+  /* Keep section content slightly indented */
+  .case-section .section-content {
+    padding-left: 42px; /* Align with summary content */
+  }
+
+  /* Keep hover/active states subtle */
+  .case-section:hover,
+  .case-section[open] {
+    background: color-mix(in oklab, var(--panel) 97%, var(--border) 3%);
+  }
+}

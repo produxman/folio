@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Billing Engine Evolution — Sherif Shalabi</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/projects.css" />
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      font-size: 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      margin-bottom: 18px;
+      margin-top: 8px;
+      transition: background .15s, color .15s, border .15s;
+      width: auto;
+      max-width: 260px; /* Limit width on desktop */
+    }
+    .back-link:hover, .back-link:focus {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      outline: none;
+    }
+    @media (max-width: 700px) {
+      .back-link {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    /* Collapsible cards: borderless, seamless on desktop */
+    .case-section {
+      margin-bottom: 18px;
+      border-radius: 10px;
+      background: color-mix(in oklab, var(--panel) 97%, var(--border) 3%);
+      border: none;
+      overflow: hidden;
+      box-shadow: none;
+      transition: background .13s;
+    }
+    @media (min-width: 900px) {
+      .case-section {
+        background: transparent;
+        border: none;
+        margin-left: 0;
+        margin-right: 0;
+        box-shadow: none;
+      }
+      .case-section .section-content {
+        background: transparent;
+      }
+      /* Make content area stretch full width of grid */
+      .projects-col {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .stacked {
+        grid-template-columns: 1.1fr 2fr !important;
+      }
+    }
+    .case-section summary {
+      font-weight: 600;
+      font-size: 1.08rem;
+      padding: 14px 18px;
+      cursor: pointer;
+      outline: none;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background .13s;
+      position: relative;
+      user-select: none;
+    }
+    .case-section summary::-webkit-details-marker,
+    .case-section summary::marker {
+      display: none;
+    }
+    .case-section summary .case-caret {
+      display: inline-block;
+      font-size: 1.1em;
+      margin-right: 6px;
+      transition: transform 0.18s;
+      color: var(--muted);
+    }
+    .case-section[open] summary .case-caret {
+      transform: rotate(90deg);
+      color: var(--accent);
+    }
+    .case-section[open] summary {
+      background: color-mix(in oklab, var(--accent) 7%, var(--panel) 93%);
+    }
+    .case-section .section-content {
+      padding: 14px 18px;
+      font-size: 1rem;
+      color: var(--muted);
+      background: none;
+    }
+    .impact-tagline {
+      display: inline-block;
+      background: color-mix(in oklab, var(--accent) 10%, var(--panel) 90%);
+      color: var(--accent);
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 4px 12px;
+      margin-bottom: 12px;
+      margin-top: 2px;
+      letter-spacing: 0.01em;
+      border: 1px solid color-mix(in oklab, var(--accent) 30%, var(--border) 70%);
+    }
+    .case-meta {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+    .case-meta strong {
+      color: var(--text);
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .case-visuals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin: 18px 0 0 0;
+    }
+    .case-visuals img {
+      max-width: 340px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #f7fafc;
+      object-fit: cover;
+    }
+    /* Full-width content area on desktop, aligned with hero image */
+    @media (min-width: 900px) {
+      .stacked {
+        grid-template-columns: 1.1fr 2fr !important;
+      }
+      .projects-col {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme toggle -->
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle light/dark">☾</button>
+
+  <header class="hero" style="margin-bottom:0;">
+    <div class="hero-left">
+      <div class="logo-and-title">
+        <img src="../assets/img/produxman-logo-dark.png" alt="Produxman logo" class="logo logo-dark" />
+        <img src="../assets/img/produxman-logo-light.png" alt="Produxman logo" class="logo logo-light" />
+        <h1 style="margin-bottom:10px;">Billing Engine Evolution</h1>
+      </div>
+      <div class="impact-tagline">
+        Service-oriented billing overhaul — projected +12% ARR uplift
+      </div>
+      <div class="case-meta">
+        <strong>Company:</strong> Meister &nbsp;|&nbsp;
+        <strong>Role:</strong> Sr. Technical PM &nbsp;|&nbsp;
+        <strong>Year:</strong> 2024
+      </div>
+      <a href="../index.html" class="back-link">
+        <i class="fa fa-arrow-left"></i> Back to Portfolio
+      </a>
+    </div>
+    <figure class="hero-right">
+      <picture class="hero-photo">
+        <source srcset="../assets/img/hero.webp" type="image/webp" />
+        <img src="../assets/img/hero.jpg" alt="Project visual" />
+      </picture>
+    </figure>
+  </header>
+
+  <main class="stacked project-fullwidth-main" style="margin-top:0;">
+    <section class="projects-col project-fullwidth-col">
+      <details class="case-section" open>
+        <summary><span class="case-caret"><i class="fa fa-chevron-right"></i></span><i class="fa fa-circle-info"></i> Context & Problem Statement</summary>
+        <div class="section-content">
+          Meister’s legacy billing system was inflexible, hard to scale for new products, and a bottleneck for monetizing AI features.
+        </div>
+      </details>
+      <details class="case-section">
+        <summary><span class="case-caret"><i class="fa fa-chevron-right"></i></span><i class="fa fa-bullseye"></i> Goals & Success Metrics</summary>
+        <div class="section-content">
+          <ul>
+            <li>Enable rapid launch of new pricing models and AI add-ons</li>
+            <li>Reduce billing-related support tickets by 30%</li>
+            <li>Increase ARR by 12% within 12 months</li>
+          </ul>
+        </div>
+      </details>
+      <details class="case-section">
+        <summary><span class="case-caret"><i class="fa fa-chevron-right"></i></span><i class="fa fa-user-tie"></i> My Role & Responsibilities</summary>
+        <div class="section-content">
+          <ul>
+            <li>Defined product requirements and technical architecture</li>
+            <li>Coordinated cross-functional teams (engineering, finance, support)</li>
+            <li>Owned roadmap, delivery, and stakeholder alignment</li>
+          </ul>
+        </div>
+      </details>
+      <details class="case-section">
+        <summary><span class="case-caret"><i class="fa fa-chevron-right"></i></span><i class="fa fa-route"></i> Approach / Process</summary>
+        <div class="section-content">
+          <ul>
+            <li>Benchmarked SaaS billing best practices</li>
+            <li>Mapped legacy pain points and user journeys</li>
+            <li>Designed modular, service-oriented billing architecture</li>
+            <li>Iterated with rapid prototyping and stakeholder feedback</li>
+          </ul>
+        </div>
+      </details>
+      <details class="case-section">
+        <summary><span class="case-caret"><i class="fa fa-chevron-right"></i></span><i class="fa fa-triangle-exclamation"></i> Challenges & Key Decisions</summary>
+        <div class="section-content">
+          <ul>
+            <li>Balancing migration speed with business continuity</li>
+            <li>Deciding between build vs. buy for billing modules</li>
+            <li>Ensuring compliance with evolving tax/regulatory needs</li>
+          </ul>
+        </div>
+      </details>
+      <details class="case-section">
+        <summary><span class="case-caret"><i class="fa fa-chevron-right"></i></span><i class="fa fa-chart-line"></i> Results & Impact</summary>
+        <div class="section-content">
+          <ul>
+            <li>Launched new billing engine in 5 months</li>
+            <li>Enabled 2 new AI monetization streams</li>
+            <li>Reduced billing support tickets by 35%</li>
+            <li>Projected +12% ARR uplift (early indicators positive)</li>
+          </ul>
+        </div>
+      </details>
+      <details class="case-section">
+        <summary><span class="case-caret"><i class="fa fa-chevron-right"></i></span><i class="fa fa-tools"></i> Technologies & Tools</summary>
+        <div class="section-content">
+          AWS, Node.js, React, Stripe, Figma, Jira, Slack
+        </div>
+      </details>
+      <details class="case-section">
+        <summary><span class="case-caret"><i class="fa fa-chevron-right"></i></span><i class="fa fa-image"></i> Screenshots / Visuals</summary>
+        <div class="section-content">
+          <div class="case-visuals">
+            <img src="../assets/img/work/meister-billing.webp" alt="Billing Engine UI" />
+            <img src="../assets/img/work/meister-ai.webp" alt="AI Monetization UI" />
+          </div>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Sherif Shalabi</small>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Theme toggle (reuse from main)
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'light' ? '' : 'light';
+      if (next) document.documentElement.setAttribute('data-theme', next);
+      else document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', next);
+    });
+  </script>
+</body>
+</html>
