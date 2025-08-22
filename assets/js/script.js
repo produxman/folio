@@ -44,35 +44,35 @@ themeToggle.addEventListener('click', () => {
 // ===== Projects data (cards link to GitHub markdown pages) =====
 const PROJECTS = {
   Meister: [
-    { title:'Billing Engine Evolution', desc:'Service-oriented billing; projected +12% ARR uplift', cover:'assets/img/work/meister-billing.webp', href:'projects/meister-billingengine.md' },
-    { title:'AI Monetization', desc:'0→1 pricing & packaging for Meister AI', cover:'assets/img/work/meister-ai.webp', href:'projects/meister-meisterai.md' },
-    { title:'Accounts Design System', desc:'Self-serve surfaces for enterprise scale', cover:'assets/img/work/meister-accounts.webp', href:'projects/meister-accountsdesignsystem.md' },
+    { title:'Billing Engine Evolution', desc:'Service-oriented billing; projected +12% ARR uplift', cover:'assets/work/meister-billing.webp', href:'projects/meister-billingengine.md', highlight: true },
+    { title:'AI Monetization', desc:'0→1 pricing & packaging for Meister AI', cover:'assets/work/meister-ai.webp', href:'projects/meister-meisterai.md' },
+    { title:'Accounts Design System', desc:'Self-serve surfaces for enterprise scale', cover:'assets/work/meister-accounts.webp', href:'projects/meister-accountsdesignsystem.md' },
   ],
   Pelcro: [
-    { title:'Pelcro Automations', desc:'+20% conversions via segmentation & automation', cover:'assets/img/work/pelcro-automations.webp', href:'projects/pelcro-automations.md' },
-    { title:'Financial Reporting Overhaul', desc:'+20% conversions via segmentation & automation', cover:'assets/img/work/pelcro-financialreporting.webp', href:'projects/pelcro-financialreporting.md' },
-    { title:'WorldPay Integration', desc:'Expanded payments coverage', cover:'assets/img/work/pelcro-worldpay.webp', href:'projects/pelcro-worldpay.md' },
-    { title:'Braintree Integration', desc:'-40% fraudulent transactions at checkout', cover:'assets/img/work/pelcro-braintree.webp', href:'projects/pelcro-braintree.md' },
-    { title:'Fraud Management Controls', desc:'-40% fraudulent transactions at checkout', cover:'assets/img/work/pelcro-fraudmanagement.webp', href:'projects/pelcro-fraudmanagement.md' },
+    { title:'Pelcro Automations', desc:'+20% conversions via segmentation & automation', cover:'assets/work/pelcro-automations.webp', href:'projects/pelcro-automations.md', highlight: true },
+    { title:'Financial Reporting Overhaul', desc:'+20% conversions via segmentation & automation', cover:'assets/work/pelcro-financialreporting.webp', href:'projects/pelcro-financialreporting.md', highlight: true },
+    { title:'WorldPay Integration', desc:'Expanded payments coverage', cover:'assets/work/pelcro-worldpay.webp', href:'projects/pelcro-worldpay.md' },
+    { title:'Braintree Integration', desc:'-40% fraudulent transactions at checkout', cover:'assets/work/pelcro-braintree.webp', href:'projects/pelcro-braintree.md' },
+    { title:'Fraud Management Controls', desc:'-40% fraudulent transactions at checkout', cover:'assets/work/pelcro-fraudmanagement.webp', href:'projects/pelcro-fraudmanagement.md' },
   ],
   Dell: [
-    { title:'PowerProtect Sizer', desc:'Workload-driven sizing tool; +10% upsell', cover:'assets/img/work/dell-powerprotectsizer.webp', href:'projects/dell-powerprotectsizer.md' },
-    { title:'Workforce Capacity Planning Tool', desc:'Workload-driven sizing tool; +10% upsell', cover:'assets/img/work/dell-workforcecapacity.webp', href:'projects/dell-workforcecapacity.md' },
+    { title:'PowerProtect Sizer', desc:'Workload-driven sizing tool; +10% upsell', cover:'assets/work/dell-powerprotectsizer.webp', href:'projects/dell-powerprotectsizer.md' },
+    { title:'Workforce Capacity Planning Tool', desc:'Workload-driven sizing tool; +10% upsell', cover:'assets/work/dell-workforcecapacity.webp', href:'projects/dell-workforcecapacity.md' },
   ],
   Zyda: [
-    { title:'Deliverect Integration', desc:'+25% CSAT via POS & delivery sync', cover:'assets/img/work/zyda-deliverect.webp', href:'projects/zyda-deliverect.md' },
-    { title:'Survv Integration', desc:'-10% CAC through regional POS onboarding', cover:'assets/img/work/zyda-survv.webp', href:'projects/zyda-survv.md' },
+    { title:'Deliverect Integration', desc:'+25% CSAT via POS & delivery sync', cover:'assets/work/zyda-deliverect.webp', href:'projects/zyda-deliverect.md', highlight: true },
+    { title:'Survv Integration', desc:'-10% CAC through regional POS onboarding', cover:'assets/work/zyda-survv.webp', href:'projects/zyda-survv.md' },
   ],
   VeraSafe: [
-    { title:'Preava Prevent', desc:'MVP for misdirection prevention', cover:'assets/img/work/verasafe-preava.webp', href:'projects/verasafe-preava.md' },
-    { title:'Project Workflow Automation', desc:'Project Setup & Tracking Framework', cover:'assets/img/work/verasafe-projectworkflows.webp', href:'projects/verasafe-projectworkflows.md' },
+    { title:'Preava Prevent', desc:'MVP for Preventing Misdirected Emails Enabling Initial Product Launch', cover:'assets/work/verasafe-preava.webp', href:'projects/verasafe-preava.md', highlight: true },
+    { title:'Project Setup Blueprint', desc:'25% Faster Project Onboarding Time via Workflow Automation', cover:'assets/work/verasafe-projectworkflows.webp', href:'projects/verasafe-projectworkflows.md' },
   ],
   CIB: [
-    { title:'Enterprise Backup Migration', desc:'-50% RTO, -30% data loss risk', cover:'assets/img/work/cib-enterprisebackupmigration.webp', href:'projects/cib-enterprisebackupmigration.md' },
-    { title:'Resilience Dashboards', desc:'-50% RTO, -30% data loss risk', cover:'assets/img/work/cib-resiliencedashboards.webp', href:'projects/cib-resiliencedashboards.md' },
+    { title:'Enterprise Backup Migration', desc:'50% Faster Recovery, 20% Lower Storage Costs via Backup Modernization', cover:'assets/work/cib-enterprisebackupmigration.webp', href:'projects/cib-enterprisebackupmigration.md', highlight: true },
+    { title:'Resilience Dashboards', desc:'40% Operational Efficiency Gain in Backup & Recovery via Observability Dashboards', cover:'assets/work/cib-resiliencedashboards.webp', href:'projects/cib-resiliencedashboards.md' },
   ],
   IBM: [
-    { title:'Tech Support Nexus', desc:'-50% RTO, -30% data loss risk', cover:'assets/img/work/ibm-techsupportnexus.webp', href:'projects/ibm-techsupportnexus.md' },
+    { title:'Support Knowledge Base', desc:'Reduced Support Costs, Improved Utilization via Technical Support Enablement', cover:'assets/work/ibm-supportknowledgebase.webp', href:'projects/ibm-supportknowledgebase.md' },
   ]
 };
 
@@ -81,7 +81,7 @@ const title = document.getElementById('projectsTitle');
 
 // Render helpers
 function renderCards(company) {
-  // On mobile, hide main grid and render mini-cards under expanded experience card
+  // Mobile: keep existing logic
   if (window.matchMedia('(max-width: 700px)').matches) {
     grid.innerHTML = '';
     // Remove any existing mini-projects and mobile project headers
@@ -94,7 +94,7 @@ function renderCards(company) {
     // Create header
     const header = document.createElement('h2');
     header.className = 'mini-projects-header';
-    header.textContent = `${company} — Projects`;
+    header.textContent = `Projects Where I Drove Impact`;
     // Create mini-cards
     const mini = document.createElement('div');
     mini.className = 'mini-projects';
@@ -117,8 +117,18 @@ function renderCards(company) {
     }
     return;
   }
-  // Desktop: normal grid
-  title.textContent = `${company} — Projects`;
+
+  // Desktop: Only show projects if the company card is open
+  const details = document.querySelector(`.wa-details[data-company="${company}"]`);
+  // If no company is open or the requested company is not open, clear grid and hide projects
+  if (!details || !details.open) {
+    grid.innerHTML = '';
+    grid.classList.remove('single-card-grid');
+    return;
+  }
+
+  // Render projects for the open company
+  title.textContent = `Projects Where I Drove Impact`;
   grid.innerHTML = '';
   const items = PROJECTS[company] || [];
   if (!items.length) {
@@ -126,7 +136,6 @@ function renderCards(company) {
     grid.classList.remove('single-card-grid');
     return;
   }
-  // Add or remove single-card-grid class
   if (items.length === 1) {
     grid.classList.add('single-card-grid');
   } else {
@@ -134,9 +143,14 @@ function renderCards(company) {
   }
   items.forEach((p, i) => {
     const a = document.createElement('a');
-    a.className = 'card';
-    a.href = p.href; // GitHub will render markdown pages nicely
+    a.className = 'card' + (p.highlight ? ' card-highlight' : '');
+    a.href = p.href;
     a.innerHTML = `
+      ${p.highlight ? `
+        <span class="card-badge" title="Highlighted">
+          <i class="fa fa-star"></i>
+        </span>
+      ` : ''}
       <div class="cover"><img src="${p.cover}" alt="${p.title}"></div>
       <div class="body">
         <h4>${p.title}</h4>
@@ -144,9 +158,21 @@ function renderCards(company) {
       </div>
     `;
     grid.appendChild(a);
-    // staggered reveal
     requestAnimationFrame(()=> setTimeout(()=> a.classList.add('show'), 60*i));
   });
+}
+
+function showProjectsPlaceholder() {
+  // Always show the placeholder at the top of the projects-col
+  grid.innerHTML = `
+    <div class="projects-placeholder">
+      <div class="projects-placeholder-inner">
+        <span class="projects-placeholder-icon"><i class="fa fa-arrow-left"></i></span>
+        <span class="projects-placeholder-text">Expand a company card to the left for more details.</span> 
+      </div>
+    </div>
+  `;
+  grid.classList.remove('single-card-grid');
 }
 
 // Timeline behavior (single-open accordion + project switching)
@@ -160,16 +186,21 @@ if (tl) {
         // update carets
         tl.querySelectorAll('.wa-details summary .wa-caret').forEach(c => c.textContent = '▸');
         d.querySelector('.wa-caret').textContent = '▾';
-        // load projects
+        // load projects for the open company
         renderCards(d.dataset.company);
-        alignProjectsColToCompany(d.dataset.company); // <-- align on open
-        // --- scroll expanded wa-details into view ---
+        alignProjectsColToCompany(d.dataset.company);
         setTimeout(() => {
           d.scrollIntoView({behavior: 'smooth', block: 'start'});
         }, 0);
-        // --- end scroll ---
       } else {
         d.querySelector('.wa-caret').textContent = '▸';
+        // If no company is open, show placeholder
+        const open = tl.querySelector('.wa-details[open]');
+        if (open) {
+          renderCards(open.dataset.company);
+        } else {
+          showProjectsPlaceholder();
+        }
       }
     });
     // Make dot-btn click open the details (like clicking the card)
@@ -191,20 +222,21 @@ if (tl) {
 // Align projects column to match expanded details on desktop
 function alignProjectsColToCompany(company) {
   if (window.innerWidth <= 700) {
-    // Reset on mobile
     document.querySelector('.projects-col')?.style.removeProperty('margin-top');
     return;
   }
   const details = document.querySelector(`.wa-details[data-company="${company}"]`);
   const timelineCol = document.querySelector('.timeline-col');
   const projectsCol = document.querySelector('.projects-col');
-  if (!details || !timelineCol || !projectsCol) return;
-
+  if (!details || !timelineCol || !projectsCol) {
+    // Always keep placeholder at the top
+    projectsCol?.style.setProperty('margin-top', '0px');
+    return;
+  }
   // Calculate offset from top of timeline-col to top of expanded wa-details
   const timelineRect = timelineCol.getBoundingClientRect();
   const detailsRect = details.getBoundingClientRect();
   const offset = detailsRect.top - timelineRect.top;
-
   projectsCol.style.marginTop = `${offset}px`;
 }
 
@@ -213,15 +245,21 @@ window.addEventListener('resize', () => {
   if (window.innerWidth > 700) {
     const open = document.querySelector('.wa-details[open]');
     if (open) alignProjectsColToCompany(open.dataset.company);
+    else document.querySelector('.projects-col')?.style.setProperty('margin-top', '0px');
   } else {
     document.querySelector('.projects-col')?.style.removeProperty('margin-top');
   }
 });
 
-// Initial load: first open details
-const first = tl?.querySelector('.wa-details[open]')?.dataset.company || 'Meister';
-renderCards(first);
-alignProjectsColToCompany(first);
+// Initial load: show placeholder if nothing open, else show projects
+const firstOpen = tl?.querySelector('.wa-details[open]');
+if (firstOpen) {
+  renderCards(firstOpen.dataset.company);
+  alignProjectsColToCompany(firstOpen.dataset.company);
+} else {
+  showProjectsPlaceholder();
+  document.querySelector('.projects-col')?.style.setProperty('margin-top', '0px');
+}
 
 // ==== IntersectionObserver for “scroll-in” of each timeline node (your snippet spirit) ====
 const nodes = document.querySelectorAll('.wa-details');

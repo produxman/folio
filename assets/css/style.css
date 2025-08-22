@@ -293,6 +293,7 @@ html[data-theme="light"] .logo-light { display: block; }
     min-width: 0;
     font-size: clamp(0.9rem, 2vw, 0.98rem);
     border-radius: 10px;
+    position: relative;
   }
   .card .cover {
     height: clamp(80px, 20vw, 100px);
@@ -650,6 +651,7 @@ img{max-width:100%; display:block}
   transform:translateY(8px); 
   opacity:0; 
   transition:transform .25s ease, opacity .25s ease, box-shadow .2s ease;
+  position: relative;
 }
 .card.show{
   transform:translateY(0); 
@@ -734,4 +736,70 @@ img{max-width:100%; display:block}
 .grid.single-card-grid .card {
   max-width: 340px;
   width: 100%;
+}
+
+.card-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 2;
+  background: #fff683;
+  color: #222a35;
+  border-radius: 999px;
+  padding: 5px 7px 4px 7px;
+  font-size: 1.05em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-highlight {
+  border: 2px solid #fff683;
+  box-shadow: 0 2px 16px 0 rgba(255,246,131,0.13);
+}
+
+/* --- OPEN STATE: teal accent on border, caret, button --- */
+.wa-details[open] summary {
+  border-color: var(--accent);
+  background: color-mix(in oklab, var(--panel) 88%, transparent);
+}
+.wa-details[open] summary .wa-caret {
+  color: var(--accent);
+}
+.wa-details[open] .dot {
+  border-color: var(--accent);
+  outline-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --- HOVER STATE: teal accent on border, caret, button --- */
+.wa-details summary:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+.wa-details summary:hover .wa-caret {
+  color: var(--accent);
+}
+.wa-details:hover .dot {
+  border-color: var(--accent);
+  outline-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --- FOCUS STATE: white accent on border + caret, button default --- */
+.wa-details summary:focus {
+  border-color: #fff;
+  box-shadow: 0 0 0 2px #fff;
+  outline: none;
+}
+.wa-details summary:focus .wa-caret {
+  color: #fff;
+}
+/* Remove accent from button (dot) on focus, revert to default */
+.wa-details summary:focus ~ .dot,
+.wa-details:focus-within .dot {
+  border-color: #222a35;
+  outline-color: var(--border);
+  color: inherit;
 }
