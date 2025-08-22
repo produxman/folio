@@ -627,6 +627,7 @@ img{max-width:100%; display:block}
 }
 .projects-col {
   max-width: none;
+  transition: margin-top 0.25s cubic-bezier(.4,0,.2,1);
 }
 .grid {
   display: grid;
@@ -721,4 +722,16 @@ img{max-width:100%; display:block}
   .hero-photo img {
     display: none !important;
   }
+}
+
+/* Fix the single project card so it does **not** stretch across the grid.  
+   Set the grid to a single column and limit the card's width, aligning it to the left. */
+.grid.single-card-grid {
+  grid-template-columns: 1fr;
+  justify-items: start;
+}
+
+.grid.single-card-grid .card {
+  max-width: 340px;
+  width: 100%;
 }
