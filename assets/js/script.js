@@ -1,3 +1,82 @@
+class Typewriter {
+  constructor(el, phrases = [], options = {}) {
+    this.el = el;
+    this.phrases = phrases;
+    this.options = {
+      typeSpeed: 60,
+      deleteSpeed: 35,
+      pauseAtEnd: 1200,
+      loop: true,
+      ...options
+    };
+    
+    this.currentPhrase = 0;
+    this.isDeleting = false;
+    this.text = '';
+    this.timeout = null;
+    
+    // Bind methods
+    this.tick = this.tick.bind(this);
+    this.handleVisibility = this.handleVisibility.bind(this);
+    
+    // Setup visibility handlers
+    document.addEventListener('visibilitychange', this.handleVisibility);
+  }
+  
+  tick() {
+    const current = this.phrases[this.currentPhrase] || '';
+    
+    if (this.isDeleting) {
+      this.text = current.substring(0, this.text.length - 1);
+    } else {
+      this.text = current.substring(0, this.text.length + 1);
+    }
+    
+    // Use existing typewriter HTML structure
+    const safeText = this.text.length === 0 ? '&nbsp;' : this.text;
+    this.el.innerHTML = `<span class="typewriter-text">${safeText}</span><span class="typewriter-caret"></span>`;
+    
+    let delta = this.isDeleting ? this.options.deleteSpeed : this.options.typeSpeed;
+    
+    if (!this.isDeleting && this.text === current) {
+      delta = this.options.pauseAtEnd;
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.text === '') {
+      this.isDeleting = false;
+      // Pick random next phrase, but not the same as current
+      let next;
+      do {
+        next = Math.floor(Math.random() * this.phrases.length);
+      } while (this.phrases.length > 1 && next === this.currentPhrase);
+      this.currentPhrase = next;
+      delta = 500;
+    }
+    
+    this.timeout = setTimeout(this.tick, delta);
+  }
+  
+  handleVisibility() {
+    if (document.hidden) {
+      clearTimeout(this.timeout);
+    } else {
+      this.timeout = setTimeout(this.tick, this.options.typeSpeed);
+    }
+  }
+  
+  start() {
+    this.tick();
+  }
+  
+  stop() {
+    clearTimeout(this.timeout);
+  }
+  
+  destroy() {
+    this.stop();
+    document.removeEventListener('visibilitychange', this.handleVisibility);
+  }
+}
+
 // Dynamically align hero image to match left (down to socials) and right (to project cards)
 function alignHeroImage() {
   const hero = document.querySelector('.hero');
@@ -101,9 +180,14 @@ function renderCards(company) {
     mini.className = 'mini-projects';
     items.forEach((p, i) => {
       const a = document.createElement('a');
-      a.className = 'mini-card';
+      a.className = 'mini-card' + (p.highlight ? ' card-highlight' : '');
       a.href = p.href;
       a.innerHTML = `
+        ${p.highlight ? `
+          <span class="card-badge mini-card-badge" title="Highlighted">
+            <i class="fa fa-star"></i>
+          </span>
+        ` : ''}
         <img class="mini-card-cover" src="${p.cover}" alt="${p.title}">
         <div class="mini-card-title">${p.title}</div>
         <div class="mini-card-desc">${p.desc}</div>
@@ -269,24 +353,8 @@ const observer = new IntersectionObserver(
 nodes.forEach(n=>observer.observe(n));
 
 // ===== Typewriter Text Rotator for Hero =====
-(function() {
-  const phrases = [
-    "Product Leader.",
-    "INFP-T Adapter.",
-    "Founder of Senza.",
-    "Cooking Aficionado.",
-    "Builder of Things.",
-    "Sarcasm Enthusiast.",
-    "Vibe-Driven Developer.",
-    "Cat Dad Extraordinaire.",
-    "Chaos Organizer.",
-    "Night Owl.",
-  ];
-  const ACCENT = getComputedStyle(document.documentElement).getPropertyValue('--accent') || '#00baad';
-  const heroLeft = document.querySelector('.hero-left');
-  if (!heroLeft) return;
-
-  // Insert rotator directly under the h1
+const heroLeft = document.querySelector('.hero-left');
+if (heroLeft) {
   const h1 = heroLeft.querySelector('h1');
   const target = document.createElement('div');
   target.className = 'typewriter-rotator';
@@ -296,40 +364,20 @@ nodes.forEach(n=>observer.observe(n));
     heroLeft.insertAdjacentElement('afterbegin', target);
   }
 
-  let phraseIdx = 0, charIdx = 0, typing = true, timeout;
-  function setCaret(blink) {
-    return `<span class="typewriter-caret${blink ? ' blink' : ''}"></span>`;
-  }
-  function render(text, blink) {
-    // Always render at least one character to prevent layout shift
-    const safeText = text.length === 0 ? '&nbsp;' : text;
-    target.innerHTML = `<span class="typewriter-text">${safeText}</span>${setCaret(blink)}`;
-  }
-  function loop() {
-    const phrase = phrases[phraseIdx];
-    if (typing) {
-      if (charIdx <= phrase.length) {
-        render(phrase.slice(0, charIdx), true);
-        charIdx++;
-        timeout = setTimeout(loop, 60 + Math.random()*60);
-      } else {
-        typing = false;
-        timeout = setTimeout(loop, 1200);
-      }
-    } else {
-      if (charIdx > 0) {
-        render(phrase.slice(0, charIdx), true);
-        charIdx--;
-        timeout = setTimeout(loop, 30 + Math.random()*40);
-      } else {
-        // Prevent layout shift by rendering a non-breaking space
-        render('', true);
-        typing = true;
-        phraseIdx = (phraseIdx + 1) % phrases.length;
-        timeout = setTimeout(loop, 500);
-      }
-    }
-  }
-  render('', true);
-  loop();
-})();
+  const phrases = [
+    "Product Leader.",
+    "Subpar Multitasker.",
+    "Founder of Senza.",
+    "Cooking Aficionado.", 
+    "Builder of Things.",
+    "Sarcasm Enthusiast.",
+    "Vibe-Driven Developer.",
+    "Cat Dad Extraordinaire.",
+    "Chaos Organizer.",
+    "Night Owl.",
+  ];
+
+  // Initialize with already shuffled phrases
+  const typewriter = new Typewriter(target, phrases.sort(() => Math.random() - 0.5));
+  typewriter.start();
+}
