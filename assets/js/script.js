@@ -54,9 +54,10 @@ const PROJECTS = {
     { title:'WorldPay Integration', desc:'Expanded payments coverage', cover:'assets/work/pelcro-worldpay.webp', href:'projects/pelcro-worldpay.md' },
     { title:'Braintree Integration', desc:'-40% fraudulent transactions at checkout', cover:'assets/work/pelcro-braintree.webp', href:'projects/pelcro-braintree.md' },
     { title:'Fraud Management Controls', desc:'-40% fraudulent transactions at checkout', cover:'assets/work/pelcro-fraudmanagement.webp', href:'projects/pelcro-fraudmanagement.md' },
+    { title:'Modernized Authentication', desc:'-40% fraudulent transactions at checkout', cover:'assets/work/pelcro-modernauthentication.webp', href:'projects/pelcro-modernauthentication.md' },
   ],
   Dell: [
-    { title:'PowerProtect Sizer', desc:'Workload-driven sizing tool; +10% upsell', cover:'assets/work/dell-powerprotectsizer.webp', href:'projects/dell-powerprotectsizer.md' },
+    { title:'PowerProtect Sizer', desc:'Workload-driven sizing tool; +10% upsell', cover:'assets/work/dell-powerprotectsizer.webp', href:'projects/dell-powerprotectsizer.md', highlight: true  },
     { title:'Workforce Capacity Planning Tool', desc:'Workload-driven sizing tool; +10% upsell', cover:'assets/work/dell-workforcecapacity.webp', href:'projects/dell-workforcecapacity.md' },
   ],
   Zyda: [
@@ -268,3 +269,65 @@ const observer = new IntersectionObserver(
   {threshold:.3}
 );
 nodes.forEach(n=>observer.observe(n));
+
+// ===== Typewriter Text Rotator for Hero =====
+(function() {
+  const phrases = [
+    "Product Leader.",
+    "Founder of Senza.",
+    "Cooking Aficionado.",
+    "Builder of Things.",
+    "Sarcasm Enthusiast.",
+    "Cat Dad Extraordinaire."
+  ];
+  const ACCENT = getComputedStyle(document.documentElement).getPropertyValue('--accent') || '#00baad';
+  const heroLeft = document.querySelector('.hero-left');
+  if (!heroLeft) return;
+
+  // Insert rotator directly under the h1
+  const h1 = heroLeft.querySelector('h1');
+  const target = document.createElement('div');
+  target.className = 'typewriter-rotator';
+  if (h1) {
+    h1.insertAdjacentElement('afterend', target);
+  } else {
+    heroLeft.insertAdjacentElement('afterbegin', target);
+  }
+
+  let phraseIdx = 0, charIdx = 0, typing = true, timeout;
+  function setCaret(blink) {
+    return `<span class="typewriter-caret${blink ? ' blink' : ''}"></span>`;
+  }
+  function render(text, blink) {
+    // Always render at least one character to prevent layout shift
+    const safeText = text.length === 0 ? '&nbsp;' : text;
+    target.innerHTML = `<span class="typewriter-text">${safeText}</span>${setCaret(blink)}`;
+  }
+  function loop() {
+    const phrase = phrases[phraseIdx];
+    if (typing) {
+      if (charIdx <= phrase.length) {
+        render(phrase.slice(0, charIdx), true);
+        charIdx++;
+        timeout = setTimeout(loop, 60 + Math.random()*60);
+      } else {
+        typing = false;
+        timeout = setTimeout(loop, 1200);
+      }
+    } else {
+      if (charIdx > 0) {
+        render(phrase.slice(0, charIdx), true);
+        charIdx--;
+        timeout = setTimeout(loop, 30 + Math.random()*40);
+      } else {
+        // Prevent layout shift by rendering a non-breaking space
+        render('', true);
+        typing = true;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+        timeout = setTimeout(loop, 500);
+      }
+    }
+  }
+  render('', true);
+  loop();
+})();
