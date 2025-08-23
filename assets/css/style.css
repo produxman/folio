@@ -803,3 +803,73 @@ img{max-width:100%; display:block}
   outline-color: var(--border);
   color: inherit;
 }
+
+.typewriter-rotator {
+  font-size: clamp(1.08rem, 3vw, 1.32rem);
+  font-weight: 400; /* lighter font weight for Roboto */
+  color: var(--text); /* Change from var(--muted) to var(--text) for white text */
+  min-height: 1.5em;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  white-space: pre;
+}
+
+.typewriter-text {
+  font-weight: 400;
+}
+.typewriter-caret {
+  display: inline-block;
+  width: 0.09em;
+  height: 1.1em;
+  margin-left: 2px;
+  background: var(--accent, #00baad);
+  vertical-align: middle;
+  border-radius: 1px;
+  animation: typewriter-blink 1s steps(1) infinite;
+}
+@keyframes typewriter-blink {
+  0%, 70% { opacity: 1; }
+  71%, 100% { opacity: 0; }
+}
+
+/* Typewriter base styles */
+.typewriter-rotator {
+  font-size: clamp(1.08rem, 3vw, 1.32rem);
+  font-weight: 400;
+  color: var(--text); /* Change from var(--muted) to var(--text) for white text */
+  min-height: 1.5em;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  white-space: pre;
+}
+
+/* Mobile adjustments for logo + title + typewriter alignment */
+@media (max-width: 700px) {
+  .logo-and-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .logo-and-title .title-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: clamp(40px, 10vw, 48px); /* Match logo height */
+  }
+  
+  .logo-and-title h1 {
+    margin: 0;
+    font-size: clamp(22px, 6vw, 32px);
+    line-height: 1.1;
+  }
+  
+  .typewriter-rotator {
+    font-size: clamp(1.1rem, 3.5vw, 1.2rem); /* Larger than bio (0.9rem) but smaller than h1 (clamp(22px, 6vw, 32px)) */
+    margin: 2px 0 0 0;
+  }
+}
