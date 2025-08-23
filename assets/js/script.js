@@ -226,19 +226,17 @@ function alignProjectsColToCompany(company) {
     document.querySelector('.projects-col')?.style.removeProperty('margin-top');
     return;
   }
-  const details = document.querySelector(`.wa-details[data-company="${company}"]`);
-  const timelineCol = document.querySelector('.timeline-col');
+
   const projectsCol = document.querySelector('.projects-col');
-  if (!details || !timelineCol || !projectsCol) {
-    // Always keep placeholder at the top
-    projectsCol?.style.setProperty('margin-top', '0px');
-    return;
-  }
-  // Calculate offset from top of timeline-col to top of expanded wa-details
-  const timelineRect = timelineCol.getBoundingClientRect();
-  const detailsRect = details.getBoundingClientRect();
-  const offset = detailsRect.top - timelineRect.top;
-  projectsCol.style.marginTop = `${offset}px`;
+  const details = document.querySelector(`.wa-details[data-company="${company}"]`);
+  const stacked = document.querySelector('.stacked');
+
+  if (!projectsCol || !details || !stacked) return;
+
+  const stackedBox = stacked.getBoundingClientRect();
+  const cardBox = details.getBoundingClientRect();
+  const alignmentOffset = cardBox.top - stackedBox.top;
+  projectsCol.style.marginTop = `${alignmentOffset}px`;
 }
 
 // Also align on window resize (desktop only)
