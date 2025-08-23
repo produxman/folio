@@ -272,13 +272,16 @@ nodes.forEach(n=>observer.observe(n));
 (function() {
   const phrases = [
     "Product Leader.",
-    "Your Friendly Neighborhood Produxman.",
+    "INFP-T Adapter",
     "Founder of Senza.",
     "Cooking Aficionado.",
     "Builder of Things.",
     "Sarcasm Enthusiast.",
+    "Vibe-Driven Developer.",
     "Cat Dad Extraordinaire.",
-    "Your wingman in from Roadmap to Rollout.",
+    "Chaos Organizer.",
+    "Night Owl.",
+    "Chaos Organizer.",
   ];
   const ACCENT = getComputedStyle(document.documentElement).getPropertyValue('--accent') || '#00baad';
   const heroLeft = document.querySelector('.hero-left');
