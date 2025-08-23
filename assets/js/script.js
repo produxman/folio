@@ -123,36 +123,36 @@ themeToggle.addEventListener('click', () => {
 // ===== Projects data (cards link to GitHub markdown pages) =====
 const PROJECTS = {
   Meister: [
-    { title:'Billing Engine Evolution', desc:'ARR Growth, Lower Churn & Accurate Reporting through via Service-Oriented Architecture', cover:'assets/work/meister-billingengine.webp', href:'projects/meister-billingengine.md', highlight: true },
-    { title:'AI Monetization', desc:'Defining 0→1 Strategy for Pricing, Packaging & Billing Design & Frameworks', cover:'assets/work/meister-aipricing.webp', href:'projects/meister-aipricing.md' },
-    { title:'Accounts Design System', desc:'Enhanced Customer Experience & Growth Readiness through UX Modernization', cover:'assets/work/meister-accountsdesignsystem.webp', href:'projects/meister-accountsdesignsystem.md' },
+    { title:'Billing Engine Evolution', desc:'ARR Growth, Lower Churn & Accurate Reporting through via Service-Oriented Architecture', cover:'assets/img/project-cards/meister-billingengine.webp', href:'projects/meister-billingengine.md', highlight: true },
+    { title:'AI Monetization', desc:'Defining 0→1 Strategy for Pricing, Packaging & Billing Design & Frameworks', cover:'assets/img/project-cards/meister-aipricing.webp', href:'projects/meister-aipricing.md' },
+    { title:'Accounts Design System', desc:'Enhanced Customer Experience & Growth Readiness through UX Modernization', cover:'assets/img/project-cards/meister-accountsdesignsystem.webp', href:'projects/meister-accountsdesignsystem.md' },
   ],
   Pelcro: [
-    { title:'Pelcro Automations', desc:'20% Higher Conversions through Targeted Segmentation & Workflow Automation Modules', cover:'assets/work/pelcro-automations.webp', href:'projects/pelcro-automations.md', highlight: true },
-    { title:'Financial Reporting Overhaul', desc:'10% Increase in Retention via Accurate Financial Reporting & Analytics', cover:'assets/work/pelcro-financialreporting.webp', href:'projects/pelcro-financialreporting.md', highlight: true },
-    { title:'WorldPay Integration', desc:'20% ARR Growth via Online Card & Digital Wallet Expansion', cover:'assets/work/pelcro-worldpay.webp', href:'projects/pelcro-worldpay.md' },
-    { title:'Braintree Integration', desc:'Enhanced Retention & Flexibility through Direct Debit & Improved Payment UI', cover:'assets/work/pelcro-braintree.webp', href:'projects/pelcro-braintree.md' },
-    { title:'Fraud Management Controls', desc:'40% Decline in Fraudulent Transactions with Advanced Online Checkout Protection', cover:'assets/work/pelcro-fraudmanagement.webp', href:'projects/pelcro-fraudmanagement.md' },
-    { title:'Modernized Authentication', desc:'Multi-tenant & SAML Identity Management & Stronger Security via 2FA Controls', cover:'assets/work/pelcro-modernauthentication.webp', href:'projects/pelcro-modernauthentication.md' },
+    { title:'Pelcro Automations', desc:'20% Higher Conversions through Targeted Segmentation & Workflow Automation Modules', cover:'assets/img/project-cards/pelcro-automations.webp', href:'projects/pelcro-automations.md', highlight: true },
+    { title:'Financial Reporting Overhaul', desc:'10% Increase in Retention via Accurate Financial Reporting & Analytics', cover:'assets/img/project-cards/pelcro-financialreporting.webp', href:'projects/pelcro-financialreporting.md', highlight: true },
+    { title:'WorldPay Integration', desc:'20% ARR Growth via Online Card & Digital Wallet Expansion', cover:'assets/img/project-cards/pelcro-worldpay.webp', href:'projects/pelcro-worldpay.md' },
+    { title:'Braintree Integration', desc:'Enhanced Retention & Flexibility through Direct Debit & Improved Payment UI', cover:'assets/img/project-cards/pelcro-braintree.webp', href:'projects/pelcro-braintree.md' },
+    { title:'Fraud Management Controls', desc:'40% Decline in Fraudulent Transactions with Advanced Online Checkout Protection', cover:'assets/img/project-cards/pelcro-fraudmanagement.webp', href:'projects/pelcro-fraudmanagement.md' },
+    { title:'Modernized Authentication', desc:'Multi-tenant & SAML Identity Management & Stronger Security via 2FA Controls', cover:'assets/img/project-cards/pelcro-modernauthentication.webp', href:'projects/pelcro-modernauthentication.md' },
   ],
   Dell: [
-    { title:'PowerProtect Sizer', desc:'10% More Upsell Opportunities through Data Protection Deployment Modeling', cover:'assets/work/dell-powerprotectsizer.webp', href:'projects/dell-powerprotectsizer.md', highlight: true  },
-    { title:'Workforce Capacity Planning Tool', desc:'95%+ SLA Compliance, 15% Faster Allocation for Resource Management', cover:'assets/work/dell-workforcecapacity.webp', href:'projects/dell-workforcecapacity.md' },
+    { title:'PowerProtect Sizer', desc:'10% More Upsell Opportunities through Data Protection Deployment Modeling', cover:'assets/img/project-cards/dell-powerprotectsizer.webp', href:'projects/dell-powerprotectsizer.md', highlight: true  },
+    { title:'Workforce Capacity Planning Tool', desc:'95%+ SLA Compliance, 15% Faster Allocation for Resource Management', cover:'assets/img/project-cards/dell-workforcecapacity.webp', href:'projects/dell-workforcecapacity.md' },
   ],
   Zyda: [
-    { title:'Deliverect Integration', desc:'10% Reduction in Acquisition Costs via Streamlined POS Operations', cover:'assets/work/zyda-deliverect.webp', href:'projects/zyda-deliverect.md', highlight: true },
-    { title:'Survv Integration', desc:'15% Faster Order Timelines with Integrated Last Mile Delivery', cover:'assets/work/zyda-survv.webp', href:'projects/zyda-survv.md' },
+    { title:'Deliverect Integration', desc:'10% Reduction in Acquisition Costs via Streamlined POS Operations', cover:'assets/img/project-cards/zyda-deliverect.webp', href:'projects/zyda-deliverect.md', highlight: true },
+    { title:'Survv Integration', desc:'15% Faster Order Timelines with Integrated Last Mile Delivery', cover:'assets/img/project-cards/zyda-survv.webp', href:'projects/zyda-survv.md' },
   ],
   VeraSafe: [
-    { title:'Preava Prevent', desc:'MVP for Preventing Misdirected Emails Enabling Initial Product Launch', cover:'assets/work/verasafe-preava.webp', href:'projects/verasafe-preava.md', highlight: true },
-    { title:'Project Setup Blueprint', desc:'25% Faster Project Onboarding Time via Workflow Automation', cover:'assets/work/verasafe-projectworkflows.webp', href:'projects/verasafe-projectworkflows.md' },
+    { title:'Preava Prevent', desc:'MVP for Preventing Misdirected Emails Enabling Initial Product Launch', cover:'assets/img/project-cards/verasafe-preava.webp', href:'projects/verasafe-preava.md', highlight: true },
+    { title:'Project Setup Blueprint', desc:'25% Faster Project Onboarding Time via Workflow Automation', cover:'assets/img/project-cards/verasafe-projectworkflows.webp', href:'projects/verasafe-projectworkflows.md' },
   ],
   CIB: [
-    { title:'Enterprise Backup Migration', desc:'50% Faster Recovery, 20% Lower Storage Costs via Backup Modernization', cover:'assets/work/cib-enterprisebackupmigration.webp', href:'projects/cib-enterprisebackupmigration.md', highlight: true },
-    { title:'Resilience Dashboards', desc:'40% Operational Efficiency Gain in Backup & Recovery via Observability Dashboards', cover:'assets/work/cib-resiliencedashboards.webp', href:'projects/cib-resiliencedashboards.md' },
+    { title:'Enterprise Backup Migration', desc:'50% Faster Recovery, 20% Lower Storage Costs via Backup Modernization', cover:'assets/img/project-cards/cib-enterprisebackupmigration.webp', href:'projects/cib-enterprisebackupmigration.md', highlight: true },
+    { title:'Resilience Dashboards', desc:'40% Operational Efficiency Gain in Backup & Recovery via Observability Dashboards', cover:'assets/img/project-cards/cib-resiliencedashboards.webp', href:'projects/cib-resiliencedashboards.md' },
   ],
   IBM: [
-    { title:'Support Knowledge Base', desc:'Reduced Support Costs, Improved Utilization via Technical Support Enablement', cover:'assets/work/ibm-supportknowledgebase.webp', href:'projects/ibm-supportknowledgebase.md' },
+    { title:'Support Knowledge Base', desc:'Reduced Support Costs, Improved Utilization via Technical Support Enablement', cover:'assets/img/project-cards/ibm-supportknowledgebase.webp', href:'projects/ibm-supportknowledgebase.md' },
   ]
 };
 
