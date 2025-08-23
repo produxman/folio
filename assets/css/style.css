@@ -372,13 +372,13 @@ html[data-theme="light"] .logo-light { display: block; }
   --accent:#00baad;  /* dark accent */
 }
 
-[data-theme="light"]{
-  --bg:#ffffff;
-  --text:#0f172a;
-  --muted:#475569;
-  --panel:#f7fafc;
-  --border:#e5e7eb;
-  --accent:#063d42;  /* light accent */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #1a202c;       /* Darker text for better contrast */
+  --muted: #4a5568;      /* Darker muted text, meeting 4.5:1 ratio */
+  --panel: #f8fafc;      /* Slightly darker panel for better distinction */
+  --border: #cbd5e1;     /* Darker border color */
+  --accent: #0a5c63;     /* Darker teal meeting 4.5:1 on white */
 }
 
 *{box-sizing:border-box}
@@ -972,4 +972,20 @@ img{max-width:100%; display:block}
   .section-heading {
     padding-left: 4px; /* Slight indent from new margin */
   }
+}
+
+/* Ensure light mode focus states are visible */
+[data-theme="light"] .wa-details summary:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+[data-theme="light"] .chip:hover {
+  background: var(--accent);
+  color: #fff;          /* White text on accent background */
+}
+
+[data-theme="light"] .card-highlight {
+  border: 2px solid var(--accent);
+  box-shadow: 0 2px 16px 0 rgba(10, 92, 99, 0.15); /* Match new accent color */
 }
