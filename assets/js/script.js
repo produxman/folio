@@ -272,7 +272,7 @@ nodes.forEach(n=>observer.observe(n));
 (function() {
   const phrases = [
     "Product Leader.",
-    "INFP-T Adapter",
+    "INFP-T Adapter.",
     "Founder of Senza.",
     "Cooking Aficionado.",
     "Builder of Things.",
@@ -281,7 +281,6 @@ nodes.forEach(n=>observer.observe(n));
     "Cat Dad Extraordinaire.",
     "Chaos Organizer.",
     "Night Owl.",
-    "Chaos Organizer.",
   ];
   const ACCENT = getComputedStyle(document.documentElement).getPropertyValue('--accent') || '#00baad';
   const heroLeft = document.querySelector('.hero-left');
