@@ -342,7 +342,6 @@ html[data-theme="light"] .logo-light { display: block; }
   .mini-card:hover, .mini-card:focus {
     box-shadow: 0 4px 16px rgba(0,0,0,0.13);
     transform: translateY(-2px);
-    outline: 2px solid var(--accent);
   }
   .mini-card-title {
     font-weight: 600;
@@ -610,7 +609,6 @@ html[data-theme="light"] .logo-light { display: block; }
   .mini-card:hover, .mini-card:focus {
     box-shadow: 0 4px 16px rgba(0,0,0,0.13);
     transform: translateY(-2px);
-    outline: 2px solid var(--accent);
   }
   .mini-card-title {
     font-weight: 600;
@@ -980,7 +978,6 @@ img{max-width:100%; display:block}
   transform: translateY(-2px);
 }
 .card:focus {
-  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 .card .cover{
