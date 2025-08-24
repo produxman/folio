@@ -31,7 +31,6 @@
     }
 
     init() {
-      this.addMaximizeButton();
       this.setupListeners();
       this.checkConnection();
       this.setupWidgetControls();

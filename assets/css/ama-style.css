@@ -39,8 +39,70 @@
   fill: var(--chat-primary);
 }
 
+[data-theme="light"] #chat-widget,
+[data-theme="light"] .chat-modal {
+  background: #f8fafc !important;
+  color: #1a202c !important;
+}
+
+[data-theme="light"] .chat-header,
+[data-theme="light"] .chat-input-area {
+  background: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .chat-messages {
+  background: #f8fafc !important;
+  color: #1a202c !important;
+}
+
+[data-theme="light"] .chat-message.assistant {
+  background: #e2e8f0 !important;
+  color: #1a202c !important;
+}
+
+[data-theme="light"] .chat-message.user {
+  background: #bae6fd !important;
+  color: #1a202c !important;
+}
+
+[data-theme="light"] .chat-message.loading {
+  background: #e2e8f0 !important;
+  color: #64748b !important;
+}
+
+[data-theme="light"] .input-container {
+  background: #e2e8f0 !important;
+}
+
+[data-theme="light"] .input-container:focus-within {
+  background: #cbd5e1 !important;
+  box-shadow: 0 0 0 2px #0a5c63 !important;
+}
+
+[data-theme="light"] .action-btn {
+  color: #0a5c63 !important;
+}
+
+[data-theme="light"] .action-btn:hover {
+  background: rgba(10,92,99,0.08) !important;
+}
+
+[data-theme="light"] .chat-header-btn {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .chat-header-btn:hover {
+  background: #cbd5e1 !important;
+  color: #0a5c63 !important;
+}
+
+[data-theme="light"] .typing-indicator span {
+  background: #64748b !important;
+}
+
 [data-theme="light"] .chat-bubble .bubble-bg {
-  fill: #063d42;
+  fill: #0a5c63 !important;
 }
 
 .chat-widget:not(.minimized) .chat-bubble {
@@ -311,22 +373,33 @@
   }
 }
 
-@media (max-width: 600px) {
-  .chat-overlay {
-    width: 100vw;
-    height: 100vh;
-    border-radius: 0;
-    inset: 0;
+@media (max-width: 700px) {
+  .chat-modal {
+    width: calc(100vw - 32px);
+    height: calc(100vh - 32px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    margin: 0;
+    padding: 0;
     max-width: 100vw;
     max-height: 100vh;
   }
   .chat-messages {
-    padding: 16px 0 12px 0;
+    padding: 12px 8px;
   }
-  .chat-message {
-    font-size: 15px;
-    padding: 10px 12px;
-    min-height: 60px;
+  .chat-input-area {
+    padding: 12px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-modal {
+    width: calc(100vw - 12px);
+    height: calc(100vh - 12px);
+    border-radius: 10px;
   }
 }
 
@@ -370,11 +443,3 @@
   .chat-input-area {
     padding: 16px;
   }
-
-@media (max-width: 480px) {
-  .chat-modal {
-    width: 100vw;
-    height: 100vh;
-    border-radius: 0;
-  }
-}
