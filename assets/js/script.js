@@ -107,19 +107,6 @@ window.addEventListener('resize', alignHeroImage);
 // ===== Year + Theme =====
 document.getElementById('year').textContent = new Date().getFullYear();
 
-const themeToggle = document.getElementById('themeToggle');
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
-themeToggle.addEventListener('click', () => {
-  const cur = document.documentElement.getAttribute('data-theme');
-  const next = cur === 'light' ? '' : 'light';
-  if (next) document.documentElement.setAttribute('data-theme', next);
-  else document.documentElement.removeAttribute('data-theme');
-  localStorage.setItem('theme', next);
-});
-
-
-
 // ===== Projects data (cards link to GitHub markdown pages) =====
 const PROJECTS = {
   Meister: [
@@ -381,3 +368,33 @@ if (heroLeft) {
   const typewriter = new Typewriter(target, phrases.sort(() => Math.random() - 0.5));
   typewriter.start();
 }
+
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('themeToggle');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+const currentTheme = localStorage.getItem('theme');
+
+// Set initial theme
+if (currentTheme) {
+  document.documentElement.dataset.theme = currentTheme;
+  updateThemeIcon(currentTheme === 'light');
+} else {
+  document.documentElement.dataset.theme = prefersDark.matches ? 'dark' : 'light';
+  updateThemeIcon(!prefersDark.matches);
+}
+
+// Toggle theme function
+function toggleTheme() {
+  const isLight = document.documentElement.dataset.theme === 'light';
+  document.documentElement.dataset.theme = isLight ? 'dark' : 'light';
+  localStorage.setItem('theme', isLight ? 'dark' : 'light');
+  updateThemeIcon(!isLight);
+}
+
+// Update icon based on theme
+function updateThemeIcon(isLight) {
+  themeToggle.innerHTML = isLight ? '☀️' : '☾';
+}
+
+// Add click event listener
+themeToggle.addEventListener('click', toggleTheme);

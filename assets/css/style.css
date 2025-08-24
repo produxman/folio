@@ -690,8 +690,8 @@ img{max-width:100%; display:block}
 /* Theme toggle */
 .theme-toggle{
   position:fixed; 
-  right:clamp(12px, 3vw, 14px); 
-  bottom:clamp(12px, 3vw, 14px); 
+  right:clamp(16px, 4vw, 24px);
+  top:clamp(16px, 4vw, 24px); /* Changed from bottom to top */
   z-index:60;
   border:1px solid var(--border); 
   background:var(--panel); 
