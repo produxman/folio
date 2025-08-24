@@ -711,6 +711,22 @@ img{max-width:100%; display:block}
   box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
 
+@media (max-width: 700px) {
+  .theme-toggle {
+    position: absolute;
+    right: 24px;
+    margin-top: 24px; /* Match logo-and-title top margin for alignment */
+  }
+}
+
+/* Hidden toggle for automatic theme switching */
+.theme-toggle-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 120ms, transform 120ms;
+}
+
 /* ===== HERO ===== */
 .hero {
   max-width: 1200px;
@@ -802,8 +818,16 @@ img{max-width:100%; display:block}
 .wa-details { 
   position: relative; 
   padding-left: clamp(32px, 6vw, 40px); 
-  margin-bottom: clamp(16px, 4vw, 22px); 
+  margin-bottom: clamp(16px, 4vw, 22px);
+  scroll-margin-top: 32px; /* Add space above when scrolling to expanded cards */
 }
+
+@media (max-width: 700px) {
+  .wa-details {
+    scroll-margin-top: 72px; /* Increased from 48px for better spacing */
+  }
+}
+
 .wa-details summary {
   list-style: none;
   cursor: pointer;

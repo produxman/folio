@@ -369,7 +369,7 @@ if (heroLeft) {
   typewriter.start();
 }
 
-// Theme Toggle Functionality
+// ===== Theme Toggle Functionality
 const themeToggle = document.getElementById('themeToggle');
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 const currentTheme = localStorage.getItem('theme');
@@ -393,8 +393,45 @@ function toggleTheme() {
 
 // Update icon based on theme
 function updateThemeIcon(isLight) {
-  themeToggle.innerHTML = isLight ? '☀️' : '☾';
+  themeToggle.innerHTML = isLight ? '☀︎' : '☾';
 }
 
 // Add click event listener
 themeToggle.addEventListener('click', toggleTheme);
+
+// ===== Mobile: hide theme toggle after hero scrolls out =====
+const HERO_SELECTOR = '.hero';
+const heroEl = document.querySelector(HERO_SELECTOR);
+const mq = window.matchMedia('(max-width: 700px)');
+
+function applyVisibility(visible) {
+  if (!themeToggle) return;
+  if (!mq.matches) {
+    themeToggle.classList.remove('theme-toggle-hidden'); // always show on desktop
+    return;
+  }
+  themeToggle.classList.toggle('theme-toggle-hidden', !visible);
+}
+
+let io = null;
+function setupObserver() {
+  if (!heroEl) return;
+  if (io) io.disconnect();
+
+  io = new IntersectionObserver(
+    ([entry]) => applyVisibility(entry.isIntersecting),
+    { root: null, threshold: 0 } // root=null = viewport
+  );
+
+  io.observe(heroEl);
+  applyVisibility(true); // set initial state
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupObserver();
+  setTimeout(setupObserver, 100); // safety for layout shifts
+});
+
+window.addEventListener('resize', () => {
+  setupObserver(); // rebind if viewport breakpoint changes
+});

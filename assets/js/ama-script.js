@@ -37,21 +37,6 @@
       this.setupWidgetControls();
     }
 
-    addMaximizeButton() {
-      // Add maximize button if not present
-      if (!document.getElementById('maximize')) {
-        const btn = document.createElement('button');
-        btn.id = 'maximize';
-        btn.className = 'maximize-btn';
-        btn.title = 'Expand/Collapse';
-        btn.textContent = '⬜';
-        this.elements.header.appendChild(btn);
-        this.elements.maximize = btn;
-      } else {
-        this.elements.maximize = $('#maximize');
-      }
-    }
-
     setupListeners() {
       // Fix: Only trigger send if input is not disabled
       this.elements.input.addEventListener('keydown', e => {
