@@ -128,6 +128,7 @@ const PROJECTS = {
   ],
   Zyda: [
     { title:'Deliverect Integration', desc:'10% Reduction in Acquisition Costs via Streamlined POS Operations', cover:'assets/img/project-cards/zyda-deliverect.webp', href:'projects/zyda-deliverect.md', highlight: true },
+    { title:'ZyDine (Now Dyma)', desc:'MVP for a Food Ordering App with Personalized Recommendations & Direct Rewards', cover:'assets/img/project-cards/zyda-dyma.webp', href:'projects/zyda-dyma.md', highlight: true },
     { title:'Survv Integration', desc:'15% Faster Order Timelines with Integrated Last Mile Delivery', cover:'assets/img/project-cards/zyda-survv.webp', href:'projects/zyda-survv.md' },
   ],
   VeraSafe: [
