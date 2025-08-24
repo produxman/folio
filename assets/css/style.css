@@ -714,6 +714,7 @@ img{max-width:100%; display:block}
     position: absolute;
     right: 24px;
     margin-top: 24px; /* Match logo-and-title top margin for alignment */
+    font-size: 1.0em;
   }
 }
 
