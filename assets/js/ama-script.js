@@ -254,7 +254,7 @@
       setTimeout(() => {
         widget.classList.add('show');
         renderMessages();
-        if (input) {
+        if (input && window.innerWidth > 480) {
           input.focus();
         }
       }, 10);
@@ -264,6 +264,47 @@
         widget.style.display = 'none';
       }, 300);
     }
+  }
+
+  // Handle outside clicks
+  function handleOutsideClick(e) {
+    const widget = document.getElementById('ai-chatbot-widget');
+    const toggle = document.getElementById('ai-chatbot-toggle');
+    const chatWidget = document.getElementById('chat-widget');
+    const chatModal = chatWidget?.querySelector('.chat-modal');
+    const chatBubble = document.getElementById('chat-bubble');
+
+    // If main widget is present, close if click is outside widget and toggle
+    if (widget && toggle && widget.classList.contains('show')) {
+      if (!widget.contains(e.target) && !toggle.contains(e.target)) {
+        closeWidget();
+      }
+    }
+    // If alternate chatWidget/modal is present, minimize if click is outside
+    if (chatWidget && chatModal && chatBubble && !chatWidget.classList.contains('minimized')) {
+      if (!chatModal.contains(e.target) && !chatBubble.contains(e.target)) {
+        chatWidget.classList.add('minimized');
+      }
+    }
+  }
+
+  // Handle mobile keyboard
+  function handleMobileKeyboard() {
+    if (window.innerWidth > 480) return;
+
+    const widget = document.getElementById('ai-chatbot-widget');
+    const messages = document.getElementById('ai-chatbot-messages');
+    
+    if (!widget || !messages) return;
+
+    function updateHeight() {
+      const height = window.visualViewport?.height || window.innerHeight;
+      widget.style.height = `${height}px`;
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    window.visualViewport?.addEventListener('resize', updateHeight);
+    window.visualViewport?.addEventListener('scroll', updateHeight);
   }
 
   // Close widget
@@ -365,6 +406,13 @@
       sendBtn.addEventListener('click', handleUserMessage);
     }
 
+    // Add outside click handler for both mouse and pointer (covers touch, pen, mouse)
+    document.addEventListener('click', handleOutsideClick, true);
+    document.addEventListener('pointerdown', handleOutsideClick, { capture: true });
+    
+    // Initialize mobile keyboard handling
+    handleMobileKeyboard();
+
     // Initial render
     renderMessages();
     updateCounter();
@@ -386,11 +434,21 @@
     }
   };
 
+
   // Auto-initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => { initChatbot(); startStatusPolling(); });
+    document.addEventListener('DOMContentLoaded', () => { 
+      initChatbot(); 
+      startStatusPolling();
+      // Add outside click handler for both mouse and pointer (covers touch, pen, mouse)
+      document.addEventListener('click', handleOutsideClick, true);
+      document.addEventListener('pointerdown', handleOutsideClick, { capture: true });
+    });
   } else {
     initChatbot();
     startStatusPolling();
+    // Add outside click handler for both mouse and pointer (covers touch, pen, mouse)
+    document.addEventListener('click', handleOutsideClick, true);
+    document.addEventListener('pointerdown', handleOutsideClick, { capture: true });
   }
 })();

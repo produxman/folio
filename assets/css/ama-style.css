@@ -1,4 +1,4 @@
-    /* AI Chatbot Widget Styles - Themed */
+/* AI Chatbot Widget Styles - Themed */
     
     /* Base theme variables */
     html[data-theme="light"] #ai-chatbot-container {
@@ -13,6 +13,7 @@
         --chat-success: #059669;
         --chat-error: #DC2626;
         --chat-accent: var(--accent);
+        --chat-button-bg: rgba(255, 255, 255, 0.95);
     }
 
     html[data-theme="dark"] #ai-chatbot-container {
@@ -27,6 +28,19 @@
         --chat-success: #10B981;
         --chat-error: #EF4444;
         --chat-accent: var(--accent);
+        --chat-button-bg: rgba(31, 41, 55, 0.95);
+    }
+
+    @media (max-width: 480px) {
+        html[data-theme="light"] #ai-chatbot-container {
+            --chat-button-bg: rgba(255, 255, 255, 0.95);
+        }
+        html[data-theme="dark"] #ai-chatbot-container {
+            --chat-button-bg: rgba(31, 41, 55, 0.95);
+        }
+        #ai-chatbot-widget.show ~ #ai-chatbot-toggle {
+            --chat-button-bg: transparent;
+        }
     }
 
     /* Animation keyframes */
@@ -569,4 +583,130 @@
         }
     }
 
-    /* Remove media queries - using data-theme instead */
+        #ai-chatbot-messages {
+            padding: 16px;
+            font-size: 16px;
+            line-height: 1.5;
+            gap: 16px;
+        }
+
+        .chatbot-message {
+            max-width: 90%;
+        }
+
+        .chatbot-message-content {
+            padding: 12px 16px;
+        }
+
+        #ai-chatbot-input {
+            min-height: 44px;
+            padding: 12px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        #ai-chatbot-send {
+            width: 44px;
+            height: 44px;
+        }
+
+        #ai-chatbot-close {
+            width: 44px;
+            height: 44px;
+        }
+        /* Disable chat-toggle and chat-bubble hover/focus animation on mobile */
+        #ai-chatbot-toggle:hover,
+        #ai-chatbot-toggle:focus,
+        .chat-bubble:hover,
+        .chat-bubble:focus {
+            transform: none !important;
+            box-shadow: none !important;
+            animation: none !important;
+        }
+
+    /* Mobile-specific styles */
+    .chat-bubble {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        z-index: 99999;
+        transition: transform 0.2s ease;
+    }
+
+    .chat-bubble:hover {
+        transform: scale(1.05);
+    }
+
+    .chat-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .chat-widget:not(.minimized) .chat-backdrop {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .chat-modal {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 380px;
+        max-width: calc(100vw - 40px);
+        height: 550px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        transform: translateY(20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .chat-widget:not(.minimized) .chat-modal {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    @media (max-width: 480px) {
+        .chat-bubble {
+            bottom: 16px;
+            right: 16px;
+            width: 56px;
+            height: 56px;
+        }
+        
+        .chat-bubble:hover {
+            transform: none;
+        }
+        
+        .chat-modal {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            max-width: 100%;
+            height: calc(100vh - env(safe-area-inset-bottom));
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .chat-backdrop {
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+    }
