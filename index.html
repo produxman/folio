@@ -157,33 +157,48 @@
       <div id="projectGrid" class="grid"></div>
     </section>
   </main>
-  <div id="chat-widget" class="chat-widget minimized">
-    <button id="chat-bubble" class="chat-bubble" aria-label="Open chat">
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-        <circle cx="24" cy="24" r="24" class="bubble-bg"/>
-        <path d="M16 22.5C16 18.018 19.518 14.5 24 14.5C28.482 14.5 32 18.018 32 22.5C32 26.982 28.482 30.5 24 30.5C23.183 30.5 22.393 30.393 21.646 30.197L18 32L18.803 28.354C17.07 26.91 16 24.819 16 22.5Z" fill="white"/>
-      </svg>
-    </button>
-    <div class="chat-backdrop"></div>
-    <div class="chat-modal">
-      <div class="chat-header">
-        <span class="chat-title">Ask Me Anything (Beta)</span>
-        <div class="chat-header-actions">
-          <button id="chat-minimize" class="chat-btn chat-header-btn" aria-label="Minimize">&minus;</button>
+  <div id="ai-chatbot-container" style="bottom: 20px; right: 20px;">
+        <!-- Toggle Button -->
+        <div id="ai-chatbot-toggle" style="width: 64px; height: 64px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
         </div>
-      </div>
-      <div class="chat-messages" id="chat-messages"></div>
-      <form class="chat-input-area" id="chat-form" autocomplete="off">
-        <div class="input-container">
-          <textarea id="chat-input" rows="1" maxlength="2000" placeholder="Type a message..." required></textarea>
-          <div class="input-actions">
-            <button type="button" id="chat-send" class="chat-btn action-btn">Send</button>
-            <button type="button" id="chat-stop" class="chat-btn action-btn" disabled>Stop</button>
-          </div>
+
+        <!-- Chat Widget -->
+        <div id="ai-chatbot-widget" style="position: absolute; bottom: 70px; right: 0; width: min(380px, calc(100vw - 40px)); height: 600px; max-width: calc(100vw - 40px); transform: translateX(min(0px, calc(100vw - 384px - 40px)));">
+            <!-- Header -->
+            <div id="ai-chatbot-header">
+                <div>
+                    <div class="title">Ask Me Anything (Beta)</div>
+                    <div class="status">
+                        <div class="status-dot"></div>
+                        Online
+                    </div>
+                </div>
+                <button id="ai-chatbot-close">&times;</button>
+            </div>
+
+            <!-- Messages -->
+            <div id="ai-chatbot-messages"></div>
+
+            <!-- Input Area -->
+            <div class="chatbot-input-area">
+                <div class="chatbot-input-container">
+                    <textarea 
+                        id="ai-chatbot-input" 
+                        placeholder="Type your message..."
+                        maxlength="500"
+                        rows="1"
+                    ></textarea>
+                    <button id="ai-chatbot-send" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                        <i class="fas fa-stop"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-      </form>
     </div>
-  </div>
 
   <footer class="footer">
     <small>© <span id="year"></span> | Produxman</small>
