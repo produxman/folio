@@ -9,7 +9,7 @@
   // Configuration
   const CONFIG = {
     apiEndpoint: window.location.origin + '/api/chat',
-    greeting: '👋 Hi! I\'m your AI assistant. How can I help you today?',
+    greeting: '👋 I can answer a bit about Sherif. For nuance, ask the real guy.',
     maxLength: 500,
     rateLimit: {
       maxRequests: 20,
@@ -119,63 +119,59 @@
     system: ''
   };
 
-  async function streamBackendResponse(prompt, onChunk, onDone, onError) {
-    // Create a new AbortController for this request
-    window.currentController = new AbortController();
-    
-    try {
-      const response = await fetch(`${BACKEND_CONFIG.baseUrl}/api/generate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Basic ${btoa(`${BACKEND_CONFIG.username}:${BACKEND_CONFIG.password}`)}`
-        },
-        body: JSON.stringify({
-          prompt,
-          rag: true,   // turn on retrieval
-          k: 5,        // top-k chunks
-          stream: true
-        }),
+  async function streamBackendResponse(prompt, onChunk, onDone, onError, _retried = false) {
+  window.currentController = new AbortController();
+  let markdown = '';
 
-        signal: window.currentController.signal
+  try {
+    const response = await fetch(`${BACKEND_CONFIG.baseUrl}/api/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${btoa(`${BACKEND_CONFIG.username}:${BACKEND_CONFIG.password}`)}`
+      },
+      body: JSON.stringify({ prompt, rag: true, k: 5, stream: true }),
+      signal: window.currentController.signal
+    });
+
+    if (response.status === 424 && !_retried) {
+      await fetch(`${BACKEND_CONFIG.baseUrl}/rag/reload`, {
+        method: 'POST',
+        headers: { 'Authorization': `Basic ${btoa(`${BACKEND_CONFIG.username}:${BACKEND_CONFIG.password}`)}` }
       });
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
-      let markdown = '';
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        let lineEnd;
-        while ((lineEnd = buffer.indexOf('\n')) >= 0) {
-          const line = buffer.slice(0, lineEnd).trim();
-          buffer = buffer.slice(lineEnd + 1);
-          if (!line) continue;
-          try {
-            const parsed = JSON.parse(line);
-            if (parsed.done) { onDone && onDone(markdown); return; }
-            if (parsed.response || parsed.output) {
-              const content = parsed.response || parsed.output;
-              markdown += content;
-              onChunk && onChunk(content, markdown);
-            }
-          } catch (e) { /* ignore malformed lines */ }
-        }
-      }
-      onDone && onDone(markdown);
-    } catch (error) {
-      // Don't show error for aborted requests
-      if (error.name === 'AbortError') {
-        onDone && onDone(markdown);
-        return;
-      }
-      onError && onError(error);
-    } finally {
-      window.currentController = null;
+      return streamBackendResponse(prompt, onChunk, onDone, onError, true); // retry once
     }
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      let lineEnd;
+      while ((lineEnd = buffer.indexOf('\n')) >= 0) {
+        const line = buffer.slice(0, lineEnd).trim();
+        buffer = buffer.slice(lineEnd + 1);
+        if (!line) continue;
+        try {
+          const parsed = JSON.parse(line);
+          if (parsed.done) { onDone?.(markdown); return; }
+          const chunk = parsed.response ?? parsed.output ?? '';
+          if (chunk) { markdown += chunk; onChunk?.(chunk, markdown); }
+        } catch { /* ignore non-JSON lines */ }
+      }
+    }
+    onDone?.(markdown);
+  } catch (err) {
+    if (err.name !== 'AbortError') onError?.(err);
+    onDone?.(markdown);
+  } finally {
+    window.currentController = null;
   }
+}
 
   // Replace handleUserMessage to use streaming
   async function handleUserMessage() {
