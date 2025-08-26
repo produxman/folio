@@ -6,7 +6,7 @@
         --chat-text: #23272F;
         --chat-muted: #5B6472;
         --chat-border: #D1D5DB;
-        --chat-surface: #FFFFFF;
+        --chat-surface: #E8E5E5;
         --chat-hover: #F1F3F7;
         --chat-header-bg: #FFFFFF;
         --chat-input-bg: #FFFFFF;
@@ -21,7 +21,7 @@
         --chat-text: #F9FAFB;
         --chat-muted: #9CA3AF;
         --chat-border: #4B5563;
-        --chat-surface: #23293A;
+        --chat-surface: #48526E;
         --chat-hover: #23293A;
         --chat-header-bg: #111827;
         --chat-input-bg: #111827;
@@ -410,7 +410,7 @@
         display: flex;
         gap: 8px;
         align-items: flex-end;
-        background: var(--chat-surface);
+        background: var(--chat-hover);
         padding: 6px;
         border-radius: 8px;
         border: 1px solid var(--chat-border);
