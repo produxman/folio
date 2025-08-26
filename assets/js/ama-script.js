@@ -69,6 +69,8 @@
     container.innerHTML = '';
 
     messages.forEach((message, index) => {
+      // If assistant message is hidden, skip rendering its bubble
+      if (message.role === 'assistant' && message.hidden) return;
       const messageDiv = document.createElement('div');
       messageDiv.className = `chatbot-message ${message.role}`;
 
@@ -199,18 +201,26 @@
     isTyping = true;
     sendButton.classList.add('streaming');
     
-    // Add placeholder for streaming response
-    const aiMsg = { id: Date.now().toString() + '_bot', role: 'assistant', content: '' };
+    // Add placeholder for streaming response, but keep it hidden until first chunk
+    const aiMsg = { id: Date.now().toString() + '_bot', role: 'assistant', content: '', hidden: true };
     messages.push(aiMsg);
     renderMessages();
-    // Find the last assistant message div
-    const allMsgDivs = container.querySelectorAll('.chatbot-message.assistant .chatbot-message-content');
-    const lastAIDiv = allMsgDivs[allMsgDivs.length - 1];
+    let firstChunkReceived = false;
     await new Promise((resolve) => {
       streamBackendResponse(content, (chunk, full) => {
+        if (!firstChunkReceived) {
+          firstChunkReceived = true;
+          aiMsg.hidden = false;
+          isTyping = false;
+          renderMessages();
+        }
         aiMsg.content = full;
-        if (lastAIDiv) lastAIDiv.innerHTML = renderMarkdown(full);
-        container.scrollTop = container.scrollHeight;
+        if (!aiMsg.hidden) {
+          const allMsgDivs = container.querySelectorAll('.chatbot-message.assistant .chatbot-message-content');
+          const lastAIDiv = allMsgDivs[allMsgDivs.length - 1];
+          if (lastAIDiv) lastAIDiv.innerHTML = renderMarkdown(full);
+          container.scrollTop = container.scrollHeight;
+        }
       }, () => {
         isTyping = false;
         sendButton.classList.remove('streaming');
@@ -218,6 +228,7 @@
         resolve();
       }, (err) => {
         aiMsg.content = 'Sorry, there was an error generating the response.';
+        aiMsg.hidden = false;
         isTyping = false;
         sendButton.classList.remove('streaming');
         renderMessages();
