@@ -1,3 +1,5 @@
 # macOS system files
 .DS_Store
 .html
+# macOS
+.DS_Store

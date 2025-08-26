@@ -132,10 +132,11 @@
         },
         body: JSON.stringify({
           prompt,
-          model: BACKEND_CONFIG.model,
-          system: BACKEND_CONFIG.system,
+          rag: true,   // turn on retrieval
+          k: 5,        // top-k chunks
           stream: true
         }),
+
         signal: window.currentController.signal
       });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
