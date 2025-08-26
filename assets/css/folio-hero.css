@@ -1,0 +1,48 @@
+/* Hero section styles */
+.hero {
+  max-width: 1200px;
+  margin: clamp(24px, 6vw, 40px) auto clamp(24px, 4vw, 32px);
+  padding: 0 clamp(16px, 4vw, 32px);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(24px, 6vw, 48px);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+}
+.logo { width: clamp(48px, 10vw, 56px); margin-bottom: clamp(6px, 2vw, 8px); }
+.logo-light { display: none; }
+.logo-dark { display: block; }
+html[data-theme="light"] .logo-dark { display: none; }
+html[data-theme="light"] .logo-light { display: block; }
+.logo-and-title { display: flex; align-items: center; gap: 12px; }
+.logo-and-title h1 { margin: 0; font-size: clamp(24px, 5vw, 44px); line-height: 1.2; }
+.accent { color: var(--accent); }
+.bio { color: var(--muted); line-height: 1.6; margin: clamp(8px, 2vw, 10px) 0 clamp(12px, 3vw, 16px); font-size: clamp(0.9rem, 2.5vw, 1rem); }
+.socials { display: flex; gap: clamp(10px, 2.5vw, 14px); flex-wrap: wrap; margin-top: clamp(6px, 2vw, 8px); margin-bottom: clamp(24px, 5vw, 32px); }
+.chip { border: 1px solid var(--border); background: var(--panel); color: var(--text); padding: clamp(6px, 2vw, 8px) clamp(8px, 2vw, 12px); border-radius: 999px; text-decoration: none; display: flex; align-items: center; gap: clamp(4px, 1vw, 6px); transition: background .15s, transform .15s; font-size: clamp(0.85rem, 2vw, 0.9rem); }
+.chip:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+.chip:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.social-icon img { width: clamp(16px, 4vw, 20px); height: clamp(16px, 4vw, 20px); display: block; }
+.hero-right { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.hero-photo img { border: 1px solid var(--border); border-radius: 14px; }
+/* Typewriter */
+.typewriter-rotator { font-size: clamp(1.08rem, 3vw, 1.32rem); font-weight: 400; color: var(--text); min-height: 1.5em; margin-top: 6px; margin-bottom: 8px; letter-spacing: -0.01em; display: flex; align-items: center; white-space: pre; }
+.typewriter-text { font-weight: 400; }
+.typewriter-caret { display: inline-block; width: 0.09em; height: 1.1em; margin-left: 2px; background: var(--accent, #00baad); vertical-align: middle; border-radius: 1px; animation: typewriter-blink 1s steps(1) infinite; }
+@keyframes typewriter-blink { 0%, 70% { opacity: 1; } 71%, 100% { opacity: 0; } }
+/* Mobile adjustments */
+@media (max-width: 700px) {
+  .hero { padding: 0 24px; margin: 32px auto clamp(16px, 3vw, 18px); grid-template-columns: 1fr; gap: clamp(12px, 3vw, 16px); }
+  .logo { width: clamp(48px, 12vw, 56px); margin-bottom: 0; }
+  .logo-and-title { margin-top: 16px; gap: 16px; align-items: flex-start; }
+  .logo-and-title .title-group { min-height: clamp(48px, 12vw, 56px); display: flex; flex-direction: column; justify-content: center; }
+  .logo-and-title h1 { font-size: clamp(26px, 7vw, 36px); line-height: 1.1; }
+  .typewriter-rotator { font-size: clamp(1.15rem, 4vw, 1.25rem); margin: 4px 0 0 0; }
+  .bio { font-size: clamp(1rem, 2.8vw, 1.1rem); margin: clamp(12px, 3vw, 16px) 0; text-align: justify; }
+  .socials { margin: clamp(12px, 3vw, 16px) 0 0 0; }
+  .hero-right { display: none; }
+}
+
+[data-theme="light"] .chip:hover { background: var(--accent); color: #fff; }
