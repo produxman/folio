@@ -102,8 +102,39 @@ function alignHeroImage() {
   heroPhoto.style.width = rightWidth + 'px';
 }
 
-window.addEventListener('DOMContentLoaded', alignHeroImage);
-window.addEventListener('resize', alignHeroImage);
+// Ensure .logo max-height matches h1 + .typewriter-rotator
+function setLogoMaxHeight() {
+  // Handles both dark and light logo
+  const logoDark = document.querySelector('.logo.logo-dark');
+  const logoLight = document.querySelector('.logo.logo-light');
+  const h1 = document.querySelector('.logo-and-title h1');
+  const typewriter = document.querySelector('.logo-and-title .typewriter-rotator');
+  if (!h1 || !typewriter) return;
+  // Get computed heights (including margins)
+  const h1Rect = h1.getBoundingClientRect();
+  const typeRect = typewriter.getBoundingClientRect();
+  // If stacked vertically, sum heights; if inline, use max bottom
+  let totalHeight;
+  if (h1Rect.bottom <= typeRect.top) {
+    // Stacked
+    totalHeight = (h1Rect.height + typeRect.height);
+  } else {
+    // Overlapping or inline, use max bottom - min top
+    totalHeight = Math.max(h1Rect.bottom, typeRect.bottom) - Math.min(h1Rect.top, typeRect.top);
+  }
+  // Set max-height in px
+  if (logoDark) logoDark.style.maxHeight = totalHeight + 'px';
+  if (logoLight) logoLight.style.maxHeight = totalHeight + 'px';
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  alignHeroImage();
+  setLogoMaxHeight();
+});
+window.addEventListener('resize', () => {
+  alignHeroImage();
+  setLogoMaxHeight();
+});
 // ===== Year + Theme =====
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -162,7 +193,7 @@ function renderCards(company) {
     // Create header
     const header = document.createElement('h2');
     header.className = 'mini-projects-header';
-    header.textContent = `Projects Where I Drove Impact`;
+    header.textContent = `Where I Drove Impact`;
     // Create mini-cards
     const mini = document.createElement('div');
     mini.className = 'mini-projects';
@@ -201,7 +232,7 @@ function renderCards(company) {
   }
 
   // Render projects for the open company
-  title.textContent = `Projects Where I Drove Impact`;
+  title.textContent = `Where I Drove Impact`;
   grid.innerHTML = '';
   const items = PROJECTS[company] || [];
   if (!items.length) {
@@ -394,7 +425,8 @@ function toggleTheme() {
 
 // Update icon based on theme
 function updateThemeIcon(isLight) {
-  themeToggle.innerHTML = isLight ? '☀︎' : '☾';
+  // We're now using a lightbulb icon with CSS handling the color
+  // No need to change innerHTML
 }
 
 // Add click event listener
