@@ -1,3 +1,11 @@
+/* Social nav desktop/mobile split */
+.socials-desktop { display: flex; }
+.socials-mobile { display: none !important; }
+
+@media (max-width: 900px) {
+  .socials-desktop { display: none !important; }
+  .socials-mobile { display: flex !important; justify-content: center; margin: 16px 0 16px 0; }
+}
 :root {
   --bg:#0f172a;
   --text:#f1f5f9;
@@ -33,9 +41,10 @@ img{max-width:100%;display:block}
 /* Layout */
 .stacked{max-width:1200px;margin:0 auto clamp(32px,6vw,48px);padding:0 clamp(16px,4vw,32px);display:grid;grid-template-columns:1.1fr 2fr;gap:clamp(32px,6vw,48px);align-items:start}
 @media (max-width:1100px){.stacked{grid-template-columns:1fr}}
-.timeline-col{position:relative;padding-top:clamp(8px,2vw,12px)}
-.timeline-line{position:absolute;left:clamp(17px,4vw,19px);top:0;width:2.5px;height:100%;background:var(--border);border-radius:2px;z-index:0}
 /* Timeline */
+.timeline-col{position:relative;padding-top:clamp(8px,2vw,12px)}
+.timeline-line{position:absolute;left:clamp(16px,4vw,16px);top:0;width:2.5px;height:100%;background:var(--border);border-radius:2px;z-index:0}
+@media (max-width:700px){.timeline-line{left:clamp(10px,4vw,10px)}}
 .wa-timeline{max-width:700px;padding-bottom:clamp(8px,2vw,12px)}
 .wa-details{position:relative;padding-left:clamp(32px,6vw,40px);margin-bottom:clamp(16px,4vw,22px);scroll-margin-top:32px}
 @media (max-width:700px){.wa-details{scroll-margin-top:72px}}
@@ -50,7 +59,8 @@ img{max-width:100%;display:block}
 [data-theme="light"] .wa-details::before{display:none}
 .dot-btn{position:absolute;left:clamp(-39px,-8vw,-37px);top:50%;transform:translateY(-50%);background:none;border:none;padding:0;margin:0;cursor:pointer;z-index:2;width:clamp(28px,6vw,32px);height:clamp(28px,6vw,32px);display:flex;align-items:center;justify-content:center;transition:transform .15s}
 .dot-btn:hover{transform:translateY(-50%) scale(1.1)}
-.dot{width:clamp(16px,4vw,18px);height:clamp(16px,4vw,18px);border-radius:50%;border:3px solid #222a35;outline:2px solid var(--border);background:#fff;display:block;transition:background .2s,outline .2s,transform .15s}
+.dot{width:clamp(16px,4vw,18px);height:clamp(16px,4vw,18px);border-radius:50%;border:3px solid #222a35;outline:2px solid var(--border);background:#fff;}
+[data-theme="light"] .dot{border:3px solid #fff}
 .wa-details[open] .dot{background:var(--accent);outline-color:var(--accent)}
 .dot-btn:focus .dot{box-shadow:0 0 0 2px var(--accent)}
 .wa-caret{opacity:.8;font-size:clamp(1.6rem,3vw,1.8rem);transition:transform .2s;color:inherit}

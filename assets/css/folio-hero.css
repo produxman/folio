@@ -496,7 +496,7 @@ html[data-theme="light"] .logo-light { display: block !important; }
     width: 100%;
   }
   .logo { width: clamp(48px, 12vw, 56px); margin-bottom: 0; }
-  .logo-and-title { margin-top: 16px; gap: 16px; align-items: flex-start; }
+  .logo-and-title { margin-top: 16px; gap: 10px; align-items: flex-start; }
   .logo-and-title .title-group { min-height: clamp(48px, 12vw, 56px); display: flex; flex-direction: column; justify-content: center; }
   .logo-and-title h1 { font-size: clamp(26px, 7vw, 36px); line-height: 1.1; }
   .typewriter-rotator { font-size: clamp(1.15rem, 4vw, 1.25rem); margin: 4px 0 0 0; }
