@@ -60,9 +60,23 @@ img{max-width:100%;display:block}
 .wa-details:hover .dot{border-color:var(--accent);outline-color:var(--accent)}
 .wa-details summary:focus~.dot,.wa-details:focus-within .dot{border-color:#222a35;outline-color:var(--border);color:inherit}
 /* Section headings */
-.section-heading{font-size:clamp(1.2rem,3vw,1.5rem);margin:0 0 clamp(14px,3vw,18px);color:var(--text)}
+.section-heading {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 700;
+  margin: 0 0 clamp(14px,3vw,18px);
+  color: var(--text);
+  line-height: 1.18;
+}
+
+#projectsTitle, .projects-col h3 {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 600;
+  margin: 0 0 clamp(12px,2vw,16px);
+  color: var(--text);
+  line-height: 1.22;
+}
 .timeline-wrapper{display:flex;flex-direction:column}
-@media (max-width:700px){.section-heading{padding-left:2px;margin-top:clamp(24px,5vw,32px)}}
+@media (max-width:700px){.section-heading{padding-left:2px}}
 /* Footer */
 .footer{max-width:1100px;margin:clamp(14px,3vw,18px) auto;padding:0 clamp(12px,3vw,16px);color:var(--muted);text-align:center;font-size:clamp(0.85rem,2vw,0.9rem)}
 /* Light theme adjustments */
