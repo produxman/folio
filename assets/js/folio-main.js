@@ -224,7 +224,7 @@ function renderCards(company) {
           <i class="fa fa-star"></i>
         </span>
       ` : ''}
-      <div class="cover"><img src="${p.cover}" alt="${p.title}"></div>
+  <div class="cover"><img class="project-card-img" src="${p.cover}" alt="${p.title}"></div>
       <div class="body">
         <h4>${p.title}</h4>
         <p>${p.desc}</p>
