@@ -1,0 +1,8 @@
+flask
+flask-cors
+waitress
+flask-basicauth
+requests
+chromadb
+pypdf
+python-dotenv

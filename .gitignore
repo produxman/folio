@@ -3,3 +3,7 @@
 .html
 **/.DS_Store
 tmp/
+**/.env
+**/logs/
+**/*.log
+**/app/__pycache__/
