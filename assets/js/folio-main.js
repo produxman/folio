@@ -77,30 +77,6 @@ class Typewriter {
   }
 }
 
-// Dynamically align hero image to match left (down to socials) and right (to project cards)
-function alignHeroImage() {
-  const hero = document.querySelector('.hero');
-  const heroLeft = document.querySelector('.hero-left');
-  const socials = document.querySelector('.socials');
-  const heroRight = document.querySelector('.hero-right');
-  const heroPhoto = document.querySelector('.hero-photo');
-  const projectsCol = document.querySelector('.projects-col');
-  if (!hero || !heroLeft || !socials || !heroRight || !heroPhoto || !projectsCol) return;
-
-  // Get the bottom of the socials relative to hero
-  const heroRect = hero.getBoundingClientRect();
-  const socialsRect = socials.getBoundingClientRect();
-  const leftHeight = socialsRect.bottom - heroRect.top;
-
-  // Get the width of the projects column
-  const projectsRect = projectsCol.getBoundingClientRect();
-  const heroRightRect = heroRight.getBoundingClientRect();
-  const rightWidth = projectsRect.right - heroRightRect.left;
-
-  // Set the hero image height and width
-  heroPhoto.style.height = leftHeight + 'px';
-  heroPhoto.style.width = rightWidth + 'px';
-}
 
 // Ensure .logo max-height matches h1 + .typewriter-rotator
 function setLogoMaxHeight() {
@@ -127,14 +103,8 @@ function setLogoMaxHeight() {
   if (logoLight) logoLight.style.maxHeight = totalHeight + 'px';
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  alignHeroImage();
-  setLogoMaxHeight();
-});
-window.addEventListener('resize', () => {
-  alignHeroImage();
-  setLogoMaxHeight();
-});
+window.addEventListener('DOMContentLoaded', setLogoMaxHeight);
+window.addEventListener('resize', setLogoMaxHeight);
 // ===== Year + Theme =====
 document.getElementById('year').textContent = new Date().getFullYear();
 
