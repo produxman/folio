@@ -93,7 +93,7 @@ html[data-theme="dark"] #ai-chatbot-container { --chat-bg: #1F2937; --chat-text:
 @media (max-width: 768px) {
     #ai-chatbot-widget {
         position: fixed !important;
-        top: calc(100vh - 70vh - 80px) !important;
+        top: calc(100vh - 70vh - 120px) !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
         width: calc(100vw - 32px) !important;
@@ -101,6 +101,7 @@ html[data-theme="dark"] #ai-chatbot-container { --chat-bg: #1F2937; --chat-text:
         height: 70vh !important;
         right: auto !important;
         bottom: auto !important;
+        margin-bottom: 80px !important;
     }
     
     /* Remove bounce animation on mobile */
@@ -113,5 +114,10 @@ html[data-theme="dark"] #ai-chatbot-container { --chat-bg: #1F2937; --chat-text:
         background: rgba(0, 0, 0, 0.5) !important;
         backdrop-filter: blur(8px) !important;
         -webkit-backdrop-filter: blur(8px) !important;
+    }
+    
+    /* Prevent auto-zoom on iPhone by ensuring font-size is 16px+ */
+    #ai-chatbot-input {
+        font-size: 16px !important;
     }
 }
