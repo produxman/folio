@@ -67,10 +67,10 @@
 .hero .switch-track { grid-area: switch-track; }
 @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
 .logo { width: clamp(48px, 10vw, 56px); margin-bottom: clamp(6px, 2vw, 8px); }
-.logo-light { display: none; }
-.logo-dark { display: block; }
-html[data-theme="light"] .logo-dark { display: none; }
-html[data-theme="light"] .logo-light { display: block; }
+.logo-light { display: none !important; }
+.logo-dark { display: block !important; }
+html[data-theme="light"] .logo-dark { display: none !important; }
+html[data-theme="light"] .logo-light { display: block !important; }
 .logo-and-title { display: flex; align-items: stretch; gap: 18px; height: auto; }
 .logo-and-title .logo { display: block; height: auto; max-height: calc(2.2em + 1.5em); width: auto; align-self: flex-start; margin: 0; }
 .logo-and-title .title-group { display: flex; flex-direction: column; justify-content: flex-start; height: 100%; }

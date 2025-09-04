@@ -119,11 +119,8 @@
 
   <!-- ====== SECTION 2 — TIMELINE + PROJECT CARDS (Accordion) ====== -->
   <section class="accordion-section">
-    <h2 class="section-heading accordion-toggle" id="workAccordionToggle" tabindex="0" aria-expanded="true" aria-controls="workAccordionContent">
-      The Work I Do
-      <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
-    </h2>
-    <div id="workAccordionContent" class="accordion-content" style="max-height: none; overflow: hidden; transition: max-height 0.4s cubic-bezier(.4,0,.2,1);">
+  <h2 class="section-heading">The Work I Do</h2>
+  <div class="accordion-content" style="overflow: visible; max-height: none; transition: none;">
       <main class="stacked">
         <section class="timeline-wrapper">
           <section class="timeline-col">
@@ -134,7 +131,7 @@
                   <button class="dot-btn" aria-label="2024–Present — Meister"><span class="dot"></span></button>
                   <span class="wa-date">2024–Present</span>
                   <span class="wa-head">Meister</span>
-                  <span class="wa-caret">▾</span>
+                  <span class="wa-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
                 </summary>
                 <div class="wa-content">
                   <strong>Sr. Technical PM, Billing & Identity</strong> — Leading Meister’s billing re-architecture, scaling account management, and shaping monetization strategy for 0→1 Meister AI.
@@ -145,7 +142,7 @@
                   <button class="dot-btn" aria-label="2021–2024 — Pelcro"><span class="dot"></span></button>
                   <span class="wa-date">2021–2024</span>
                   <span class="wa-head">Pelcro</span>
-                  <span class="wa-caret">▸</span>
+                  <span class="wa-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
                 </summary>
                 <div class="wa-content">
                   <strong>PM → Sr. PM → Head of Product</strong> — Progressed rapidly from individual contributor to leading product strategy and cross-functional teams, driving platform growth across payments, billing, enterprise readiness, and ecosystem integrations.
@@ -156,7 +153,7 @@
                   <button class="dot-btn" aria-label="2022–2024 — Dell Technologies"><span class="dot"></span></button>
                   <span class="wa-date">2022–2024</span>
                   <span class="wa-head">Dell Technologies</span>
-                  <span class="wa-caret">▸</span>
+                  <span class="wa-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
                 </summary>
                 <div class="wa-content">
                   <strong>Program Resource Manager (Managed Services) → Sr. Technical PM (Live Optics)</strong> — Grew from orchestrating resource allocation and SLA performance to leading product initiatives in infrastructure sizing, training, and support efficiency.
@@ -167,7 +164,7 @@
                   <button class="dot-btn" aria-label="2021–2022 — Zyda"><span class="dot"></span></button>
                   <span class="wa-date">2021–2022</span>
                   <span class="wa-head">Zyda</span>
-                  <span class="wa-caret">▸</span>
+                  <span class="wa-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
                 </summary>
                 <div class="wa-content">
                   <strong>PM, Growth & Partnerships</strong> — Focused on scaling partnerships and integrations to streamline payments, inventory, and delivery operations while improving customer experience and acquisition efficiency.
@@ -178,7 +175,7 @@
                   <button class="dot-btn" aria-label="2019–2021 — VeraSafe"><span class="dot"></span></button>
                   <span class="wa-date">2019–2021</span>
                   <span class="wa-head">VeraSafe</span>
-                  <span class="wa-caret">▸</span>
+                  <span class="wa-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
                 </summary>
                 <div class="wa-content">
                   <strong>Technical PM</strong> — Combined compliance advisory with product delivery, supporting SMBs worldwide in data protection while launching a security MVP and improving internal IT operations.
@@ -189,7 +186,7 @@
                   <button class="dot-btn" aria-label="2016–2018 — CIB"><span class="dot"></span></button>
                   <span class="wa-date">2016–2018</span>
                   <span class="wa-head">CIB</span>
-                  <span class="wa-caret">▸</span>
+                  <span class="wa-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
                 </summary>
                 <div class="wa-content">
                   <strong>Technical PM, Data Protection Infrastructure</strong> — Led modernization of backup and recovery systems, improving resiliency, reducing storage costs, and automating key processes for regulatory compliance.
@@ -200,7 +197,7 @@
                   <button class="dot-btn" aria-label="2012–2016 — IBM"><span class="dot"></span></button>
                   <span class="wa-date">2012–2016</span>
                   <span class="wa-head">IBM</span>
-                  <span class="wa-caret">▸</span>
+                  <span class="wa-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
                 </summary>
                 <div class="wa-content">
                   <strong>Sr. Product Support Specialist, Spectrum Protect</strong> — Built the foundation for remote software support and knowledge management, while enhancing team effectiveness through tooling, hiring input, and onboarding.
@@ -220,34 +217,32 @@
 
   <!-- ====== SUBSTACK BLOG SECTION (Accordion) ====== -->
   <section class="accordion-section">
-    <h2 class="section-heading accordion-toggle" id="blogAccordionToggle" tabindex="0" aria-expanded="false" aria-controls="blogAccordionContent">
-      The Story Point Blog
-      <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
-    </h2>
-    <div id="blogAccordionContent" class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(.4,0,.2,1);">
-      <section class="substack-section" id="substackBlog">
-        <div class="substack-articles" id="substackArticles">
-          <!-- Example static articles, replace/fetch dynamically as needed -->
-          <article class="substack-article">
-            <h3><a href="https://produxman.substack.com/p/ai-product-strategy" target="_blank" rel="noopener">AI Product Strategy: Lessons from the Trenches</a></h3>
-            <p>How to drive real impact with AI in product management, with actionable frameworks and stories.</p>
-          </article>
-          <article class="substack-article">
-            <h3><a href="https://produxman.substack.com/p/lean-metrics" target="_blank" rel="noopener">Lean Metrics for Growth</a></h3>
-            <p>Cut through the noise and focus on the metrics that matter for scaling your product.</p>
-          </article>
-          <article class="substack-article">
-            <h3><a href="https://produxman.substack.com/p/remote-leadership" target="_blank" rel="noopener">Remote Leadership: Building Teams That Win</a></h3>
-            <p>Best practices for leading distributed teams and fostering a culture of ownership.</p>
-          </article>
-        </div>
-        <div class="substack-actions">
-          <a class="substack-btn" href="https://produxman.substack.com" target="_blank" rel="noopener">
-            <span class="substack-btn-label">Explore More Stories</span>
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-          </a>
-        </div>
-      </section>
+  <h2 class="section-heading">The Story Point Blog</h2>
+    <div class="substack-section" id="substackBlog">
+      <div class="substack-articles" id="substackArticles">
+        <!-- Example static articles, replace/fetch dynamically as needed -->
+        <article class="substack-article">
+          <img class="substack-article-img" src="assets/img/project-cards/meister-billingengine.webp" alt="AI Product Strategy: Lessons from the Trenches">
+          <h3><a href="https://produxman.substack.com/p/ai-product-strategy" target="_blank" rel="noopener">AI Product Strategy: Lessons from the Trenches</a></h3>
+          <p>How to drive real impact with AI in product management, with actionable frameworks and stories.</p>
+        </article>
+        <article class="substack-article">
+          <img class="substack-article-img" src="assets/img/project-cards/pelcro-automations.webp" alt="Lean Metrics for Growth">
+          <h3><a href="https://produxman.substack.com/p/lean-metrics" target="_blank" rel="noopener">Lean Metrics for Growth</a></h3>
+          <p>Cut through the noise and focus on the metrics that matter for scaling your product.</p>
+        </article>
+        <article class="substack-article">
+          <img class="substack-article-img" src="assets/img/project-cards/ibm-supportknowledgebase.webp" alt="Remote Leadership: Building Teams That Win">
+          <h3><a href="https://produxman.substack.com/p/remote-leadership" target="_blank" rel="noopener">Remote Leadership: Building Teams That Win</a></h3>
+          <p>Best practices for leading distributed teams and fostering a culture of ownership.</p>
+        </article>
+      </div>
+      <div class="substack-actions">
+        <a class="substack-btn" href="https://produxman.substack.com" target="_blank" rel="noopener">
+          <span class="substack-btn-label">Explore More Stories</span>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -319,7 +314,7 @@
   <script>
 async function fetchSubstackArticles() {
   const feedUrl = 'https://produxman.substack.com/feed';
-  const blogContainer = document.getElementById('blogAccordionContent');
+  const blogContainer = document.getElementById('substackArticles');
   if (!blogContainer) return;
 
   try {
@@ -337,19 +332,14 @@ async function fetchSubstackArticles() {
         if (match) img = match[1];
       }
       return `
-        <a class="substack-article" href="${item.link}" target="_blank" rel="noopener">
+        <article class="substack-article">
           ${img ? `<img src="${img}" alt="${item.title}" class="substack-article-img">` : ''}
-          <h3>${item.title}</h3>
+          <h3><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h3>
           <p>${item.description}</p>
-        </a>
+        </article>
       `;
     }).join('');
-    blogContainer.innerHTML = `
-      <div class="substack-articles">${articles}</div>
-      <div class="substack-actions">
-        <a class="substack-btn" href="https://produxman.substack.com" target="_blank" rel="noopener">Explore More Stories <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-    `;
+    blogContainer.innerHTML = articles;
   } catch (err) {
     blogContainer.innerHTML = '<p class="muted">Failed to load articles.</p>';
   }

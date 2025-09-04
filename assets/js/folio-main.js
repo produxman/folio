@@ -254,12 +254,18 @@ const tl = document.getElementById('wa-timeline');
 if (tl) {
   tl.querySelectorAll('.wa-details').forEach(d => {
     d.addEventListener('toggle', () => {
+      // Toggle chevron direction
+      const chevron = d.querySelector('.wa-chevron');
+      if (chevron) {
+        if (d.open) {
+          chevron.classList.add('open');
+        } else {
+          chevron.classList.remove('open');
+        }
+      }
       if (d.open) {
         // close others
         tl.querySelectorAll('.wa-details').forEach(o => { if (o!==d) o.open = false; });
-        // update carets
-        tl.querySelectorAll('.wa-details summary .wa-caret').forEach(c => c.textContent = '▸');
-        d.querySelector('.wa-caret').textContent = '▾';
         // load projects for the open company
         renderCards(d.dataset.company);
         alignProjectsColToCompany(d.dataset.company);
@@ -267,7 +273,6 @@ if (tl) {
           d.scrollIntoView({behavior: 'smooth', block: 'start'});
         }, 0);
       } else {
-        d.querySelector('.wa-caret').textContent = '▸';
         // If no company is open, show placeholder
         const open = tl.querySelector('.wa-details[open]');
         if (open) {
@@ -281,13 +286,7 @@ if (tl) {
     const dotBtn = d.querySelector('.dot-btn');
     if (dotBtn) {
       dotBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (!d.open) {
-          d.open = true;
-        } else {
-          // Optionally, scroll to the card if already open
-          d.scrollIntoView({behavior:'smooth', block:'center'});
-        }
+        d.open = true;
       });
     }
   });
@@ -297,19 +296,27 @@ if (tl) {
 function alignProjectsColToCompany(company) {
   if (window.innerWidth <= 700) {
     document.querySelector('.projects-col')?.style.removeProperty('margin-top');
+    document.getElementById('projectsTitle')?.style.removeProperty('top');
+    document.getElementById('projectsTitle')?.style.removeProperty('visibility');
     return;
   }
 
   const projectsCol = document.querySelector('.projects-col');
   const details = document.querySelector(`.wa-details[data-company="${company}"]`);
   const stacked = document.querySelector('.stacked');
+  const projectsTitle = document.getElementById('projectsTitle');
 
-  if (!projectsCol || !details || !stacked) return;
+  if (!projectsCol || !details || !stacked || !projectsTitle) return;
 
   const stackedBox = stacked.getBoundingClientRect();
   const cardBox = details.getBoundingClientRect();
+  // Calculate offset from top of .stacked to top of details card
   const alignmentOffset = cardBox.top - stackedBox.top;
   projectsCol.style.marginTop = `${alignmentOffset}px`;
+  // Align #projectsTitle with top of company card
+  projectsTitle.style.position = 'relative';
+  projectsTitle.style.top = '0';
+  projectsTitle.style.visibility = 'visible';
 }
 
 // Also align on window resize (desktop only)
@@ -320,6 +327,8 @@ window.addEventListener('resize', () => {
     else document.querySelector('.projects-col')?.style.setProperty('margin-top', '0px');
   } else {
     document.querySelector('.projects-col')?.style.removeProperty('margin-top');
+    document.getElementById('projectsTitle')?.style.removeProperty('top');
+    document.getElementById('projectsTitle')?.style.removeProperty('visibility');
   }
 });
 
