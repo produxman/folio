@@ -468,3 +468,77 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('resize', () => {
   setupObserver(); // rebind if viewport breakpoint changes
 });
+
+// ===== Accordion Functionality =====
+function setupAccordion(toggleId, contentId, defaultOpen = false) {
+  var accordionToggle = document.getElementById(toggleId);
+  var accordionContent = document.getElementById(contentId);
+  if (!accordionToggle || !accordionContent) return;
+
+  // Remove any existing chevron-up icons
+  accordionToggle.querySelectorAll('.fa-chevron-up').forEach(el => el.remove());
+
+  // Find or create the carat icon
+  let carat = accordionToggle.querySelector('.fa-chevron-down');
+  if (!carat) {
+    carat = document.createElement('i');
+    carat.className = 'fa fa-chevron-down';
+    carat.setAttribute('aria-hidden', 'true');
+    accordionToggle.appendChild(carat);
+  }
+
+  // Set initial state
+  accordionToggle.setAttribute('aria-expanded', defaultOpen ? 'true' : 'false');
+  accordionContent.style.maxHeight = defaultOpen ? (accordionContent.scrollHeight + 'px') : '0px';
+  carat.style.transform = defaultOpen ? 'rotate(0deg)' : 'rotate(-90deg)';
+
+  function toggleAccordion() {
+    var expanded = accordionToggle.getAttribute('aria-expanded') === 'true';
+    if (expanded) {
+      accordionContent.style.maxHeight = '0px';
+      accordionToggle.setAttribute('aria-expanded', 'false');
+      carat.style.transform = 'rotate(-90deg)';
+    } else {
+      accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+      accordionToggle.setAttribute('aria-expanded', 'true');
+      carat.style.transform = 'rotate(0deg)';
+      // Auto-scroll to show expanded blog articles
+      if (toggleId === 'blogAccordionToggle') {
+        setTimeout(function() {
+          accordionContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300); // Wait for expand animation
+      }
+    }
+  }
+
+  accordionToggle.addEventListener('click', toggleAccordion);
+  accordionToggle.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleAccordion();
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  setupAccordion('workAccordionToggle', 'workAccordionContent', true);
+  setupAccordion('blogAccordionToggle', 'blogAccordionContent', false);
+
+  // Auto-expand blog accordion when in viewport
+  const blogToggle = document.getElementById('blogAccordionToggle');
+  const blogContent = document.getElementById('blogAccordionContent');
+  if (blogToggle && blogContent) {
+    let hasExpanded = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasExpanded) {
+          if (blogToggle.getAttribute('aria-expanded') !== 'true') {
+            blogToggle.click();
+            hasExpanded = true;
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(blogToggle);
+  }
+});

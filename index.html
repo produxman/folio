@@ -44,7 +44,7 @@
   <button id="themeToggle" class="theme-toggle" aria-label="Toggle light/dark"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></button>
 
   <!-- ====== SECTION 1 — HERO / BIO / SOCIALS ====== -->
-    <header class="hero">
+    <header class="hero sticky-hero">
     <div class="hero-left">
       <div class="logo-and-title">
         <img src="assets/img/produxman-logo-dark.png" alt="Produxman logo" class="logo logo-dark" />
@@ -57,20 +57,16 @@
       <p class="bio">
         For <strong>15+ years</strong>, I've built and scaled platforms that cut across industries and business models. My focus is on driving growth, simplifying complexity, and bridging strategy with execution — powered by insight, discipline, and, admittedly, way too much coffee.
       </p>
-      <!-- Socials for desktop only -->
-      <nav class="socials socials-desktop">
-        <a href="mailto:sherif@produxman.me" class="chip social-icon" title="Contact Me" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-        <a href="https://linkedin.com/in/produxman" target="_blank" rel="noopener" class="chip social-icon" title="Connect on LinkedIn" aria-label="Connect on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://calendly.com/produxman" target="_blank" rel="noopener" class="chip social-icon" title="Schedule a Meeting" aria-label="Schedule a Meeting"><i class="fa-solid fa-calendar"></i></a>
-        <a href="assets/docs/produxman-cv.pdf" target="_blank" rel="noopener" class="chip social-icon" title="Download CV" aria-label="Download CV"><i class="fa-solid fa-file"></i></a>
+      <!-- CTA buttons -->
+      <nav class="nav-cta">
+        <a href="https://calendly.com/produxman/30min" class="cta-btn cta-primary" target="_blank" rel="noopener">Schedule a Call</a>
+        <a href="assets/docs/produxman-cv.pdf" class="cta-btn cta-secondary" target="_blank" rel="noopener">Download CV</a>
       </nav>
     </div>
     <!-- Socials for mobile only -->
-    <nav class="socials socials-mobile">
-      <a href="mailto:sherif@produxman.me" class="chip social-icon" title="Contact Me" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-      <a href="https://linkedin.com/in/produxman" target="_blank" rel="noopener" class="chip social-icon" title="Connect on LinkedIn" aria-label="Connect on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-      <a href="https://calendly.com/produxman" target="_blank" rel="noopener" class="chip social-icon" title="Schedule a Meeting" aria-label="Schedule a Meeting"><i class="fa-solid fa-calendar"></i></a>
-      <a href="assets/docs/produxman-cv.pdf" target="_blank" rel="noopener" class="chip social-icon" title="Download CV" aria-label="Download CV"><i class="fa-solid fa-file"></i></a>
+    <nav class="nav-cta-mobile">
+      <a href="https://calendly.com/produxman/30min" class="cta-btn cta-primary" target="_blank" rel="noopener">Schedule a Call</a>
+      <a href="assets/docs/produxman-cv.pdf" class="cta-btn cta-secondary" target="_blank" rel="noopener">Download CV</a>
     </nav>
     <div id="heroStackTrack" class="switch-track">
       <!-- Card 1 -->
@@ -138,99 +134,139 @@
     </div>
   </header>
 
-  <!-- ====== SECTION 2 — TIMELINE + PROJECT CARDS ====== -->
-  <main class="stacked">
-    <section class="timeline-wrapper">
-      <h2 class="section-heading">The Work I Do</h2>
-      <section class="timeline-col">
-        <div class="wa-timeline" id="wa-timeline">
-          <!-- Each company is one details block. Starts with most recent open. -->
-          <details class="wa-details" id="details-1-thin" open data-company="Meister">
-            <summary>
-              <button class="dot-btn" aria-label="2024–Present — Meister"><span class="dot"></span></button>
-              <span class="wa-date">2024–Present</span>
-              <span class="wa-head">Meister</span>
-              <span class="wa-caret">▾</span>
-            </summary>
-            <div class="wa-content">
-              <strong>Sr. Technical PM, Billing & Identity</strong> — Leading Meister’s billing re-architecture, scaling account management, and shaping monetization strategy for 0→1 Meister AI.
+  <!-- ====== SECTION 2 — TIMELINE + PROJECT CARDS (Accordion) ====== -->
+  <section class="accordion-section">
+    <h2 class="section-heading accordion-toggle" id="workAccordionToggle" tabindex="0" aria-expanded="true" aria-controls="workAccordionContent">
+      The Work I Do
+      <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+    </h2>
+    <div id="workAccordionContent" class="accordion-content" style="max-height: none; overflow: hidden; transition: max-height 0.4s cubic-bezier(.4,0,.2,1);">
+      <main class="stacked">
+        <section class="timeline-wrapper">
+          <section class="timeline-col">
+            <div class="wa-timeline" id="wa-timeline">
+              <!-- Each company is one details block. Starts with most recent open. -->
+              <details class="wa-details" id="details-1-thin" open data-company="Meister">
+                <summary>
+                  <button class="dot-btn" aria-label="2024–Present — Meister"><span class="dot"></span></button>
+                  <span class="wa-date">2024–Present</span>
+                  <span class="wa-head">Meister</span>
+                  <span class="wa-caret">▾</span>
+                </summary>
+                <div class="wa-content">
+                  <strong>Sr. Technical PM, Billing & Identity</strong> — Leading Meister’s billing re-architecture, scaling account management, and shaping monetization strategy for 0→1 Meister AI.
+                </div>
+              </details>
+              <details class="wa-details" id="details-2-thin" data-company="Pelcro">
+                <summary>
+                  <button class="dot-btn" aria-label="2021–2024 — Pelcro"><span class="dot"></span></button>
+                  <span class="wa-date">2021–2024</span>
+                  <span class="wa-head">Pelcro</span>
+                  <span class="wa-caret">▸</span>
+                </summary>
+                <div class="wa-content">
+                  <strong>PM → Sr. PM → Head of Product</strong> — Progressed rapidly from individual contributor to leading product strategy and cross-functional teams, driving platform growth across payments, billing, enterprise readiness, and ecosystem integrations.
+                </div>
+              </details>
+              <details class="wa-details" id="details-3-thin" data-company="Dell">
+                <summary>
+                  <button class="dot-btn" aria-label="2022–2024 — Dell Technologies"><span class="dot"></span></button>
+                  <span class="wa-date">2022–2024</span>
+                  <span class="wa-head">Dell Technologies</span>
+                  <span class="wa-caret">▸</span>
+                </summary>
+                <div class="wa-content">
+                  <strong>Program Resource Manager (Managed Services) → Sr. Technical PM (Live Optics)</strong> — Grew from orchestrating resource allocation and SLA performance to leading product initiatives in infrastructure sizing, training, and support efficiency.
+                </div>
+              </details>
+              <details class="wa-details" data-company="Zyda">
+                <summary>
+                  <button class="dot-btn" aria-label="2021–2022 — Zyda"><span class="dot"></span></button>
+                  <span class="wa-date">2021–2022</span>
+                  <span class="wa-head">Zyda</span>
+                  <span class="wa-caret">▸</span>
+                </summary>
+                <div class="wa-content">
+                  <strong>PM, Growth & Partnerships</strong> — Focused on scaling partnerships and integrations to streamline payments, inventory, and delivery operations while improving customer experience and acquisition efficiency.
+                </div>
+              </details>
+              <details class="wa-details" data-company="VeraSafe">
+                <summary>
+                  <button class="dot-btn" aria-label="2019–2021 — VeraSafe"><span class="dot"></span></button>
+                  <span class="wa-date">2019–2021</span>
+                  <span class="wa-head">VeraSafe</span>
+                  <span class="wa-caret">▸</span>
+                </summary>
+                <div class="wa-content">
+                  <strong>Technical PM</strong> — Combined compliance advisory with product delivery, supporting SMBs worldwide in data protection while launching a security MVP and improving internal IT operations.
+                </div>
+              </details>
+              <details class="wa-details" data-company="CIB">
+                <summary>
+                  <button class="dot-btn" aria-label="2016–2018 — CIB"><span class="dot"></span></button>
+                  <span class="wa-date">2016–2018</span>
+                  <span class="wa-head">CIB</span>
+                  <span class="wa-caret">▸</span>
+                </summary>
+                <div class="wa-content">
+                  <strong>Technical PM, Data Protection Infrastructure</strong> — Led modernization of backup and recovery systems, improving resiliency, reducing storage costs, and automating key processes for regulatory compliance.
+                </div>
+              </details>
+              <details class="wa-details" data-company="IBM">
+                <summary>
+                  <button class="dot-btn" aria-label="2012–2016 — IBM"><span class="dot"></span></button>
+                  <span class="wa-date">2012–2016</span>
+                  <span class="wa-head">IBM</span>
+                  <span class="wa-caret">▸</span>
+                </summary>
+                <div class="wa-content">
+                  <strong>Sr. Product Support Specialist, Spectrum Protect</strong> — Built the foundation for remote software support and knowledge management, while enhancing team effectiveness through tooling, hiring input, and onboarding.
+                </div>
+              </details>
             </div>
-          </details>
-          <details class="wa-details" id="details-2-thin" data-company="Pelcro">
-            <summary>
-              <button class="dot-btn" aria-label="2021–2024 — Pelcro"><span class="dot"></span></button>
-              <span class="wa-date">2021–2024</span>
-              <span class="wa-head">Pelcro</span>
-              <span class="wa-caret">▸</span>
-            </summary>
-            <div class="wa-content">
-              <strong>PM → Sr. PM → Head of Product</strong> — Progressed rapidly from individual contributor to leading product strategy and cross-functional teams, driving platform growth across payments, billing, enterprise readiness, and ecosystem integrations.
-            </div>
-          </details>
-          <details class="wa-details" id="details-3-thin" data-company="Dell">
-            <summary>
-              <button class="dot-btn" aria-label="2022–2024 — Dell Technologies"><span class="dot"></span></button>
-              <span class="wa-date">2022–2024</span>
-              <span class="wa-head">Dell Technologies</span>
-              <span class="wa-caret">▸</span>
-            </summary>
-            <div class="wa-content">
-              <strong>Program Resource Manager (Managed Services) → Sr. Technical PM (Live Optics)</strong> — Grew from orchestrating resource allocation and SLA performance to leading product initiatives in infrastructure sizing, training, and support efficiency.
-            </div>
-          </details>
-          <details class="wa-details" data-company="Zyda">
-            <summary>
-              <button class="dot-btn" aria-label="2021–2022 — Zyda"><span class="dot"></span></button>
-              <span class="wa-date">2021–2022</span>
-              <span class="wa-head">Zyda</span>
-              <span class="wa-caret">▸</span>
-            </summary>
-            <div class="wa-content">
-              <strong>PM, Growth & Partnerships</strong> — Focused on scaling partnerships and integrations to streamline payments, inventory, and delivery operations while improving customer experience and acquisition efficiency.
-            </div>
-          </details>
-          <details class="wa-details" data-company="VeraSafe">
-            <summary>
-              <button class="dot-btn" aria-label="2019–2021 — VeraSafe"><span class="dot"></span></button>
-              <span class="wa-date">2019–2021</span>
-              <span class="wa-head">VeraSafe</span>
-              <span class="wa-caret">▸</span>
-            </summary>
-            <div class="wa-content">
-              <strong>Technical PM</strong> — Combined compliance advisory with product delivery, supporting SMBs worldwide in data protection while launching a security MVP and improving internal IT operations.
-            </div>
-          </details>
-          <details class="wa-details" data-company="CIB">
-            <summary>
-              <button class="dot-btn" aria-label="2016–2018 — CIB"><span class="dot"></span></button>
-              <span class="wa-date">2016–2018</span>
-              <span class="wa-head">CIB</span>
-              <span class="wa-caret">▸</span>
-            </summary>
-            <div class="wa-content">
-              <strong>Technical PM, Data Protection Infrastructure</strong> — Led modernization of backup and recovery systems, improving resiliency, reducing storage costs, and automating key processes for regulatory compliance.
-            </div>
-          </details>
-          <details class="wa-details" data-company="IBM">
-            <summary>
-              <button class="dot-btn" aria-label="2012–2016 — IBM"><span class="dot"></span></button>
-              <span class="wa-date">2012–2016</span>
-              <span class="wa-head">IBM</span>
-              <span class="wa-caret">▸</span>
-            </summary>
-            <div class="wa-content">
-              <strong>Sr. Product Support Specialist, Spectrum Protect</strong> — Built the foundation for remote software support and knowledge management, while enhancing team effectiveness through tooling, hiring input, and onboarding.
-            </div>
-          </details>
+            <div class="timeline-line"></div>
+          </section>
+        </section>
+        <section class="projects-col" aria-live="polite">
+          <h3 id="projectsTitle">Meister — Projects</h3>
+          <div id="projectGrid" class="grid"></div>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <!-- ====== SUBSTACK BLOG SECTION (Accordion) ====== -->
+  <section class="accordion-section">
+    <h2 class="section-heading accordion-toggle" id="blogAccordionToggle" tabindex="0" aria-expanded="false" aria-controls="blogAccordionContent">
+      The Story Point Blog
+      <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+    </h2>
+    <div id="blogAccordionContent" class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(.4,0,.2,1);">
+      <section class="substack-section" id="substackBlog">
+        <div class="substack-articles" id="substackArticles">
+          <!-- Example static articles, replace/fetch dynamically as needed -->
+          <article class="substack-article">
+            <h3><a href="https://produxman.substack.com/p/ai-product-strategy" target="_blank" rel="noopener">AI Product Strategy: Lessons from the Trenches</a></h3>
+            <p>How to drive real impact with AI in product management, with actionable frameworks and stories.</p>
+          </article>
+          <article class="substack-article">
+            <h3><a href="https://produxman.substack.com/p/lean-metrics" target="_blank" rel="noopener">Lean Metrics for Growth</a></h3>
+            <p>Cut through the noise and focus on the metrics that matter for scaling your product.</p>
+          </article>
+          <article class="substack-article">
+            <h3><a href="https://produxman.substack.com/p/remote-leadership" target="_blank" rel="noopener">Remote Leadership: Building Teams That Win</a></h3>
+            <p>Best practices for leading distributed teams and fostering a culture of ownership.</p>
+          </article>
         </div>
-        <div class="timeline-line"></div>
+        <div class="substack-actions">
+          <a class="substack-btn" href="https://produxman.substack.com" target="_blank" rel="noopener">
+            <span class="substack-btn-label">Explore More Stories</span>
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
       </section>
-    </section>
-    <section class="projects-col" aria-live="polite">
-      <h3 id="projectsTitle">Meister — Projects</h3>
-      <div id="projectGrid" class="grid"></div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- ====== CHATBOT ====== -->
 
@@ -278,7 +314,18 @@
     </div>
 
   <footer class="footer">
-    <small>© <span id="year"></span> | Produxman</small>
+    <div class="footer-content">
+      <div class="footer-copyright">
+        &copy; <span id="year"></span> Produxman. All rights reserved.
+      </div>
+      <div class="footer-socials">
+        <a href="https://linkedin.com/in/produxman" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://instagram.com/produxman" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/produxman" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://youtube.com/@produxman" target="_blank" rel="noopener" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://produxman.substack.com" target="_blank" rel="noopener" title="Substack"><i class="fa-solid fa-newspaper"></i></a>
+      </div>
+    </div>
   </footer>
 
   <script src="assets/js/folio-main.js" defer></script>
@@ -286,5 +333,46 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
   <script src="assets/js/folio-chat.js" defer></script>
+  <script>
+async function fetchSubstackArticles() {
+  const feedUrl = 'https://produxman.substack.com/feed';
+  const blogContainer = document.getElementById('blogAccordionContent');
+  if (!blogContainer) return;
+
+  try {
+    const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl));
+    const data = await response.json();
+    if (!data.items || !data.items.length) {
+      blogContainer.innerHTML = '<p class="muted">No articles found.</p>';
+      return;
+    }
+    const articles = data.items.slice(0, 3).map(item => {
+      // Try to extract image from content or enclosure
+      let img = item.enclosure?.link || '';
+      if (!img) {
+        const match = item.content.match(/<img[^>]+src=["']([^"'>]+)["']/);
+        if (match) img = match[1];
+      }
+      return `
+        <a class="substack-article" href="${item.link}" target="_blank" rel="noopener">
+          ${img ? `<img src="${img}" alt="${item.title}" class="substack-article-img">` : ''}
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+        </a>
+      `;
+    }).join('');
+    blogContainer.innerHTML = `
+      <div class="substack-articles">${articles}</div>
+      <div class="substack-actions">
+        <a class="substack-btn" href="https://produxman.substack.com" target="_blank" rel="noopener">Explore More Stories <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    `;
+  } catch (err) {
+    blogContainer.innerHTML = '<p class="muted">Failed to load articles.</p>';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', fetchSubstackArticles);
+</script>
 </body>
 </html>
