@@ -252,8 +252,16 @@
   function toggleWidget() {
     const widget = document.getElementById('ai-chatbot-widget');
     const input = document.getElementById('ai-chatbot-input');
+    let backdrop = document.getElementById('ai-chatbot-backdrop');
 
     if (!widget) return;
+
+    // Create backdrop if it doesn't exist
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'ai-chatbot-backdrop';
+      document.body.appendChild(backdrop);
+    }
 
     isOpen = !isOpen;
 
@@ -261,6 +269,7 @@
       widget.style.display = 'flex';
       setTimeout(() => {
         widget.classList.add('show');
+        backdrop.classList.add('show');
         renderMessages();
         if (input && window.innerWidth > 480) {
           input.focus();
@@ -268,6 +277,7 @@
       }, 10);
     } else {
       widget.classList.remove('show');
+      backdrop.classList.remove('show');
       setTimeout(() => {
         widget.style.display = 'none';
       }, 300);
@@ -318,10 +328,14 @@
   // Close widget
   function closeWidget() {
     const widget = document.getElementById('ai-chatbot-widget');
+    const backdrop = document.getElementById('ai-chatbot-backdrop');
     if (!widget) return;
 
     isOpen = false;
     widget.classList.remove('show');
+    if (backdrop) {
+      backdrop.classList.remove('show');
+    }
     setTimeout(() => {
       widget.style.display = 'none';
     }, 300);

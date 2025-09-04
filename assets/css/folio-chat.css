@@ -19,10 +19,13 @@ html[data-theme="dark"] #ai-chatbot-container { --chat-bg: #1F2937; --chat-text:
 #ai-chatbot-toggle::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%); border-radius: 50%; opacity: 0; transition: opacity 0.3s ease; }
 #ai-chatbot-toggle:hover::before { opacity: 1; }
 /* Widget container */
-#ai-chatbot-widget { background: var(--chat-bg); border-radius: 12px; border: 1px solid var(--chat-border); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12); display: none; flex-direction: column; overflow: hidden; transform: scale(0.98) translateY(10px); opacity: 0; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); height: 550px; width: 380px; max-width: calc(100vw - 48px); position: fixed; right: 24px; bottom: 80px; }
-/* Backdrop overlay when widget is open */
-#ai-chatbot-widget.show::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: -1; }
-#ai-chatbot-widget.show { opacity: 1; transform: scale(1) translateY(0); z-index: 998; }
+#ai-chatbot-widget { background: var(--chat-bg); border-radius: 12px; border: 1px solid var(--chat-border); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12); display: none; flex-direction: column; overflow: hidden; transform: scale(0.98) translateY(10px); opacity: 0; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); height: 550px; width: 380px; max-width: calc(100vw - 48px); position: fixed; right: 24px; bottom: 80px; z-index: 998; }
+
+/* Separate backdrop element */
+#ai-chatbot-backdrop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 997; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; pointer-events: none; }
+#ai-chatbot-backdrop.show { opacity: 1; visibility: visible; }
+
+#ai-chatbot-widget.show { opacity: 1; transform: scale(1) translateY(0); }
 /* Header */
 #ai-chatbot-header { background: var(--chat-header-bg); color: var(--chat-text); padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--chat-border); }
 #ai-chatbot-header .title { font-weight: 600; font-size: 14px; color: var(--chat-text); margin-bottom: 2px; }
@@ -85,24 +88,30 @@ html[data-theme="dark"] #ai-chatbot-container { --chat-bg: #1F2937; --chat-text:
 .chatbot-message-content strong { font-weight: 600; }
 .chatbot-message-content em { font-style: italic; }
 .chatbot-message-content code { background: var(--chat-surface); padding: 2px 4px; border-radius: 3px; font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace; font-size: 13px; border: 1px solid var(--chat-border); }
-/* Responsive design */
-@media (max-width: 768px) { #ai-chatbot-container { right: 24px; bottom: 24px; } #ai-chatbot-widget { width: calc(100vw - 48px); height: 70vh; max-height: 600px; max-width: 420px; transform: none; position: fixed; bottom: 80px; right: 0; left: auto; margin-right: 24px; } /* Add backdrop overlay when widget is open */ #ai-chatbot-widget.show::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: -1; } #ai-chatbot-messages { flex: 1; } .chatbot-message { max-width: 90%; } }
-#ai-chatbot-messages { padding: 16px; font-size: 16px; line-height: 1.5; gap: 16px; }
-.chatbot-message { max-width: 90%; }
-.chatbot-message-content { padding: 12px 16px; }
-#ai-chatbot-input { min-height: 44px; padding: 12px; font-size: 16px; line-height: 1.5; }
-#ai-chatbot-send { width: 44px; height: 44px; }
-#ai-chatbot-close { width: 44px; height: 44px; }
-/* Disable chat-toggle and chat-bubble hover/focus animation on mobile */
-#ai-chatbot-toggle:hover,
-        #ai-chatbot-toggle:focus,
-        .chat-bubble:hover,
-        .chat-bubble:focus { transform: none; box-shadow: none; animation: none; }
-/* Mobile-specific styles */
-.chat-bubble { position: fixed; bottom: 20px; right: 20px; width: 48px; height: 48px; padding: 0; border: none; background: none; cursor: pointer; z-index: 99999; transition: transform 0.2s ease; }
-.chat-bubble:hover { transform: scale(1.05); }
-.chat-backdrop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
-.chat-widget:not(.minimized) .chat-backdrop { opacity: 1; pointer-events: auto; }
-.chat-modal { position: fixed; bottom: 80px; right: 20px; width: 380px; max-width: calc(100vw - 40px); height: 550px; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); display: flex; flex-direction: column; transform: translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.2s ease, opacity 0.2s ease; }
-.chat-widget:not(.minimized) .chat-modal { transform: translateY(0); opacity: 1; pointer-events: auto; }
-@media (max-width: 480px) { .chat-bubble { bottom: 16px; right: 16px; width: 56px; height: 56px; } .chat-bubble:hover { transform: none; } .chat-modal { bottom: 0; right: 0; width: 100%; max-width: 100%; height: calc(100vh - env(safe-area-inset-bottom)); border-radius: 12px 12px 0 0; } .chat-backdrop { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); } }
+
+/* Mobile responsive - clean approach */
+@media (max-width: 768px) {
+    #ai-chatbot-widget {
+        position: fixed !important;
+        top: calc(100vh - 70vh - 80px) !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: calc(100vw - 32px) !important;
+        max-width: calc(100vw - 32px) !important;
+        height: 70vh !important;
+        right: auto !important;
+        bottom: auto !important;
+    }
+    
+    /* Remove bounce animation on mobile */
+    #ai-chatbot-toggle:hover {
+        animation: none !important;
+    }
+    
+    /* Enhanced glass effect on mobile */
+    #ai-chatbot-backdrop.show {
+        background: rgba(0, 0, 0, 0.5) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+    }
+}
