@@ -271,6 +271,7 @@
       closePill.id = 'ai-chatbot-close-pill';
       closePill.innerHTML = '<i class="fas fa-chevron-down" style="font-size: 12px;"></i> Minimize';
       closePill.setAttribute('aria-label', 'Minimize chat');
+      closePill.style.display = 'none'; // Initially hidden
       closePill.addEventListener('click', closeWidget);
       // Insert after the container so CSS sibling selector works
       const container = document.getElementById('ai-chatbot-container');
@@ -285,6 +286,10 @@
 
     if (isOpen) {
       widget.style.display = 'flex';
+      // Show close pill on mobile immediately
+      if (closePill && window.innerWidth <= 768) {
+        closePill.style.display = 'flex';
+      }
       setTimeout(() => {
         widget.classList.add('show');
         backdrop.classList.add('show');
@@ -300,6 +305,10 @@
     } else {
       widget.classList.remove('show');
       backdrop.classList.remove('show');
+      // Hide close pill when chat is closed
+      if (closePill) {
+        closePill.style.display = 'none';
+      }
       // Show toggle again when chat is closed
       if (toggle) {
         toggle.style.display = 'flex';
@@ -357,12 +366,17 @@
     const widget = document.getElementById('ai-chatbot-widget');
     const toggle = document.getElementById('ai-chatbot-toggle');
     const backdrop = document.getElementById('ai-chatbot-backdrop');
+    const closePill = document.getElementById('ai-chatbot-close-pill');
     if (!widget) return;
 
     isOpen = false;
     widget.classList.remove('show');
     if (backdrop) {
       backdrop.classList.remove('show');
+    }
+    // Hide close pill when chat is closed
+    if (closePill) {
+      closePill.style.display = 'none';
     }
     // Show toggle again when chat is closed
     if (toggle) {

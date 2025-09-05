@@ -93,7 +93,7 @@ html[data-theme="dark"] #ai-chatbot-container { --chat-bg: #1F2937; --chat-text:
 @media (max-width: 768px) {
     #ai-chatbot-widget {
         position: fixed !important;
-        top: calc(100vh - 70vh - 120px) !important;
+        top: calc(100vh - 70vh - 140px) !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
         width: calc(100vw - 32px) !important;
@@ -101,18 +101,10 @@ html[data-theme="dark"] #ai-chatbot-container { --chat-bg: #1F2937; --chat-text:
         height: 70vh !important;
         right: auto !important;
         bottom: auto !important;
-        margin-bottom: 80px !important;
+        margin-bottom: 0 !important;
     }
     
-    /* Hide toggle button when chat is expanded on mobile */
-    #ai-chatbot-container:has(#ai-chatbot-widget.show) #ai-chatbot-toggle {
-        display: none !important;
-    }
-    
-    /* Fallback for browsers without :has() support */
-    #ai-chatbot-widget.show ~ #ai-chatbot-toggle {
-        display: none !important;
-    }
+    /* CSS rules managed by JavaScript for better mobile control */
     
     /* Remove bounce animation on mobile */
     #ai-chatbot-toggle:hover {
@@ -146,27 +138,18 @@ html[data-theme="dark"] #ai-chatbot-container { --chat-bg: #1F2937; --chat-text:
         font-weight: 600 !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
         cursor: pointer !important;
-        z-index: 999 !important;
-        display: none !important;
+        z-index: 1000 !important;
         transition: all 0.2s ease !important;
         font-family: inherit !important;
         min-height: 44px !important;
         min-width: 44px !important;
-        display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         gap: 8px !important;
+        /* Display controlled by JavaScript */
     }
     
-    /* Show close pill when chat is expanded on mobile */
-    #ai-chatbot-container:has(#ai-chatbot-widget.show) ~ #ai-chatbot-close-pill {
-        display: flex !important;
-    }
-    
-    /* Fallback for browsers without :has() support */
-    #ai-chatbot-widget.show ~ #ai-chatbot-close-pill {
-        display: flex !important;
-    }
+    /* CSS rules managed by JavaScript for better mobile control */
     
     #ai-chatbot-close-pill:hover {
         transform: translateX(-50%) scale(1.05) !important;
