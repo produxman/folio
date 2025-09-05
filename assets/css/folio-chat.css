@@ -104,6 +104,16 @@ html[data-theme="dark"] #ai-chatbot-container { --chat-bg: #1F2937; --chat-text:
         margin-bottom: 80px !important;
     }
     
+    /* Hide toggle button when chat is expanded on mobile */
+    #ai-chatbot-container:has(#ai-chatbot-widget.show) #ai-chatbot-toggle {
+        display: none !important;
+    }
+    
+    /* Fallback for browsers without :has() support */
+    #ai-chatbot-widget.show ~ #ai-chatbot-toggle {
+        display: none !important;
+    }
+    
     /* Remove bounce animation on mobile */
     #ai-chatbot-toggle:hover {
         animation: none !important;
@@ -119,5 +129,47 @@ html[data-theme="dark"] #ai-chatbot-container { --chat-bg: #1F2937; --chat-text:
     /* Prevent auto-zoom on iPhone by ensuring font-size is 16px+ */
     #ai-chatbot-input {
         font-size: 16px !important;
+    }
+    
+    /* Close chat pill styles for mobile */
+    #ai-chatbot-close-pill {
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        background: var(--chat-button-bg) !important;
+        color: var(--chat-text) !important;
+        border: none !important;
+        border-radius: 24px !important;
+        padding: 14px 24px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+        cursor: pointer !important;
+        z-index: 999 !important;
+        display: none !important;
+        transition: all 0.2s ease !important;
+        font-family: inherit !important;
+        min-height: 44px !important;
+        min-width: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+    
+    /* Show close pill when chat is expanded on mobile */
+    #ai-chatbot-container:has(#ai-chatbot-widget.show) ~ #ai-chatbot-close-pill {
+        display: flex !important;
+    }
+    
+    /* Fallback for browsers without :has() support */
+    #ai-chatbot-widget.show ~ #ai-chatbot-close-pill {
+        display: flex !important;
+    }
+    
+    #ai-chatbot-close-pill:hover {
+        transform: translateX(-50%) scale(1.05) !important;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16) !important;
     }
 }

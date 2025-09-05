@@ -251,8 +251,10 @@
   // Toggle widget visibility
   function toggleWidget() {
     const widget = document.getElementById('ai-chatbot-widget');
+    const toggle = document.getElementById('ai-chatbot-toggle');
     const input = document.getElementById('ai-chatbot-input');
     let backdrop = document.getElementById('ai-chatbot-backdrop');
+    let closePill = document.getElementById('ai-chatbot-close-pill');
 
     if (!widget) return;
 
@@ -263,6 +265,22 @@
       document.body.appendChild(backdrop);
     }
 
+    // Create close pill if it doesn't exist and insert it after the container
+    if (!closePill) {
+      closePill = document.createElement('button');
+      closePill.id = 'ai-chatbot-close-pill';
+      closePill.innerHTML = '<i class="fas fa-chevron-down" style="font-size: 12px;"></i> Minimize';
+      closePill.setAttribute('aria-label', 'Minimize chat');
+      closePill.addEventListener('click', closeWidget);
+      // Insert after the container so CSS sibling selector works
+      const container = document.getElementById('ai-chatbot-container');
+      if (container) {
+        container.parentNode.insertBefore(closePill, container.nextSibling);
+      } else {
+        document.body.appendChild(closePill);
+      }
+    }
+
     isOpen = !isOpen;
 
     if (isOpen) {
@@ -270,6 +288,10 @@
       setTimeout(() => {
         widget.classList.add('show');
         backdrop.classList.add('show');
+        // Hide toggle on mobile when chat is open
+        if (toggle && window.innerWidth <= 768) {
+          toggle.style.display = 'none';
+        }
         renderMessages();
         if (input && window.innerWidth > 480) {
           input.focus();
@@ -278,6 +300,10 @@
     } else {
       widget.classList.remove('show');
       backdrop.classList.remove('show');
+      // Show toggle again when chat is closed
+      if (toggle) {
+        toggle.style.display = 'flex';
+      }
       setTimeout(() => {
         widget.style.display = 'none';
       }, 300);
@@ -288,13 +314,14 @@
   function handleOutsideClick(e) {
     const widget = document.getElementById('ai-chatbot-widget');
     const toggle = document.getElementById('ai-chatbot-toggle');
+    const closePill = document.getElementById('ai-chatbot-close-pill');
     const chatWidget = document.getElementById('chat-widget');
     const chatModal = chatWidget?.querySelector('.chat-modal');
     const chatBubble = document.getElementById('chat-bubble');
 
-    // If main widget is present, close if click is outside widget and toggle
+    // If main widget is present, close if click is outside widget, toggle, and close pill
     if (widget && toggle && widget.classList.contains('show')) {
-      if (!widget.contains(e.target) && !toggle.contains(e.target)) {
+      if (!widget.contains(e.target) && !toggle.contains(e.target) && (!closePill || !closePill.contains(e.target))) {
         closeWidget();
       }
     }
@@ -328,6 +355,7 @@
   // Close widget
   function closeWidget() {
     const widget = document.getElementById('ai-chatbot-widget');
+    const toggle = document.getElementById('ai-chatbot-toggle');
     const backdrop = document.getElementById('ai-chatbot-backdrop');
     if (!widget) return;
 
@@ -335,6 +363,10 @@
     widget.classList.remove('show');
     if (backdrop) {
       backdrop.classList.remove('show');
+    }
+    // Show toggle again when chat is closed
+    if (toggle) {
+      toggle.style.display = 'flex';
     }
     setTimeout(() => {
       widget.style.display = 'none';
