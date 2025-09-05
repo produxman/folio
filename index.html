@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="assets/css/folio-hero.css" />
   <link rel="stylesheet" href="assets/css/folio-cards.css" />
   <link rel="stylesheet" href="assets/css/folio-chat.css" />
+  <link rel="stylesheet" href="assets/css/folio-testimonials.css" />
   <link rel="icon" type="image/x-icon" href="assets/img/produxman-logo-dark.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,10 +118,10 @@
     </div>
   </header>
 
-  <!-- ====== SECTION 2 — TIMELINE + PROJECT CARDS (Accordion) ====== -->
-  <section class="accordion-section">
-  <h2 class="section-heading">The Work I Do</h2>
-  <div class="accordion-content" style="overflow: visible; max-height: none; transition: none;">
+  <!-- ====== SECTION 2 — TIMELINE + PROJECT CARDS ====== -->
+  <section class="folio-section">
+  <h2 class="section-heading">The Things I've Built</h2>
+  <div class="section-content" style="overflow: visible; max-height: none; transition: none;">
       <main class="stacked">
         <section class="timeline-wrapper">
           <section class="timeline-col">
@@ -215,9 +216,9 @@
     </div>
   </section>
 
-  <!-- ====== SUBSTACK BLOG SECTION (Accordion) ====== -->
-  <section class="accordion-section">
-  <h2 class="section-heading">The Story Point Blog</h2>
+  <!-- ====== SUBSTACK BLOG SECTION ====== -->
+  <section class="folio-section">
+  <h2 class="section-heading">The Lessons I've Learned</h2>
     <div class="substack-section" id="substackBlog">
       <div class="substack-articles" id="substackArticles">
         <!-- Example static articles, replace/fetch dynamically as needed -->
@@ -240,11 +241,45 @@
       <div class="substack-actions">
         <a class="substack-btn" href="https://produxman.substack.com" target="_blank" rel="noopener">
           <span class="substack-btn-label">Explore More Stories</span>
-          <i class="fa fa-arrow-right" aria-hidden="true"></i>
         </a>
       </div>
     </div>
   </section>
+
+  <!-- ====== TESTIMONIALS SECTION ====== -->
+  <section class="folio-section">
+    <h2 class="section-heading">The Trust I've Earned</h2>
+    <div class="section-content" style="overflow: visible; max-height: none; transition: none;">
+      <div class="testimonials-content">
+        <!-- Three-column layout for testimonial cards -->
+        <div class="testimonials-grid">
+
+          <!-- Column 1 - Top to Bottom Animation -->
+          <div id="testimonial-column-1" class="testimonials-column">
+            <div class="testimonials-scroll animate-scroll-t2b">
+              <!-- Testimonials will be populated by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Column 2 - Bottom to Top Animation (hidden on mobile) -->
+          <div id="testimonial-column-2" class="testimonials-column reverse">
+            <div class="testimonials-scroll animate-scroll-b2t">
+              <!-- Testimonials will be populated by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Column 3 - Top to Bottom Animation (hidden on mobile and tablet) -->
+          <div id="testimonial-column-3" class="testimonials-column">
+            <div class="testimonials-scroll animate-scroll-t2b">
+              <!-- Testimonials will be populated by JavaScript -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ====== CHATBOT ====== -->
 
@@ -311,6 +346,7 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
   <script src="assets/js/folio-chat.js" defer></script>
+  <script src="assets/js/folio-testimonials.js" defer></script>
   <script>
 async function fetchSubstackArticles() {
   const feedUrl = 'https://produxman.substack.com/feed';

@@ -1,0 +1,187 @@
+/* Testimonials Section Styles */
+
+/* Define keyframes for the top-to-bottom scroll animation */
+@keyframes scroll-top-to-bottom {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Define keyframes for the bottom-to-top scroll animation */
+@keyframes scroll-bottom-to-top {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Class to apply the top-to-bottom animation */
+.animate-scroll-t2b {
+  animation: scroll-top-to-bottom 180s linear infinite;
+}
+
+/* Class to apply the bottom-to-top animation */
+.animate-scroll-b2t {
+  animation: scroll-bottom-to-top 180s linear infinite;
+}
+
+/* Utility class to pause the animation on hover over individual columns */
+.testimonials-column:hover .testimonials-scroll {
+  animation-play-state: paused;
+}
+
+/* Utility class to pause the animation when chat widget is open */
+.testimonials-paused .testimonials-scroll {
+  animation-play-state: paused;
+}
+
+/* Testimonials container */
+.testimonials-content {
+  max-width: 1200px;
+  margin: clamp(24px,4vw,32px) auto clamp(48px,8vw,64px);
+  padding: 0 clamp(8px,2vw,24px);
+  width: 100%;
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.testimonials-subtitle {
+  font-size: 1.125rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-height: 25rem;
+  overflow: hidden;
+}
+
+/* Desktop layout - 3 columns */
+@media (min-width: 1024px) {
+  .testimonials-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Tablet layout - 2 columns */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .testimonials-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .testimonials-column:nth-child(3) {
+    display: none;
+  }
+}
+
+/* Mobile layout - hide columns 2 and 3 */
+@media (max-width: 767px) {
+  .testimonials-column:nth-child(2),
+  .testimonials-column:nth-child(3) {
+    display: none;
+  }
+}
+
+/* Mobile responsive alignment with blog section */
+@media (max-width: 900px) {
+  .testimonials-content {
+    padding: 0 4px;
+    margin: clamp(32px,6vw,48px) auto clamp(64px,10vw,80px);
+  }
+}
+
+.testimonials-column {
+  overflow: hidden;
+  height: 40rem;
+  border-radius: 1.5rem;
+  mask-image: linear-gradient(to bottom, transparent, white 20%, white 80%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, white 20%, white 80%, transparent);
+}
+
+.testimonials-column.reverse {
+  mask-image: linear-gradient(to top, transparent, white 20%, white 80%, transparent);
+  -webkit-mask-image: linear-gradient(to top, transparent, white 20%, white 80%, transparent);
+}
+
+.testimonials-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.testimonials-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonials-card:hover {
+  transform: scale(1.05);
+}
+
+.testimonials-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.testimonials-card-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.testimonials-card-name {
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.testimonials-card-designation {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.testimonials-card-rating {
+  color: #f59e0b;
+  margin-bottom: 0.5rem;
+}
+
+.testimonials-card-quote {
+  color: var(--text);
+  font-style: italic;
+  line-height: 1.6;
+}

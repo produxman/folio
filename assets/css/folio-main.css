@@ -1,7 +1,14 @@
-/* Accordion Section Styles */
-.accordion-section { max-width: 1200px; margin: 0 auto clamp(18px,4vw,28px); padding: 0 clamp(16px,4vw,32px); }
-.accordion-content { background: transparent; box-shadow: none; margin-top: 0; overflow: visible; transition: none; }
-@media (max-width: 900px) { .accordion-section { padding: 0 8px; } .section-heading.accordion-toggle { font-size: clamp(1.5rem,5vw,2rem); padding: 12px 8px; } }
+/* Folio Section Styles */
+.folio-section { max-width: 1200px; margin: 0 auto clamp(18px,4vw,28px); padding: 0 clamp(16px,4vw,32px); }
+.section-content { background: transparent; box-shadow: none; margin-top: 0; overflow: visible; transition: none; }
+@media (max-width: 900px) { .folio-section { padding: 0 8px; } }
+
+/* Increase spacing between blog and testimonials sections on mobile */
+@media (max-width: 900px) {
+  .folio-section + .folio-section {
+    margin-top: clamp(48px,8vw,64px);
+  }
+}
 :root { --bg: #0f172a; --text: #f1f5f9; --muted: #94a3b8; --panel: #0b1224; --border: #1f2a44; --accent: #00baad; }
 :root[data-theme='light'] { --text: #222b3a; --accent: #319795; --bg: #f7fafc; --panel: #e2e8f0; --muted: #4a5568; }
 [data-theme="light"] { --bg: #ffffff; --text: #1a202c; --muted: #4a5568; --panel: #f8fafc; --border: #cbd5e1; --accent: #0a5c63; }
@@ -57,7 +64,7 @@ img { max-width: 100%; display: block; }
 .section-heading { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 700; margin: 0 0 clamp(14px,3vw,18px); color: var(--text); line-height: 1.18; }
 #projectsTitle, .projects-col h3 { font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 600; margin: 0 0 clamp(12px,2vw,16px); color: var(--text); line-height: 1.22; }
 .timeline-wrapper { display: flex; flex-direction: column; }
-@media (max-width:700px) { .section-heading { padding-left: 2px; } }
+@media (max-width:700px) { .section-heading { padding-left: 2px; text-align: center; } }
 /* Footer */
 .footer { width: 100%; background: var(--panel); color: var(--text); padding: 32px 0 24px 0; font-size: 1rem; font-weight: 400; letter-spacing: 0.01em; border-top: 1px solid rgba(0,0,0,0.07); box-shadow: 0 -2px 16px rgba(0,0,0,0.04); }
 .footer .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0; }
