@@ -150,8 +150,8 @@ const title = document.getElementById('projectsTitle');
 
 // Render helpers
 function renderCards(company) {
-  // Mobile: keep existing logic
-  if (window.matchMedia('(max-width: 700px)').matches) {
+  // Mobile/Tablet: show mini-projects under company cards
+  if (window.matchMedia('(max-width: 1024px)').matches) {
     grid.innerHTML = '';
     // Remove any existing mini-projects and mobile project headers
     document.querySelectorAll('.mini-projects, .mini-projects-header').forEach(el => el.remove());

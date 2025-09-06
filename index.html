@@ -6,7 +6,6 @@
   <title>Produxman | Showcase</title>
   <link rel="stylesheet" href="assets/css/folio-main.css" />
   <link rel="stylesheet" href="assets/css/folio-hero.css" />
-  <link rel="stylesheet" href="assets/css/folio-cards.css" />
   <link rel="stylesheet" href="assets/css/folio-chat.css" />
   <link rel="stylesheet" href="assets/css/folio-testimonials.css" />
   <link rel="icon" type="image/x-icon" href="assets/img/produxman-logo-dark.png">
@@ -15,12 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Theme toggle lightbulb icon styling */
-    .theme-toggle .fa-lightbulb {
-      font-size: inherit;
-      display: inline-block;
-      vertical-align: middle;
-    }
+
   </style>
 </head>
 <body>
@@ -44,13 +38,13 @@
       <!-- CTA buttons -->
       <nav class="nav-cta">
         <a href="https://calendly.com/produxman/30min" class="cta-btn cta-primary" target="_blank" rel="noopener">Schedule a Call</a>
-        <a href="assets/docs/produxman-cv.pdf" class="cta-btn cta-secondary" target="_blank" rel="noopener">Download CV</a>
+        <a href="mailto:mail@produxman.me" class="cta-btn cta-secondary" target="_blank" rel="noopener">Get in Touch</a>
       </nav>
     </div>
     <!-- Socials for mobile only -->
     <nav class="nav-cta-mobile">
       <a href="https://calendly.com/produxman/30min" class="cta-btn cta-primary" target="_blank" rel="noopener">Schedule a Call</a>
-      <a href="assets/docs/produxman-cv.pdf" class="cta-btn cta-secondary" target="_blank" rel="noopener">Download CV</a>
+      <a href="mailto:mail@produxman.me" class="cta-btn cta-secondary" target="_blank" rel="noopener">Get in Touch</a>
     </nav>
     <div id="heroStackTrack" class="switch-track">
       <!-- Card 1 -->
@@ -120,7 +114,7 @@
 
   <!-- ====== SECTION 2 — TIMELINE + PROJECT CARDS ====== -->
   <section class="folio-section">
-  <h2 class="section-heading">The Things I've Built</h2>
+  <h2 class="section-heading"><i class="fa-classic fa-briefcase"></i> The Things I've Built</h2>
   <div class="section-content" style="overflow: visible; max-height: none; transition: none;">
       <main class="stacked">
         <section class="timeline-wrapper">
@@ -214,11 +208,16 @@
         </section>
       </main>
     </div>
+    <div class="substack-actions">
+        <a class="section-cta-btn" href="assets/docs/produxman-cv.pdf" target="_blank" rel="noopener">
+          <span class="section-cta-btn-label">Download My CV</span>
+        </a>
+      </div>
   </section>
 
   <!-- ====== SUBSTACK BLOG SECTION ====== -->
   <section class="folio-section">
-  <h2 class="section-heading">The Lessons I've Learned</h2>
+  <h2 class="section-heading"><i class="fa-regular fa-pen-to-square"></i> The Lessons I've Learned</h2>
     <div class="substack-section" id="substackBlog">
       <div class="substack-articles" id="substackArticles">
         <!-- Example static articles, replace/fetch dynamically as needed -->
@@ -239,8 +238,8 @@
         </article>
       </div>
       <div class="substack-actions">
-        <a class="substack-btn" href="https://produxman.substack.com" target="_blank" rel="noopener">
-          <span class="substack-btn-label">Explore More Stories</span>
+        <a class="section-cta-btn" href="https://produxman.substack.com" target="_blank" rel="noopener">
+          <span class="section-cta-btn-label">Explore More Stories</span>
         </a>
       </div>
     </div>
@@ -248,41 +247,19 @@
 
   <!-- ====== TESTIMONIALS SECTION ====== -->
   <section class="folio-section">
-    <h2 class="section-heading">The Trust I've Earned</h2>
+    <h2 class="section-heading"><i class="fa-regular fa-comments"></i> The Trust I've Earned</h2>
     <div class="section-content" style="overflow: visible; max-height: none; transition: none;">
       <div class="testimonials-content">
-        <!-- Three-column layout for testimonial cards -->
         <div class="testimonials-grid">
-
-          <!-- Column 1 - Top to Bottom Animation -->
-          <div id="testimonial-column-1" class="testimonials-column">
-            <div class="testimonials-scroll animate-scroll-t2b">
-              <!-- Testimonials will be populated by JavaScript -->
-            </div>
-          </div>
-
-          <!-- Column 2 - Bottom to Top Animation (hidden on mobile) -->
-          <div id="testimonial-column-2" class="testimonials-column reverse">
-            <div class="testimonials-scroll animate-scroll-b2t">
-              <!-- Testimonials will be populated by JavaScript -->
-            </div>
-          </div>
-
-          <!-- Column 3 - Top to Bottom Animation (hidden on mobile and tablet) -->
-          <div id="testimonial-column-3" class="testimonials-column">
-            <div class="testimonials-scroll animate-scroll-t2b">
-              <!-- Testimonials will be populated by JavaScript -->
-            </div>
-          </div>
-
+          <div id="testimonial-column-1" class="testimonials-column"><div class="testimonials-scroll animate-scroll-t2b"></div></div>
+          <div id="testimonial-column-2" class="testimonials-column reverse"><div class="testimonials-scroll animate-scroll-b2t"></div></div>
+          <div id="testimonial-column-3" class="testimonials-column"><div class="testimonials-scroll animate-scroll-t2b"></div></div>
         </div>
       </div>
     </div>
   </section>
 
-
   <!-- ====== CHATBOT ====== -->
-
   <div id="ai-chatbot-container" style="bottom: 20px; right: 20px;">
         <!-- Toggle Button -->
         <div id="ai-chatbot-toggle" style="width: 64px; height: 64px;">
