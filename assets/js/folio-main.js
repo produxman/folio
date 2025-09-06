@@ -111,7 +111,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // ===== Projects data (cards link to GitHub markdown pages) =====
 const PROJECTS = {
   Meister: [
-    { title:'Billing Engine Evolution', desc:'ARR Growth, Lower Churn & Accurate Reporting through via Service-Oriented Architecture', cover:'assets/img/project-cards/meister-billingengine.webp', href:'projects/meister-billingengine.md', highlight: true },
+    { title:'Billing Engine Evolution', desc:'ARR Growth, Lower Churn & Accurate Reporting through via Service-Oriented Architecture', cover:'assets/img/project-cards/meister-billingengine.webp', href:'projects/meister-billingengine.html', highlight: true },
     { title:'AI Monetization', desc:'Defining 0→1 Strategy for Pricing, Packaging & Billing Design & Frameworks', cover:'assets/img/project-cards/meister-aipricing.webp', href:'projects/meister-aipricing.md' },
     { title:'Accounts Design System', desc:'Enhanced Customer Experience & Growth Readiness through UX Modernization', cover:'assets/img/project-cards/meister-accountsdesignsystem.webp', href:'projects/meister-accountsdesignsystem.md' },
   ],

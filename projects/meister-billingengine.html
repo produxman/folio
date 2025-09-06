@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Case Study | Produxman</title>
+  <link rel="stylesheet" href="../assets/css/folio-project.css" />
+  <link rel="stylesheet" href="../assets/css/folio-chat.css" />
+  <link rel="icon" type="image/x-icon" href="../assets/img/produxman-logo-dark.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sticky Navigation Bar -->
+  <nav class="project-navbar">
+    <div class="project-navbar-content">
+      <div class="navbar-left">
+        <a href="../index.html" class="project-logo-link">
+          <img src="../assets/img/produxman-logo-light.png" alt="Produxman logo" class="logo logo-dark project-logo" />
+          <img src="../assets/img/produxman-logo-dark.png" alt="Produxman logo" class="logo logo-light project-logo" />
+        </a>
+        <h1 class="navbar-title">Things I've Built</h1>
+      </div>
+      <div class="navbar-nav">
+        <button id="prevProject" class="nav-btn" disabled>
+          <i class="fa-solid fa-arrow-left"></i>
+          <span class="nav-btn-text">Prev</span>
+        </button>
+        <button id="nextProject" class="nav-btn">
+          <i class="fa-solid fa-arrow-right"></i>
+          <span class="nav-btn-text">Next</span>
+        </button>
+        <button id="themeToggle" class="navbar-theme-toggle" aria-label="Toggle light/dark">
+          <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Summary Section -->
+  <section class="folio-section">
+    <div class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="hero-title">Billing Engine Evolution</h1>
+        <div class="project-role">
+          <span class="role-title">Sr. Technical PM @ Meister</span>
+          <span class="role-scope">Building a modular, experiment-ready monetization platform</span>
+        </div>
+        <div class="project-impact">
+          <div class="impact-metric">
+            <span class="impact-value">+30%</span>
+            <span class="impact-label">ARR Growth</span>
+          </div>
+          <div class="impact-metric">
+            <span class="impact-value">-10%</span>
+            <span class="impact-label">Involuntary Churn</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-hero-visual">
+        <div class="project-hero-image">
+          <img src="../assets/img/project-cards/meister-billingengine.webp" alt="Billing Engine Dashboard" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="folio-section">
+    <details class="project-accordion" open>
+      <summary>
+        <h2 class="section-heading"><i class="fa-regular fa-circle-dot"></i></i> The Context</h2>
+        <span class="accordion-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
+      </summary>
+      <div class="section-content">
+        <div class="strategy-grid">
+          <div class="strategy-item">
+            <h3>Core Hypothesis</h3>
+            <p>If we build a flexible billing engine that handles complex subscription changes seamlessly, then we'll reduce churn and enable AI product monetization without billing friction.</p>
+          </div>
+          <div class="strategy-item">
+            <h3>Success Metrics</h3>
+            <p><strong>North Star:</strong> Billing system reliability score<br>
+            <strong>Input Metrics:</strong> Payment failure rate Support ticket volume</p>
+          </div>
+          <div class="strategy-item">
+            <h3>Key Experiment</h3>
+            <p><strong>Parallel billing test:</strong> Ran new system alongside legacy for user cohort. Results showed ~3x faster processing with zero customer-facing errors. <strong>Decision: Ship</strong></p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- Discovery Section -->
+  <section class="folio-section">
+    <details class="project-accordion">
+      <summary>
+        <h2 class="section-heading"><i class="fa-regular fa-lightbulb"></i> The Opportunity</h2>
+        <span class="accordion-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
+      </summary>
+      <div class="section-content">
+        <div class="constraints-grid">
+          <div class="constraint-item">
+            <h3>Key Constraints</h3>
+            <ul>
+              <li>Zero disruption to monthly recurring revenue</li>
+              <li>Must integrate with existing payment infrastructure</li>
+              <li>Limited engineering bandwidth during AI development</li>
+            </ul>
+          </div>
+          <div class="constraint-item">
+            <h3>Decisions Made</h3>
+            <ul>
+              <li><strong>Custom billing engine:</strong> Only option supporting complex AI usage models</li>
+              <li><strong>Parallel system testing:</strong> Rejected self-service migration after low adoption</li>
+              <li><strong>Phased rollout:</strong> Started with complex cases to surface edge cases early</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- Plan Section -->
+  <section class="folio-section">
+    <details class="project-accordion">
+      <summary>
+        <h2 class="section-heading"><i class="fa-regular fa-map"></i> The Plan</h2>
+        <span class="accordion-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
+      </summary>
+      <div class="section-content">
+        <div class="strategy-grid">
+          <div class="strategy-item">
+            <h3>Core Hypothesis</h3>
+            <p>If we build a flexible billing engine that handles complex subscription changes seamlessly, then we'll reduce churn and enable AI product monetization without billing friction.</p>
+          </div>
+          <div class="strategy-item">
+            <h3>Success Metrics</h3>
+            <p><strong>North Star:</strong> Billing system reliability score<br>
+            <strong>Input Metrics:</strong> Payment failure rate Support ticket volume</p>
+          </div>
+          <div class="strategy-item">
+            <h3>Key Experiment</h3>
+            <p><strong>Parallel billing test:</strong> Ran new system alongside legacy for user cohort. Results showed ~3x faster processing with zero customer-facing errors. <strong>Decision: Ship</strong></p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+    <!-- Implementation Section -->
+    <section class="folio-section">
+    <details class="project-accordion">
+      <summary>
+        <h2 class="section-heading"><i class="fa-regular fa-paper-plane"></i> The Build</h2>
+        <span class="accordion-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
+      </summary>
+      <div class="section-content">
+        <div class="content-block">
+          <h3>Problem</h3>
+          <p>Legacy billing system couldn't handle complex subscription changes, causing hundreds of thousands of users to experience failed payments and billing confusion. Meister AI's launch required sophisticated usage-based billing that the current system would block.</p>
+          
+          <p>We built a custom billing engine to eliminate billing friction, reduce churn by ~25%, and enable AI product monetization. The scope covered zero-downtime migration, usage-based billing infrastructure, and self-service subscription management.</p>
+          
+          <p><strong>Key Goals:</strong> Support usage-based AI billing Reduce support tickets ~70% Enable seamless subscription changes</p>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="artifacts-grid">
+          <div class="artifact-item">
+            <div class="artifact-media">
+              <img src="../assets/img/project-cards/meister-billingengine.webp" alt="New Billing Dashboard Interface" />
+            </div>
+            <p class="artifact-caption">New billing dashboard with real-time processing status and usage analytics</p>
+          </div>
+          <div class="artifact-item">
+            <div class="artifact-media video-container">
+              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="artifact-caption">System architecture walkthrough and migration process demonstration</p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- Impact & Outcomes Section -->
+  <section class="folio-section">
+    <details class="project-accordion">
+      <summary>
+        <h2 class="section-heading"><i class="fa-regular fa-chart-bar"></i></i> The Impact</h2>
+        <span class="accordion-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
+      </summary>
+      <div class="section-content">
+        <div class="outcomes-grid">
+          <div class="outcome-metric">
+            <h3>Churn Reduction</h3>
+            <div class="metric-comparison">
+              <div class="metric-before">
+                <span class="metric-label">Before</span>
+                <span class="metric-value">Higher monthly churn</span>
+              </div>
+              <div class="metric-arrow">→</div>
+              <div class="metric-after">
+                <span class="metric-label">After</span>
+                <span class="metric-value">Churn ~−30%</span>
+              </div>
+            </div>
+          </div>
+          <div class="outcome-metric">
+            <h3>Support Load</h3>
+            <div class="metric-comparison">
+              <div class="metric-before">
+                <span class="metric-label">Before</span>
+                <span class="metric-value">High billing ticket volume</span>
+              </div>
+              <div class="metric-arrow">→</div>
+              <div class="metric-after">
+                <span class="metric-label">After</span>
+                <span class="metric-value">Support load ~−60%</span>
+              </div>
+            </div>
+          </div>
+          <div class="outcome-metric">
+            <h3>Processing Speed</h3>
+            <div class="metric-comparison">
+              <div class="metric-before">
+                <span class="metric-label">Before</span>
+                <span class="metric-value">Minutes per invoice</span>
+              </div>
+              <div class="metric-arrow">→</div>
+              <div class="metric-after">
+                <span class="metric-label">After</span>
+                <span class="metric-value">Processing ~2x faster</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="second-order-effects">
+          <h3>Second-Order Effect</h3>
+          <p><strong>Faster AI feature launches:</strong> Billing foundation enabled multiple new monetization experiments within quarters, not years</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- Key Takeaways Section -->
+  <section class="folio-section">
+    <details class="project-accordion">
+      <summary>
+        <h2 class="section-heading"><i class="fa-regular fa-gem"></i></i> The Takeaways</h2>
+        <span class="accordion-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
+      </summary>
+      <div class="section-content">
+        <div class="lessons-list">
+          <div class="lesson-item">
+            <h3>Key Learnings</h3>
+            <ul>
+              <li>Start with the scariest migration first—complex cases reveal edge cases early</li>
+              <li>Customer communication beats technical perfection—detailed emails reduced support tickets 60%</li>
+              <li>Build monitoring before features—real-time alerts caught critical issues before customers saw them</li>
+            </ul>
+          </div>
+          <div class="lesson-item">
+            <h3>Next Steps</h3>
+            <ul>
+              <li><strong>Near-term:</strong> Multi-currency support for European expansion</li>
+              <li><strong>Later:</strong> Predictive billing analytics and churn prevention</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="folio-section">
+    <div class="project-cta">
+      <div class="cta-primary-actions">
+        <a href="../index.html" class="cta-btn cta-secondary">
+          <i class="fa-regular fa-calendar"></i>
+          Schedule a Call
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CHATBOT ====== -->
+  <div id="ai-chatbot-container" style="bottom: 20px; right: 20px;">
+        <!-- Toggle Button -->
+        <div id="ai-chatbot-toggle" style="width: 64px; height: 64px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+        </div>
+
+        <!-- Chat Widget -->
+        <div id="ai-chatbot-widget" style="position: absolute; bottom: 70px; right: 0; width: min(380px, calc(100vw - 40px)); height: 600px; max-width: calc(100vw - 40px); transform: translateX(min(0px, calc(100vw - 384px - 40px)));">
+            <!-- Header -->
+            <div id="ai-chatbot-header">
+                <div>
+                    <div class="title">Ask Me Anything (Beta)</div>
+                    <div class="status">
+                        <div class="status-dot"></div>
+                        Online
+                    </div>
+                </div>
+                <button id="ai-chatbot-close">&times;</button>
+            </div>
+
+            <!-- Messages -->
+            <div id="ai-chatbot-messages"></div>
+
+            <!-- Input Area -->
+            <div class="chatbot-input-area">
+                <div class="chatbot-input-container">
+                    <textarea 
+                        id="ai-chatbot-input" 
+                        placeholder="Type your message..."
+                        maxlength="500"
+                        rows="1"
+                    ></textarea>
+                    <button id="ai-chatbot-send" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                        <i class="fas fa-stop"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-copyright">
+        &copy; <span id="year"></span> Produxman
+      </div>
+      <div class="footer-socials">
+        <a href="https://linkedin.com/in/produxman" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://instagram.com/produxman" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/produxman" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://youtube.com/@produxman" target="_blank" rel="noopener" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://produxman.substack.com" target="_blank" rel="noopener" title="Substack"><i class="fa-solid fa-newspaper"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/folio-chat.js" defer></script>
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    // Check for saved theme preference or default to 'dark'
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Project navigation with actual file navigation
+    const projects = [
+      { name: 'meister-billingengine', file: 'meister-billingengine.html', title: 'Billing Engine Evolution' },
+      { name: 'pelcro-fraudmanagement', file: 'pelcro-fraudmanagement.html', title: 'Fraud Management System' },
+      { name: 'dell-powerprotectsizer', file: 'dell-powerprotectsizer.html', title: 'PowerProtect Sizer' },
+      { name: 'ibm-supportknowledgebase', file: 'ibm-supportknowledgebase.html', title: 'Support Knowledge Base' },
+      { name: 'meister-accountsdesignsystem', file: 'meister-accountsdesignsystem.html', title: 'Accounts Design System' },
+      { name: 'pelcro-campaignbuilder', file: 'pelcro-campaignbuilder.html', title: 'Campaign Builder' },
+      { name: 'zyda-deliverect', file: 'zyda-deliverect.html', title: 'Deliverect Integration' }
+    ];
+
+    const currentProject = 'meister-billingengine';
+    const currentIndex = projects.findIndex(p => p.name === currentProject);
+    
+    // Update navbar title and navigation state
+    const prevBtn = document.getElementById('prevProject');
+    const nextBtn = document.getElementById('nextProject');
+    
+    // Set initial button states
+    if (currentIndex === 0) {
+      prevBtn.disabled = true;
+    }
+    if (currentIndex === projects.length - 1) {
+      nextBtn.disabled = true;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        const prevProject = projects[currentIndex - 1];
+        window.location.href = prevProject.file;
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < projects.length - 1) {
+        const nextProject = projects[currentIndex + 1];
+        window.location.href = nextProject.file;
+      }
+    });
+
+    // Dynamic height matching for hero section
+    function matchHeroHeights() {
+      const heroContent = document.querySelector('.project-hero-content');
+      const heroVisual = document.querySelector('.project-hero-visual');
+      
+      if (window.innerWidth > 768 && heroContent && heroVisual) {
+        // Reset heights
+        heroContent.style.minHeight = '';
+        heroVisual.style.minHeight = '';
+        
+        // Get natural heights
+        const contentHeight = heroContent.offsetHeight;
+        const visualHeight = heroVisual.offsetHeight;
+        
+        // Set both to the larger height
+        const maxHeight = Math.max(contentHeight, visualHeight);
+        heroContent.style.minHeight = maxHeight + 'px';
+        heroVisual.style.minHeight = maxHeight + 'px';
+      } else {
+        // Reset on mobile
+        if (heroContent) heroContent.style.minHeight = '';
+        if (heroVisual) heroVisual.style.minHeight = '';
+      }
+    }
+
+    // Run on load and resize
+    window.addEventListener('load', matchHeroHeights);
+    window.addEventListener('resize', matchHeroHeights);
+  </script>
+</body>
+</html>
