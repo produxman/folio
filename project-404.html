@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 • Case Study Missing • Sherif Shalaby</title>
+  <meta name="description" content="The case study you're looking for doesn't exist yet. Back to portfolio to explore other projects.">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/folio-main.css">
+  <link rel="stylesheet" href="assets/css/project-404.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/produxman-logo-dark.png">
+</head>
+<body>
+  <!-- 404 Content -->
+  <main class="error-page">
+    <div class="error-container">
+      <!-- Header -->
+      <div class="error-label">Oops! Still on my to-do List.</div>
+      
+      <!-- Subline -->
+      <div class="error-subline">I guess you'll have to talk to me if you want the details.</div>
+      
+      <!-- Gru Meme -->
+      <div class="meme-container">
+        <img src="assets/img/missingproject-dark.png" alt="Gru meme showing case study disappointment" class="meme-image" loading="lazy">
+      </div>
+      
+      <!-- Action Buttons -->
+      <div class="error-actions">
+        <a href="https://calendly.com/produxman/30min" class="back-btn cta-btn cta-primary">
+          <i class="fa-classic fa-calendar"></i> Schedule a Call
+        </a>
+        <a href="index.html" class="contact-btn cta-btn cta-secondary">
+          <i class="fa-classic fa-arrow-left"></i> Go Back
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    // Theme detection and image switching for 404 page
+    function updateMemeImage() {
+      const memeImg = document.querySelector('.meme-image');
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      // Determine current theme: use saved theme, or fall back to system preference
+      const isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+      
+      // Set theme attribute on document
+      document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+      
+      // Update image
+      if (memeImg) {
+        memeImg.src = isDark ? 'assets/img/missingproject-dark.png' : 'assets/img/missingproject-light.png';
+      }
+    }
+    
+    // Update image on page load
+    document.addEventListener('DOMContentLoaded', updateMemeImage);
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateMemeImage);
+  </script>
+</body>
+</html>
