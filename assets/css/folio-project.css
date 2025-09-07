@@ -175,6 +175,117 @@ img {
   transform: translateY(-1px);
 }
 
+/* Easter Egg Modal */
+.easter-egg-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease, visibility 300ms ease;
+}
+
+.easter-egg-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.easter-egg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.easter-egg-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: clamp(24px, 6vw, 32px);
+  max-width: clamp(300px, 85vw, 420px);
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transition: transform 300ms ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.easter-egg-modal.show .easter-egg-content {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.easter-egg-image {
+  width: clamp(120px, 30vw, 180px);
+  height: clamp(120px, 30vw, 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: clamp(12px, 3vw, 16px);
+}
+
+.easter-egg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.easter-egg-title {
+  font-size: clamp(1.3rem, 4vw, 1.6rem);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 clamp(4px, 1vw, 6px);
+  line-height: 1.3;
+}
+
+.easter-egg-subtext {
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  color: var(--muted);
+  margin: 0 0 clamp(20px, 5vw, 24px);
+  line-height: 1.4;
+}
+
+.easter-egg-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: clamp(10px, 3vw, 12px) clamp(20px, 5vw, 24px);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 150ms ease;
+  min-height: 44px;
+  min-width: 140px;
+  margin-top: clamp(4px, 1vw, 8px);
+}
+
+.easter-egg-btn:hover {
+  background: #2c7a7b;
+  transform: translateY(-1px);
+}
+
+.easter-egg-btn:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.easter-egg-btn:active {
+  transform: translateY(0);
+}
+
 /* Theme-specific navbar styling */
 [data-theme="dark"] .project-navbar {
   background: rgba(31, 41, 55, 0.95);

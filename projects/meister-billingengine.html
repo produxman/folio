@@ -39,6 +39,19 @@
     </div>
   </nav>
 
+  <!-- Easter Egg Modal -->
+  <div id="easterEggModal" class="easter-egg-modal" role="dialog" aria-labelledby="easterEggTitle" aria-hidden="true">
+    <div class="easter-egg-overlay"></div>
+    <div class="easter-egg-content">
+      <div class="easter-egg-image">
+        <img src="../assets/img/error-transparent.png" alt="404 Error illustration" class="easter-egg-img" loading="lazy">
+      </div>
+      <h2 id="easterEggTitle" class="easter-egg-title">Buddy, that's all it does…</h2>
+      <p class="easter-egg-subtext">You tried it 4 times. I respect the hustle.</p>
+      <button id="easterEggClose" class="easter-egg-btn">Alright, noted</button>
+    </div>
+  </div>
+
   <!-- Hero Summary Section -->
   <section class="folio-section">
     <div class="project-hero">
@@ -348,6 +361,7 @@
   </footer>
 
   <script src="../assets/js/folio-chat.js" defer></script>
+  <script src="../assets/js/easter-egg.js" defer></script>
   <script>
     // Theme toggle functionality
     const themeToggle = document.getElementById('themeToggle');
