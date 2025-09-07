@@ -365,7 +365,7 @@ if (heroLeft) {
   const phrases = [
     "Product Leader.",
     "Subpar Multitasker.",
-    "Founder of Senza.",
+    "Basil.ai Founder",
     "Cooking Aficionado.", 
     "Builder of Things.",
     "Sarcasm Enthusiast.",
