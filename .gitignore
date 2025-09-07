@@ -7,3 +7,4 @@ tmp/
 **/logs/
 **/*.log
 **/app/__pycache__/
+.venv/
