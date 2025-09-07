@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const btnPrev = document.getElementById('heroBtnPrev');
   const btnNext = document.getElementById('heroBtnNext');
   let current = 0;
+  let autoPlayInterval;
+  let isAutoPlaying = true;
 
   function render() {
     const total = cards.length;
@@ -33,19 +35,53 @@ document.addEventListener('DOMContentLoaded', function() {
       card.style.zIndex = '';
     });
   }
+
   function next(){
     current = (current + 1) % cards.length;
     render();
   }
+
   function prev(){
     current = (current - 1 + cards.length) % cards.length;
     render();
   }
-  btnNext.addEventListener('click', next);
-  btnPrev.addEventListener('click', prev);
+
+  function startAutoPlay() {
+    if (isAutoPlaying && !autoPlayInterval) {
+      autoPlayInterval = setInterval(next, 5000); // Auto cycle every 5 seconds
+    }
+  }
+
+  function stopAutoPlay() {
+    if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = null;
+    }
+  }
+
+  function restartAutoPlay() {
+    stopAutoPlay();
+    setTimeout(startAutoPlay, 3000); // Resume auto-play after 3 seconds of inactivity
+  }
+
+  btnNext.addEventListener('click', () => {
+    next();
+    restartAutoPlay();
+  });
+
+  btnPrev.addEventListener('click', () => {
+    prev();
+    restartAutoPlay();
+  });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') next();
-    if (e.key === 'ArrowLeft')  prev();
+    if (e.key === 'ArrowRight') {
+      next();
+      restartAutoPlay();
+    }
+    if (e.key === 'ArrowLeft') {
+      prev();
+      restartAutoPlay();
+    }
   });
   // Touch navigation
   let touchStartX = 0;
@@ -59,8 +95,21 @@ document.addEventListener('DOMContentLoaded', function() {
     handleSwipe();
   });
   function handleSwipe() {
-    if (touchEndX < touchStartX - swipeThreshold) next();
-    if (touchEndX > touchStartX + swipeThreshold) prev();
+    if (touchEndX < touchStartX - swipeThreshold) {
+      next();
+      restartAutoPlay();
+    }
+    if (touchEndX > touchStartX + swipeThreshold) {
+      prev();
+      restartAutoPlay();
+    }
   }
+
+  // Pause auto-play when user hovers over the carousel
+  track.addEventListener('mouseenter', stopAutoPlay);
+  track.addEventListener('mouseleave', startAutoPlay);
+
+  // Initialize
   render();
+  startAutoPlay();
 });
