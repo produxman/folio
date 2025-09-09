@@ -1,9 +1,3 @@
-        .bio {
-            font-size: clamp(1.15rem, 5vw, 1.35rem) !important;
-            padding-left: 14px !important;
-            padding-right: 14px !important;
-            text-align: left !important;
-        }
 /* --- Card stack carousel animated transforms --- */
 .hero .switch-card { transition: transform .55s cubic-bezier(.2,.7,.1,1), opacity .55s, filter .55s, box-shadow .3s, z-index .55s; will-change: transform, opacity, filter, z-index; }
 .hero .switch-card.active { z-index: 6; filter: none; }
@@ -83,7 +77,7 @@ html[data-theme="light"] .logo-light { display: block !important; }
 .logo-and-title h1 { margin: 0; font-size: clamp(24px, 5vw, 44px); line-height: 1.2; padding: 0; }
 .typewriter-rotator { font-size: clamp(1.08rem, 3vw, 1.32rem); font-weight: 400; color: var(--text); min-height: 1.5em; margin-top: 6px; margin-bottom: 0; letter-spacing: -0.01em; display: flex; align-items: flex-end; white-space: pre; }
 .accent { color: var(--accent); }
-.bio { color: var(--muted); line-height: 1.6; margin: clamp(8px, 2vw, 10px) 0 clamp(12px, 3vw, 16px); font-size: clamp(1.15rem, 4vw, 1.28rem); margin-left: 18px; }
+.bio { color: var(--muted); line-height: 1.6; font-size: clamp(1rem, 3vw, 1.1rem); margin: clamp(8px, 2vw, 10px) 0 clamp(12px, 3vw, 16px) 18px; padding-left: 14px; padding-right: 14px; text-align: left; }
 .hero-right { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .hero-photo img { border: 1px solid var(--border); border-radius: 14px; }
 /* Typewriter */
