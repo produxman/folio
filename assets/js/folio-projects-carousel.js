@@ -48,26 +48,25 @@ function initProjectsCarousel() {
   // Touch/swipe support
   const track = document.getElementById('projectsCarouselTrack');
   if (track) {
-    let startX = 0;
-    let scrollLeft = 0;
-    
-    track.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].pageX;
-      scrollLeft = track.scrollLeft;
-    });
-    
-    track.addEventListener('touchmove', (e) => {
-      const x = e.touches[0].pageX;
-      const walk = (startX - x) * 2;
-      track.scrollLeft = scrollLeft + walk;
-    });
-    
-    track.addEventListener('touchend', () => {
-      const slideWidth = track.scrollWidth / projectsData.length;
-      const newSlide = Math.round(track.scrollLeft / slideWidth);
-      currentSlide = Math.max(0, Math.min(newSlide, projectsData.length - slidesPerView));
-      updateCarousel();
-    });
+    // On mobile, use scroll events to sync the currentSlide
+    if (window.innerWidth < 768) {
+      let scrollTimeout;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          const cards = track.querySelectorAll('.project-card');
+          if (cards.length === 0) return;
+          const cardWidth = cards[0].offsetWidth;
+          const gap = 16;
+          const newSlide = Math.round(track.scrollLeft / (cardWidth + gap));
+          currentSlide = Math.max(0, Math.min(newSlide, projectsData.length - 1));
+          // Update dots only
+          document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+          });
+        }, 100);
+      });
+    }
   }
   
   // Start autoplay
@@ -160,11 +159,22 @@ function updateCarousel() {
   const cards = track.querySelectorAll('.project-card');
   if (cards.length === 0) return;
   
-  const cardWidth = cards[0].offsetWidth;
-  const gap = 24;
-  const offset = currentSlide * (cardWidth + gap);
+  // Use native scroll on mobile, transform on desktop
+  const isMobile = window.innerWidth < 768;
   
-  track.style.transform = `translateX(-${offset}px)`;
+  if (isMobile) {
+    // Use native scroll for mobile
+    const cardWidth = cards[currentSlide].offsetWidth;
+    const gap = 16;
+    const scrollPosition = currentSlide * (cardWidth + gap);
+    track.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+  } else {
+    // Use transform for desktop
+    const cardWidth = cards[0].offsetWidth;
+    const gap = 24;
+    const offset = currentSlide * (cardWidth + gap);
+    track.style.transform = `translateX(-${offset}px)`;
+  }
   
   // Update navigation buttons
   const prevBtn = document.getElementById('carouselPrev');

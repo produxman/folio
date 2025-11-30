@@ -248,17 +248,28 @@
 
 @media (max-width: 768px) {
   .projects-carousel-container {
-    padding: 20px 10px 50px;
+    padding: 20px 0 50px;
   }
   
   .projects-carousel-track {
-    padding: 0 10px;
+    padding: 0;
     gap: 16px;
+    transform: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  .projects-carousel-track::-webkit-scrollbar {
+    display: none;
   }
   
   .project-card {
-    flex: 0 0 calc(100% - 20px);
+    flex: 0 0 85%;
     min-width: 280px;
+    scroll-snap-align: center;
   }
   
   .project-card-image {
@@ -274,37 +285,10 @@
   }
   
   .carousel-nav {
-    width: 36px;
-    height: 36px;
-  }
-  
-  .carousel-nav-prev {
-    left: 5px;
-  }
-  
-  .carousel-nav-next {
-    right: 5px;
-  }
-  
-  .carousel-nav i {
-    font-size: 1rem;
-  }
-}
-
-/* Touch scroll for mobile */
-@media (max-width: 768px) {
-  .projects-carousel-track {
-    scroll-snap-type: x mandatory;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .projects-carousel-track::-webkit-scrollbar {
     display: none;
   }
   
-  .project-card {
-    scroll-snap-align: center;
+  .carousel-dots {
+    margin-top: 24px;
   }
 }
