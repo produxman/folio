@@ -117,43 +117,26 @@
       <article class="switch-card left-2" data-index="13" aria-label="Photo 14">
       <img class="switch-card-img" src="assets/img/hero-stack-cards/theproduxmans.webp" alt="The Produxmans" onerror="this.onerror=null;this.src='assets/img/hero-stack-cards/theproduxmans.png';">
       </article>                  
-      <button id="heroBtnPrev" class="hero-arrow-btn hero-arrow-left" aria-label="Previous Photo">
-        <svg viewBox="0 0 36 36" width="32" height="32"><polyline points="24,6 12,18 24,30" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button id="heroBtnNext" class="hero-arrow-btn hero-arrow-right" aria-label="Next Photo">
-        <svg viewBox="0 0 36 36" width="32" height="32"><polyline points="12,6 24,18 12,30" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
     </div>
   </header>
 
-  <!-- ====== SECTION 2 — TIMELINE + PROJECT CARDS ====== -->
+  <!-- ====== THINGS I'VE BUILT SECTION ====== -->
   <section class="folio-section">
-  <h2 class="section-heading"><i class="fa-classic fa-briefcase"></i> Things I've Built</h2>
-  
-  <!-- Featured Project Banner -->
-  <div class="featured-project-banner">
-    <div class="featured-content">
-      <div class="featured-text-section">
-        <h3 class="featured-headline">
-          <div class="basil-logo-badge">
-            <img src="assets/img/basil-logo-dark.png" alt="Basil.ai Logo" class="basil-logo-img basil-logo-light" loading="lazy" />
-            <img src="assets/img/basil-logo-light.png" alt="Basil.ai Logo" class="basil-logo-img basil-logo-dark" loading="lazy" />
-          </div>
-          Budgeting shouldn't feel like a second job..
-        </h3>
-        <p class="featured-description">I'm building <strong>Bazyl</strong> for those who want a budget app that runs itself, not the other way around.</p>
-        <div class="featured-actions">
-          <a href="https://bazyl.produxman.me" class="cta-btn cta-secondary" target="_blank" rel="noopener"><i class="fa-solid fa-eye"></i>Early Preview</a>
+    <h2 class="section-heading"><i class="fa-classic fa-briefcase"></i>Things I've Built</h2>
+    <div class="section-content" style="overflow: visible; max-height: none; transition: none;">
+      <div class="projects-carousel-container">
+        <div class="projects-carousel-track" id="projectsCarouselTrack">
+          <!-- Project cards will be dynamically inserted here -->
         </div>
-      </div>
-      <div class="featured-visual-section">
-        <div class="basil-preview">
-          <img src="assets/img/basil-banner-mobile-dark.png" alt="Basil.ai Financial Dashboard" class="basil-banner basil-banner-dark" loading="lazy" />
-          <img src="assets/img/basil-banner-mobile-light.png" alt="Basil.ai Financial Dashboard" class="basil-banner basil-banner-light" loading="lazy" />
-        </div>
+        <button class="carousel-nav carousel-nav-prev" id="carouselPrev" aria-label="Previous project">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="carousel-nav carousel-nav-next" id="carouselNext" aria-label="Next project">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
     </div>
-  </div>
+  </section>
   
   <div class="section-content" style="overflow: visible; max-height: none; transition: none;">
       <main class="stacked">
@@ -253,25 +236,6 @@
           <i class="fa-solid fa-download"></i> <span class="section-cta-btn-label">Download CV</span>
         </a>
       </div>
-  </section>
-
-  <!-- ====== THINGS I'M BUILDING SECTION ====== -->
-  <section class="folio-section">
-    <h2 class="section-heading"><i class="fa-solid fa-rocket"></i> Things I'm Building</h2>
-    <div class="section-content" style="overflow: visible; max-height: none; transition: none;">
-      <div class="projects-carousel-container">
-        <div class="projects-carousel-track" id="projectsCarouselTrack">
-          <!-- Project cards will be dynamically inserted here -->
-        </div>
-        <button class="carousel-nav carousel-nav-prev" id="carouselPrev" aria-label="Previous project">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button class="carousel-nav carousel-nav-next" id="carouselNext" aria-label="Next project">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-        <div class="carousel-dots" id="carouselDots"></div>
-      </div>
-    </div>
   </section>
 
   <!-- ====== SUBSTACK BLOG SECTION ====== -->
