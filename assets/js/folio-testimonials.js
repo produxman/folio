@@ -1,8 +1,8 @@
 const testimonials = [
     {
-    quote: "He tackled our most complex challenges with clarity and composure when we had no playbook. He balances business acumen with builder energy and a relentless focus on delivery.",
+    quote: "Sherif tackled our most complex challenges with clarity and composure when we had no playbook. He balances business acumen with builder energy and a relentless focus on delivery.",
         name: "Belen Caeiro",
-        designation: "VP Product @ Meister",
+        designation: "VP of Product @ Meister",
         src: "🧭"
     },
     {
@@ -12,7 +12,7 @@ const testimonials = [
         src: "💡"
     },
     {
-    quote: "The domain was everything from authentication to payments—always with clarity, structure, and a calm technical depth that made even complex topics feel manageable.",
+    quote: "Sherif quickly became one of the most reliable and enjoyable colleagues on any cross-functional project. He was building relationships helping the teams operate with stronger alignment and predictable delivery.",
         name: "Liis Monson",
         designation: "Senior Product Leader @ Meister",
         src: "🧠"
@@ -36,7 +36,7 @@ const testimonials = [
         src: "🔥"
     },
     {
-    quote: "He took extreme ownership over his role. Sherif has always worked with a high degree of discipline, integrity and always took it upon himself to solve the hardest problems.",
+    quote: "Sherif took extreme ownership over his role. He has always worked with a high degree of discipline, integrity and always took it upon himself to solve the hardest problems.",
         name: "Michael Ghattas",
         designation: "CEO @ Pelcro",
         src: "🤝"
@@ -48,27 +48,27 @@ const testimonials = [
         src: "🎯"
     },
     {
-    quote: "I could count on him to challenge my preconceptions and deliver quality solutions. Sherif can disagree without being disagreeable, and I have always found him to be open to new ideas.",
+    quote: "I could count on Sherif to challenge my preconceptions and deliver quality solutions. He can disagree without being disagreeable, and I have always found him to be open to new ideas.",
         name: "Jeff Spies",
-        designation: "Subscription Expert (Client)",
+        designation: "Program Manager @ Crain Communications",
         src: "💬"
     },
     {
-    quote: "His capacity to remain organized and involved in multiple concurrent complex projects has made him a dependable key team member... His capacity to work under stress is second to none.",
+    quote: "Sherif's capacity to remain organized and involved in multiple concurrent complex projects has made him a dependable key team member... His capacity to work under stress is second to none.",
         name: "Frédéric Trudeau",
         designation: "VP of Engineering @ Pelcro",
         src: "⚓"
     },
     {
-    quote: "He is a natural product manager and always thinks of new approaches to improve our product. His communication skills are top-notch, and he is extremely driven to get things done despite obstacles.",
+    quote: "Sherif is a natural product manager and always thinks of new approaches to improve our product. His communication skills are top-notch, and he is extremely driven to get things done despite obstacles.",
         name: "Alex Barreto",
-        designation: "Fractional CPO/CSO",
+        designation: "VP of Product @ Zyda",
         src: "📈"
     },
     {
-    quote: "He consistently gave 100 percent effort to the team... He had excellent time management skills and had a knack for keeping everyone calm and productive during intense periods.",
+    quote: "Sherif consistently gave 100 percent effort to the team... He had excellent time management skills and had a knack for keeping everyone calm and productive during intense periods.",
         name: "Sara Rady",
-        designation: "Sales Manager @ Zyda",
+        designation: "Director of Partnerships & CS @ Zyda",
         src: "🕊️"
     },
     {
@@ -78,13 +78,13 @@ const testimonials = [
         src: "🌟"
     },
     {
-    quote: "He understands the 80:20 rule... he is always able to recognise issues and potential concerns before they occur and mitigate their effects. His reputation always precedes him.",
+    quote: "Sherif understands the 80:20 rule... he is always able to recognise issues and potential concerns before they occur and mitigate their effects. His reputation always precedes him.",
         name: "Ahmed Al Mansour",
         designation: "Program Delivery Manager @ Dell Technologies",
         src: "📉"
     },
     {
-    quote: "He is incredibly dependable and goes out of his way to help team members... Sherif has a unique talent for being able to very easily build relationships through his charismatic personality.",
+    quote: "Sherif is incredibly dependable and goes out of his way to help team members... He has a unique talent for being able to very easily build relationships through his charismatic personality.",
         name: "Ashley King",
         designation: "Project Manager @ VeraSafe",
         src: "🤲"
@@ -108,13 +108,13 @@ const testimonials = [
         src: "🌉"
     },
     {
-    quote: "Sherif works with me directly as the Project Manager... he has been unfailingly organized, communicative, and supportive. His background knowledge of data protection and IT has proven invaluable.",
+    quote: "Sherif has been unfailingly organized, communicative, and supportive. His background knowledge of data protection and IT has proven invaluable.",
         name: "Calli Schroeder",
         designation: "Global Privacy Counsel @ EPIC",
         src: "🛡️"
     },
     {
-    quote: "Not only is he a good listener... but also he strives for constant improvement. Sherif always inspires with his optimism, but his confidence is fact-based, which makes him a reliable teammate.",
+    quote: "Not only is Sherif a good listener... but also he strives for constant improvement. He always inspires with his optimism, and his confidence is fact-based, which makes him a reliable teammate.",
         name: "Nick Maystrenko",
         designation: "Resource Management @ FTI Consulting",
         src: "💪"

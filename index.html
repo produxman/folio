@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="assets/css/folio-hero.css" />
   <link rel="stylesheet" href="assets/css/folio-chat.css" />
   <link rel="stylesheet" href="assets/css/folio-testimonials.css" />
+  <link rel="stylesheet" href="assets/css/folio-projects-carousel.css" />
   <link rel="icon" type="image/x-icon" href="assets/img/produxman-logo-dark.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -140,9 +141,9 @@
           </div>
           Budgeting shouldn't feel like a second job..
         </h3>
-        <p class="featured-description">I'm building <strong>Basil</strong> for those who want a budget app that runs itself, not the other way around.</p>
+        <p class="featured-description">I'm building <strong>Bazyl</strong> for those who want a budget app that runs itself, not the other way around.</p>
         <div class="featured-actions">
-          <a href="https://basil.produxman.me" class="cta-btn cta-secondary" target="_blank" rel="noopener"><i class="fa-solid fa-eye"></i>Early Preview</a>
+          <a href="https://bazyl.produxman.me" class="cta-btn cta-secondary" target="_blank" rel="noopener"><i class="fa-solid fa-eye"></i>Early Preview</a>
         </div>
       </div>
       <div class="featured-visual-section">
@@ -254,6 +255,25 @@
       </div>
   </section>
 
+  <!-- ====== THINGS I'M BUILDING SECTION ====== -->
+  <section class="folio-section">
+    <h2 class="section-heading"><i class="fa-solid fa-rocket"></i> Things I'm Building</h2>
+    <div class="section-content" style="overflow: visible; max-height: none; transition: none;">
+      <div class="projects-carousel-container">
+        <div class="projects-carousel-track" id="projectsCarouselTrack">
+          <!-- Project cards will be dynamically inserted here -->
+        </div>
+        <button class="carousel-nav carousel-nav-prev" id="carouselPrev" aria-label="Previous project">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="carousel-nav carousel-nav-next" id="carouselNext" aria-label="Next project">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ====== SUBSTACK BLOG SECTION ====== -->
   <section class="folio-section">
   <h2 class="section-heading"><i class="fa-regular fa-pen-to-square"></i> Lessons I've Learned</h2>
@@ -352,6 +372,7 @@
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
   <script src="assets/js/folio-chat.js" defer></script>
   <script src="assets/js/folio-testimonials.js" defer></script>
+  <script src="assets/js/folio-projects-carousel.js" defer></script>
   <script src="assets/js/easter-egg.js" defer></script>
   <script>
 async function fetchSubstackArticles() {
