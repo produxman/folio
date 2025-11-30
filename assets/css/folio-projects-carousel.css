@@ -101,7 +101,7 @@
 }
 
 .project-card-title {
-  font-size: 1.5rem;
+  font-size: 1.18rem;
   font-weight: 700;
   color: var(--text);
   margin: 0;
@@ -122,8 +122,9 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background: var(--accent);
-  color: white;
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
@@ -133,9 +134,10 @@
 }
 
 .project-card-cta:hover {
-  background: var(--accent-hover);
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
   transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .project-card-cta i {

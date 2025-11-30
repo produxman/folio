@@ -64,15 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(startAutoPlay, 3000); // Resume auto-play after 3 seconds of inactivity
   }
 
-  btnNext.addEventListener('click', () => {
-    next();
-    restartAutoPlay();
-  });
+  if (btnNext) {
+    btnNext.addEventListener('click', () => {
+      next();
+      restartAutoPlay();
+    });
+  }
 
-  btnPrev.addEventListener('click', () => {
-    prev();
-    restartAutoPlay();
-  });
+  if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+      prev();
+      restartAutoPlay();
+    });
+  }
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') {
       next();

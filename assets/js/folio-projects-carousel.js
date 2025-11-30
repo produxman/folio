@@ -2,48 +2,23 @@
 const projectsData = [
   {
     name: "Bazyl",
-    status: "beta",
+    type: "Project",
+    status: "planning",
     description: "An AI-powered budgeting app that manages itself, tracking spending patterns and providing intelligent financial insights.",
     image: "assets/img/projects/bazyl-preview.png",
     fallbackGradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-    ctaText: "Try Beta",
-    ctaLink: "https://bazyl.produxman.me"
-  },
-  {
-    name: "Portfolio AI Assistant",
-    status: "active",
-    description: "An intelligent chatbot trained on my professional experience, helping visitors learn about my work and expertise.",
-    image: "assets/img/projects/chatbot-preview.png",
-    fallbackGradient: "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)",
-    ctaText: "Chat Now",
-    ctaLink: "#ai-chatbot-toggle"
-  },
-  {
-    name: "Product Strategy Framework",
-    status: "ideation",
-    description: "A systematic approach to product discovery and validation, combining lean methodology with customer development principles.",
-    image: "assets/img/projects/framework-preview.png",
-    fallbackGradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
-    ctaText: "Read More",
-    ctaLink: "https://produxman.substack.com"
-  },
-  {
-    name: "SaaS Metrics Dashboard",
-    status: "planning",
-    description: "Real-time analytics dashboard for tracking key SaaS metrics including MRR, churn, CAC, and LTV across multiple products.",
-    image: "assets/img/projects/metrics-preview.png",
-    fallbackGradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
-    ctaText: "Learn More",
+    ctaText: "Join the Waitlist",
     ctaLink: "mailto:mail@produxman.me"
   },
   {
-    name: "API Integration Hub",
-    status: "ideation",
-    description: "Centralized platform for managing third-party integrations with automated testing and monitoring capabilities.",
-    image: "assets/img/projects/api-hub-preview.png",
-    fallbackGradient: "linear-gradient(135deg, #ec4899 0%, #db2777 100%)",
-    ctaText: "Contact Me",
-    ctaLink: "mailto:mail@produxman.me"
+    name: "What Friends are Watching",
+    type: "Case Study",
+    status: "Concept",
+      description: "A Netflix social layer concept that shows what friends are watching, using social proof to increase engagement.",
+    image: "assets/img/projects/netflix-friends-watching.png",
+    fallbackGradient: "linear-gradient(135deg, #e50914 0%, #b20710 100%)",
+    ctaText: "View Live Prototype",
+    ctaLink: "https://id-preview--610d16e6-df5f-4183-8589-dc548a738735.lovable.app/"
   }
 ];
 
